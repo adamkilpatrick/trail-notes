@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "TestFolder/TestNestedNote.md",
+                "file": "index.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "TestNestedNote"
+              "title": "index"
             }
           }
         ]
@@ -193,9 +193,9 @@
   },
   "active": "cebe75cbf10a364e",
   "lastOpenFiles": [
+    "TestFolder/TestNestedNote.md",
     "output/testfolder/testnestednote.html",
     "output/testfolder",
-    "TestFolder/TestNestedNote.md",
     "index.md",
     "TestFolder",
     "output/site-lib/media/favicon.ico",
@@ -208,7 +208,6 @@
     "attachments/favicon.ico",
     "attachments",
     "snowAlone.png",
-    "output/output/site-lib/styles/obsidian.css",
     "output/output/site-lib/media/favicon.png",
     "InvioDocs/Introduction.md",
     "output/output/site-lib/media/6155340132a851f6089e.svg",

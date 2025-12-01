@@ -17,7 +17,7 @@
             uses: aws-actions/configure-aws-credentials@v1.7.0
             with:
               role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
-              role-session-name: GitHub_to_AWS_via_FederatedOIDC
+              role-session-name: "GitHub_to_AWS_via_FederatedOIDC"
               aws-region: ${{ env.AWS_REGION }}
 
           - name: Sync files to S3 bucket

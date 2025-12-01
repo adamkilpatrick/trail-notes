@@ -188,14 +188,15 @@
       "command-palette:Open command palette": false,
       "bases:Create new base": false,
       "obsidian-git:Open Git source control": false,
-      "webpage-html-export:Export as HTML": false,
-      "invio:Invio": false
+      "webpage-html-export:Export as HTML": false
     }
   },
   "active": "cebe75cbf10a364e",
   "lastOpenFiles": [
-    "index.md",
+    "output/testfolder/testnestednote.html",
+    "output/testfolder",
     "TestFolder/TestNestedNote.md",
+    "index.md",
     "TestFolder",
     "output/site-lib/media/favicon.ico",
     "output/snowalone.png",
@@ -208,7 +209,6 @@
     "attachments",
     "snowAlone.png",
     "output/output/site-lib/styles/obsidian.css",
-    "output/output/site-lib/styles/global-variable-styles.css",
     "output/output/site-lib/media/favicon.png",
     "InvioDocs/Introduction.md",
     "output/output/site-lib/media/6155340132a851f6089e.svg",

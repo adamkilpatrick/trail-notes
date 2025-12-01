@@ -10,7 +10,7 @@
     "postProcess": true,
     "displayProgress": true,
     "inlineHTML": false,
-    "exportPath": "C:\\Users\\adamc\\Documents\\Trail\\output",
+    "exportPath": "C:\\Users\\adamc\\Documents\\Trail\\.output",
     "filesToExport": [
       "attachments",
       "Misc",

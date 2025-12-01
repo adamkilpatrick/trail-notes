@@ -11,14 +11,14 @@
             "id": "cebe75cbf10a364e",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "split-diff-view",
               "state": {
-                "file": "index.md",
-                "mode": "preview",
-                "source": false
+                "aFile": ".obsidian/plugins/invio/.gitignore",
+                "bFile": ".obsidian/plugins/invio/.gitignore",
+                "aRef": ""
               },
-              "icon": "lucide-file",
-              "title": "index"
+              "icon": "diff",
+              "title": "Diff: .gitignore"
             }
           }
         ]
@@ -178,26 +178,31 @@
       "command-palette:Open command palette": false,
       "bases:Create new base": false,
       "obsidian-git:Open Git source control": false,
-      "webpage-html-export:Export as HTML": false
+      "webpage-html-export:Export as HTML": false,
+      "invio:Invio": false
     }
   },
   "active": "cebe75cbf10a364e",
   "lastOpenFiles": [
-    "output/site-lib/search-index.json",
-    "output/site-lib/metadata.json",
     "Test.md",
-    "output/site-lib/scripts/webpage.js",
-    "output/site-lib/scripts/graph-wasm.wasm",
-    "output/site-lib/scripts/graph-wasm.js",
-    "output/site-lib/scripts/graph-render-worker.js",
-    "output/site-lib/fonts/c8ba52b05a9ef10f4758.woff2",
-    "output/site-lib/fonts/cb10ffd7684cd9836a05.woff2",
-    "output/site-lib/fonts/cbe0ae49c52c920fd563.woff2",
-    "output/site-lib/fonts/b5f0f109bc88052d4000.woff2",
-    "output/site-lib/fonts/72505e6a122c6acd5471.woff2",
+    "snowAlone.png",
+    "output/output/site-lib/styles/obsidian.css",
+    "output/output/site-lib/styles/global-variable-styles.css",
+    "output/output/site-lib/styles/main-styles.css",
+    "output/output/site-lib/styles",
+    "output/output/site-lib/scripts/webpage.js",
+    "output/output/site-lib/scripts/graph-wasm.wasm",
+    "output/output/site-lib/scripts/graph-wasm.js",
+    "output/output/site-lib/scripts/graph-render-worker.js",
+    "output/output/site-lib/scripts",
+    "output/output/site-lib/fonts/c8ba52b05a9ef10f4758.woff2",
+    "output/output/site-lib/media/favicon.png",
+    "InvioDocs/Introduction.md",
+    "output/output/site-lib/media/6155340132a851f6089e.svg",
+    "output/output/site-lib/media/2308ab1944a6bfa5c5b8.svg",
+    "index.md",
     "output/site-lib/media/favicon.png",
     "output/site-lib/media/6155340132a851f6089e.svg",
-    "output/site-lib/media/2308ab1944a6bfa5c5b8.svg",
-    "index.md"
+    "output/site-lib/media/2308ab1944a6bfa5c5b8.svg"
   ]
 }

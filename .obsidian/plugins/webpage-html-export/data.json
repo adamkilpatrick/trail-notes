@@ -12,7 +12,12 @@
     "inlineHTML": false,
     "exportPath": "C:\\Users\\adamc\\Documents\\Trail\\output",
     "filesToExport": [
-      "all"
+      "attachments",
+      "Misc",
+      "TestFolder",
+      "index.md",
+      "snowAlone.png",
+      "Test.md"
     ],
     "useFallbackRenderer": false,
     "addBodyClasses": true,
@@ -226,7 +231,7 @@
   "onlyExportModified": true,
   "deleteOldFiles": true,
   "exportPreset": "online",
-  "openAfterExport": true,
+  "openAfterExport": false,
   "filePickerBlacklist": [
     "(^|\\/)node_modules\\/",
     "(^|\\/)dist\\/",

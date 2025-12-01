@@ -30,8 +30,33 @@
               "icon": "lucide-file",
               "title": "index"
             }
+          },
+          {
+            "id": "b4edcc6ab829645d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Misc/Contact.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "Contact"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -191,9 +216,17 @@
       "webpage-html-export:Export as HTML": false
     }
   },
-  "active": "cebe75cbf10a364e",
+  "active": "b4edcc6ab829645d",
   "lastOpenFiles": [
+    "Misc/Tech.md",
+    "output/misc/tech.html",
+    "Misc/Contact.md",
+    "output/misc/contact.html",
+    "output/misc",
     "index.md",
+    "Misc",
+    "Prep",
+    "Gear",
     "TestFolder/TestNestedNote.md",
     "output/testfolder/testnestednote.html",
     "output/testfolder",
@@ -201,12 +234,6 @@
     "output/site-lib/media/favicon.ico",
     "output/snowalone.png",
     "Test.md",
-    "output/attachments/favicon.ico",
-    "output/snowalone.html",
-    "output/attachments/favicon.html",
-    "output/attachments",
-    "attachments/favicon.ico",
-    "attachments",
     "snowAlone.png",
     "output/output/site-lib/media/favicon.png",
     "InvioDocs/Introduction.md",

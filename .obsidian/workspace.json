@@ -11,14 +11,24 @@
             "id": "cebe75cbf10a364e",
             "type": "leaf",
             "state": {
-              "type": "split-diff-view",
+              "type": "markdown",
               "state": {
-                "aFile": ".obsidian/plugins/invio/.gitignore",
-                "bFile": ".obsidian/plugins/invio/.gitignore",
-                "aRef": ""
+                "file": "TestFolder/TestNestedNote.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
               },
-              "icon": "diff",
-              "title": "Diff: .gitignore"
+              "icon": "lucide-file",
+              "title": "TestNestedNote"
             }
           }
         ]
@@ -184,23 +194,25 @@
   },
   "active": "cebe75cbf10a364e",
   "lastOpenFiles": [
+    "index.md",
+    "TestFolder/TestNestedNote.md",
+    "TestFolder",
+    "output/site-lib/media/favicon.ico",
+    "output/snowalone.png",
     "Test.md",
+    "output/attachments/favicon.ico",
+    "output/snowalone.html",
+    "output/attachments/favicon.html",
+    "output/attachments",
+    "attachments/favicon.ico",
+    "attachments",
     "snowAlone.png",
     "output/output/site-lib/styles/obsidian.css",
     "output/output/site-lib/styles/global-variable-styles.css",
-    "output/output/site-lib/styles/main-styles.css",
-    "output/output/site-lib/styles",
-    "output/output/site-lib/scripts/webpage.js",
-    "output/output/site-lib/scripts/graph-wasm.wasm",
-    "output/output/site-lib/scripts/graph-wasm.js",
-    "output/output/site-lib/scripts/graph-render-worker.js",
-    "output/output/site-lib/scripts",
-    "output/output/site-lib/fonts/c8ba52b05a9ef10f4758.woff2",
     "output/output/site-lib/media/favicon.png",
     "InvioDocs/Introduction.md",
     "output/output/site-lib/media/6155340132a851f6089e.svg",
     "output/output/site-lib/media/2308ab1944a6bfa5c5b8.svg",
-    "index.md",
     "output/site-lib/media/favicon.png",
     "output/site-lib/media/6155340132a851f6089e.svg",
     "output/site-lib/media/2308ab1944a6bfa5c5b8.svg"

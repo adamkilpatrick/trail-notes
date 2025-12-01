@@ -1,0 +1,25 @@
+    name: Deploy to S3
+
+    on:
+      push:
+        branches:
+          - main # Trigger on pushes to the main branch
+
+    jobs:
+      deploy:
+        runs-on: ubuntu-latest
+
+        steps:
+          - name: Checkout code
+            uses: actions/checkout@v4
+
+          - name: configure aws credentials
+            uses: aws-actions/configure-aws-credentials@v1.7.0
+            with:
+              role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
+              role-session-name: GitHub_to_AWS_via_FederatedOIDC
+              aws-region: ${{ env.AWS_REGION }}
+
+          - name: Sync files to S3 bucket
+            run: |
+              aws s3 sync ./output/ s3://${{ secrets.AWS_S3_BUCKET }}/ --delete

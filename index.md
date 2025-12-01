@@ -2,7 +2,8 @@ Hello. You've somehow made it to this place before I felt comfortable sharing th
 
 ## Recently Updated
 ```dataview
-TABLE dateformat(file.mtime, "yyyy.MM.dd - HH:mm") AS "Last modified"
+TABLE WITHOUT ID 
+file.folder AS "Folder", file.link AS "File", dateformat(file.mtime, "yyyy.MM.dd - HH:mm") AS "Last modified"
 FROM ""
 SORT file.mtime DESC
 LIMIT 10

@@ -1,5 +1,7 @@
 Hello. You've somehow made it to this place before I felt comfortable sharing things with people, but at least it means the infra works mostly. I will add some details to this in time but the intent is to capture some notes on how I die on going to the woods because I am an enormous dumbass!
 
+Test update from phone.
+
 ## Recently Updated
 ```dataview
 TABLE WITHOUT ID 

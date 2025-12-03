@@ -16,7 +16,6 @@
             with:
               repository: jackyzha0/quartz
               path: ./quartz
-              ref: 7b7064ad2be68e8d6d43123c12529ca94a325fcb
           - name: Checkout vault
             uses: actions/checkout@v4
             with:

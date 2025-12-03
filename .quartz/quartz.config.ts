@@ -10,13 +10,13 @@ const config: QuartzConfig = {
   configuration: {
     pageTitle: "Trail Notes",
     pageTitleSuffix: "",
-    enableSPA: false,
+    enableSPA: true,
     enablePopovers: true,
     analytics: {
       provider: null,
     },
     locale: "en-US",
-    baseUrl: "quartz.jzhao.xyz",
+    baseUrl: "trail.snakeha.us",
     ignorePatterns: ["private", "templates", ".obsidian", ".quartz", ".github"],
     defaultDateType: "modified",
     theme: {

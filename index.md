@@ -5,10 +5,15 @@ Test update from phone.
 #TestTag
 
 ## Recently Updated
-```dataview
-TABLE WITHOUT ID 
-file.folder AS "Folder", file.link AS "File", dateformat(file.mtime, "yyyy.MM.dd - HH:mm") AS "Last modified"
-FROM ""
-SORT file.mtime DESC
-LIMIT 10
-```
+<!-- QueryToSerialize: TABLE WITHOUT ID  file.folder AS "Folder", file.link AS "File", dateformat(file.mtime, "yyyy.MM.dd - HH:mm") AS "Last modified" FROM "" SORT file.mtime DESC LIMIT 10 -->
+<!-- SerializedQuery: TABLE WITHOUT ID  file.folder AS "Folder", file.link AS "File", dateformat(file.mtime, "yyyy.MM.dd - HH:mm") AS "Last modified" FROM "" SORT file.mtime DESC LIMIT 10 -->
+
+| Folder     | File                                             | Last modified      |
+| ---------- | ------------------------------------------------ | ------------------ |
+|            | [[index.md\|index]]                              | 2025.12.03 - 17:30 |
+|            | [[Test.md\|Test]]                                | 2025.12.03 - 17:02 |
+| Misc       | [[Misc/Contact.md\|Contact]]                     | 2025.12.01 - 13:59 |
+| Misc       | [[Misc/Tech.md\|Tech]]                           | 2025.12.01 - 13:59 |
+| TestFolder | [[TestFolder/TestNestedNote.md\|TestNestedNote]] | 2025.11.30 - 20:15 |
+<!-- SerializedQuery END -->
+

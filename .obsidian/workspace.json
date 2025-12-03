@@ -54,9 +54,33 @@
               "icon": "lucide-file",
               "title": "index"
             }
+          },
+          {
+            "id": "cfdf1b90de708d0a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "TestFolder/TestNestedNote.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "TestNestedNote"
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -216,14 +240,14 @@
       "webpage-html-export:Export as HTML": false
     }
   },
-  "active": "b4edcc6ab829645d",
+  "active": "cfdf1b90de708d0a",
   "lastOpenFiles": [
+    "Misc/Tech.md",
+    "Misc/Contact.md",
     "index.md",
     "snowAlone.png",
     "TestFolder/TestNestedNote.md",
     "Test.md",
-    "Misc/Tech.md",
-    "Misc/Contact.md",
     "New folder",
     "output/misc/tech.html",
     "output/misc/contact.html",

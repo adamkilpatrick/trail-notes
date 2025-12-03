@@ -1,4 +1,4 @@
-    name: Deploy to S3
+    name: Build and Deploy to S3
 
     on:
       push:
@@ -8,13 +8,46 @@
           id-token: write   # This is required for requesting the JWT
           contents: read  
     jobs:
+      build:
+        runs-on: ubuntu-latest
+        steps:
+          - name: Checkout quartz
+            uses: actions/checkout@v4
+            with:
+              repository: jackyzha0/quartz
+              path: ./quartz
+              ref: 7b7064ad2be68e8d6d43123c12529ca94a325fcb
+          - name: Checkout vault
+            uses: actions/checkout@v4
+            with:
+              path: ./vault
+          - name: Install Node
+            uses: actions/setup-node@v6
+            with:
+              node-version: 24
+          - name: Install Quartz
+            run: npm install
+            working-directory: ./quartz
+          - name: Copy Quartz config
+            run: cp ./vault/.quartz/quartz.config.ts ./quartz/quartz.config.ts
+          - name: Build from quartz
+            run: npx quartz build -d ../vault -o ../.output
+            working-directory: ./quartz
+          - name: Upload artifact
+            uses: actions/upload-artifact@v4
+            with:
+              name: build-output
+              path: ./.output
+
       deploy:
         runs-on: ubuntu-latest
-
+        needs: build
         steps:
-          - name: Checkout code
-            uses: actions/checkout@v4
-
+          - name: Download artifact
+            uses: actions/download-artifact@v4
+            with:
+              name: build-output
+              path: ./.output
           - name: configure aws credentials
             uses: aws-actions/configure-aws-credentials@v1.7.0
             with:

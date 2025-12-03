@@ -1,0 +1,19 @@
+{
+  "Misc/Contact.md": {
+    "tags": []
+  },
+  "Misc/Tech.md": {
+    "tags": []
+  },
+  "Test.md": {
+    "share": true,
+    "tags": []
+  },
+  "TestFolder/TestNestedNote.md": {
+    "tags": []
+  },
+  "index.md": {
+    "tags": []
+  },
+  "not_created.md": {}
+}

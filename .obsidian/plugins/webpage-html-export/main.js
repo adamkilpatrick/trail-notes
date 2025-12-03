@@ -68479,2050 +68479,2050 @@ module.exports = __toCommonJS(main_exports);
 var import_obsidian12 = require("obsidian");
 
 // src/frontend/graph-view/graph-wasm.txt.js
-var graph_wasm_txt_default = 'var Module = typeof Module != "undefined" ? Module : {};\nvar ENVIRONMENT_IS_WEB = typeof window == "object";\nvar ENVIRONMENT_IS_WORKER = typeof importScripts == "function";\nvar ENVIRONMENT_IS_NODE = typeof process == "object" && typeof process.versions == "object" && typeof process.versions.node == "string";\nif (ENVIRONMENT_IS_NODE) {}\nvar moduleOverrides = Object.assign({}, Module);\nvar arguments_ = [];\nvar thisProgram = "./this.program";\nvar quit_ = (status, toThrow) => {\n    throw toThrow\n};\nvar scriptDirectory = "";\n\nfunction locateFile(path) {\n    if (Module["locateFile"]) {\n        return Module["locateFile"](path, scriptDirectory)\n    }\n    return scriptDirectory + path\n}\nvar read_, readAsync, readBinary;\nif (ENVIRONMENT_IS_NODE) {\n    var fs = require("fs");\n    var nodePath = require("path");\n    if (ENVIRONMENT_IS_WORKER) {\n        scriptDirectory = nodePath.dirname(scriptDirectory) + "/"\n    } else {\n        scriptDirectory = __dirname + "/"\n    }\n    read_ = (filename, binary) => {\n        filename = isFileURI(filename) ? new URL(filename) : nodePath.normalize(filename);\n        return fs.readFileSync(filename, binary ? undefined : "utf8")\n    };\n    readBinary = filename => {\n        var ret = read_(filename, true);\n        if (!ret.buffer) {\n            ret = new Uint8Array(ret)\n        }\n        return ret\n    };\n    readAsync = (filename, onload, onerror, binary = true) => {\n        filename = isFileURI(filename) ? new URL(filename) : nodePath.normalize(filename);\n        fs.readFile(filename, binary ? undefined : "utf8", (err, data) => {\n            if (err) onerror(err);\n            else onload(binary ? data.buffer : data)\n        })\n    };\n    if (!Module["thisProgram"] && process.argv.length > 1) {\n        thisProgram = process.argv[1].replace(/\\\\/g, "/")\n    }\n    arguments_ = process.argv.slice(2);\n    if (typeof module != "undefined") {\n        module["exports"] = Module\n    }\n    process.on("uncaughtException", ex => {\n        if (ex !== "unwind" && !(ex instanceof ExitStatus) && !(ex.context instanceof ExitStatus)) {\n            throw ex\n        }\n    });\n    quit_ = (status, toThrow) => {\n        process.exitCode = status;\n        throw toThrow\n    }\n} else if (ENVIRONMENT_IS_WEB || ENVIRONMENT_IS_WORKER) {\n    if (ENVIRONMENT_IS_WORKER) {\n        scriptDirectory = self.location.href\n    } else if (typeof document != "undefined" && document.currentScript) {\n        scriptDirectory = document.currentScript.src\n    }\n    if (scriptDirectory.startsWith("blob:")) {\n        scriptDirectory = ""\n    } else {\n        scriptDirectory = scriptDirectory.substr(0, scriptDirectory.replace(/[?#].*/, "").lastIndexOf("/") + 1)\n    } {\n        read_ = url => {\n            var xhr = new XMLHttpRequest;\n            xhr.open("GET", url, false);\n            xhr.send(null);\n            return xhr.responseText\n        };\n        if (ENVIRONMENT_IS_WORKER) {\n            readBinary = url => {\n                var xhr = new XMLHttpRequest;\n                xhr.open("GET", url, false);\n                xhr.responseType = "arraybuffer";\n                xhr.send(null);\n                return new Uint8Array(xhr.response)\n            }\n        }\n        readAsync = (url, onload, onerror) => {\n            var xhr = new XMLHttpRequest;\n            xhr.open("GET", url, true);\n            xhr.responseType = "arraybuffer";\n            xhr.onload = () => {\n                if (xhr.status == 200 || xhr.status == 0 && xhr.response) {\n                    onload(xhr.response);\n                    return\n                }\n                onerror()\n            };\n            xhr.onerror = onerror;\n            xhr.send(null)\n        }\n    }\n} else {}\nvar out = Module["print"] || console.log.bind(console);\nvar err = Module["printErr"] || console.error.bind(console);\nObject.assign(Module, moduleOverrides);\nmoduleOverrides = null;\nif (Module["arguments"]) arguments_ = Module["arguments"];\nif (Module["thisProgram"]) thisProgram = Module["thisProgram"];\nif (Module["quit"]) quit_ = Module["quit"];\nvar wasmBinary;\nif (Module["wasmBinary"]) wasmBinary = Module["wasmBinary"];\nvar wasmMemory;\nvar ABORT = false;\nvar EXITSTATUS;\nvar HEAP8, HEAPU8, HEAP16, HEAPU16, HEAP32, HEAPU32, HEAPF32, HEAPF64;\n\nfunction updateMemoryViews() {\n    var b = wasmMemory.buffer;\n    Module["HEAP8"] = HEAP8 = new Int8Array(b);\n    Module["HEAP16"] = HEAP16 = new Int16Array(b);\n    Module["HEAPU8"] = HEAPU8 = new Uint8Array(b);\n    Module["HEAPU16"] = HEAPU16 = new Uint16Array(b);\n    Module["HEAP32"] = HEAP32 = new Int32Array(b);\n    Module["HEAPU32"] = HEAPU32 = new Uint32Array(b);\n    Module["HEAPF32"] = HEAPF32 = new Float32Array(b);\n    Module["HEAPF64"] = HEAPF64 = new Float64Array(b)\n}\nvar __ATPRERUN__ = [];\nvar __ATINIT__ = [];\nvar __ATPOSTRUN__ = [];\nvar runtimeInitialized = false;\n\nfunction preRun() {\n    if (Module["preRun"]) {\n        if (typeof Module["preRun"] == "function") Module["preRun"] = [Module["preRun"]];\n        while (Module["preRun"].length) {\n            addOnPreRun(Module["preRun"].shift())\n        }\n    }\n    callRuntimeCallbacks(__ATPRERUN__)\n}\n\nfunction initRuntime() {\n    runtimeInitialized = true;\n    callRuntimeCallbacks(__ATINIT__)\n}\n\nfunction postRun() {\n    if (Module["postRun"]) {\n        if (typeof Module["postRun"] == "function") Module["postRun"] = [Module["postRun"]];\n        while (Module["postRun"].length) {\n            addOnPostRun(Module["postRun"].shift())\n        }\n    }\n    callRuntimeCallbacks(__ATPOSTRUN__)\n}\n\nfunction addOnPreRun(cb) {\n    __ATPRERUN__.unshift(cb)\n}\n\nfunction addOnInit(cb) {\n    __ATINIT__.unshift(cb)\n}\n\nfunction addOnPostRun(cb) {\n    __ATPOSTRUN__.unshift(cb)\n}\nvar runDependencies = 0;\nvar runDependencyWatcher = null;\nvar dependenciesFulfilled = null;\n\nfunction addRunDependency(id) {\n    runDependencies++;\n    Module["monitorRunDependencies"]?.(runDependencies)\n}\n\nfunction removeRunDependency(id) {\n    runDependencies--;\n    Module["monitorRunDependencies"]?.(runDependencies);\n    if (runDependencies == 0) {\n        if (runDependencyWatcher !== null) {\n            clearInterval(runDependencyWatcher);\n            runDependencyWatcher = null\n        }\n        if (dependenciesFulfilled) {\n            var callback = dependenciesFulfilled;\n            dependenciesFulfilled = null;\n            callback()\n        }\n    }\n}\n\nfunction abort(what) {\n    Module["onAbort"]?.(what);\n    what = "Aborted(" + what + ")";\n    err(what);\n    ABORT = true;\n    EXITSTATUS = 1;\n    what += ". Build with -sASSERTIONS for more info.";\n    var e = new WebAssembly.RuntimeError(what);\n    throw e\n}\nvar dataURIPrefix = "data:application/octet-stream;base64,";\nvar isDataURI = filename => filename.startsWith(dataURIPrefix);\nvar isFileURI = filename => filename.startsWith("file://");\nvar wasmBinaryFile;\nwasmBinaryFile = "graph-wasm.wasm";\nif (!isDataURI(wasmBinaryFile)) {\n    wasmBinaryFile = locateFile(wasmBinaryFile)\n}\n\nfunction getBinarySync(file) {\n    if (file == wasmBinaryFile && wasmBinary) {\n        return new Uint8Array(wasmBinary)\n    }\n    if (readBinary) {\n        return readBinary(file)\n    }\n    throw "both async and sync fetching of the wasm failed"\n}\n\nfunction getBinaryPromise(binaryFile) \n{\n	if (window.location.protocol === \'file:\')\n	{\n		return new Promise((resolve, reject) =>\n		{\n			let id = btoa(encodeURI(`site-lib/scripts/${binaryFile}`));\n			window.addEventListener(\'DOMContentLoaded\', () => \n			{\n				const dataEl = document.getElementById(id);\n				if (dataEl)\n				{\n					const data = Uint8Array.from(Array.from(atob(JSON.parse(decodeURI(atob(dataEl.value))).data)).map(s => s.charCodeAt(0)));\n					resolve(data);\n				}\n			});\n		});\n	}\n\n    if (!wasmBinary && (ENVIRONMENT_IS_WEB || ENVIRONMENT_IS_WORKER)) {\n        if (typeof fetch == "function" && !isFileURI(binaryFile)) {\n            return fetch(binaryFile, {\n                credentials: "same-origin"\n            }).then(response => {\n                if (!response["ok"]) {\n                    throw `failed to load wasm binary file at \'${binaryFile}\'`\n                }\n                return response["arrayBuffer"]()\n            }).catch(() => getBinarySync(binaryFile))\n        } else if (readAsync) {\n            return new Promise((resolve, reject) => {\n                readAsync(binaryFile, response => resolve(new Uint8Array(response)), reject)\n            })\n        }\n    }\n    return Promise.resolve().then(() => getBinarySync(binaryFile))\n}\n\nfunction instantiateArrayBuffer(binaryFile, imports, receiver) \n{\n	return getBinaryPromise(binaryFile).then(binary => \n		{\n			console.log("loaded wasm from", binary);\n			return WebAssembly.instantiate(binary, imports)\n		}).then(receiver, reason => {\n		err(`failed to asynchronously prepare wasm: ${reason}`);\n		abort(reason)\n	})\n}\n\nfunction instantiateAsync(binary, binaryFile, imports, callback) {\n    // if (!binary && typeof WebAssembly.instantiateStreaming == "function" && !isDataURI(binaryFile) && !isFileURI(binaryFile) && !ENVIRONMENT_IS_NODE && typeof fetch == "function") {\n    //     return fetch(binaryFile, {\n    //         credentials: "same-origin"\n    //     }).then(response => {\n	// 		response.headers.set(\'Content-Type\', \'application/wasm\');\n    //         var result = WebAssembly.instantiateStreaming(response, imports);\n    //         return result.then(callback, function(reason) {\n    //             err(`wasm streaming compile failed: ${reason}`);\n    //             err("falling back to ArrayBuffer instantiation");\n    //             return instantiateArrayBuffer(binaryFile, imports, callback)\n    //         })\n    //     })\n    // }\n    return instantiateArrayBuffer(binaryFile, imports, callback)\n}\n\nfunction getWasmImports() {\n    return {\n        "a": wasmImports\n    }\n}\n\nfunction createWasm() {\n    var info = getWasmImports();\n\n    function receiveInstance(instance, module) {\n        wasmExports = instance.exports;\n        wasmMemory = wasmExports["f"];\n        updateMemoryViews();\n        addOnInit(wasmExports["g"]);\n        removeRunDependency("wasm-instantiate");\n        return wasmExports\n    }\n    addRunDependency("wasm-instantiate");\n\n    function receiveInstantiationResult(result) {\n        receiveInstance(result["instance"])\n    }\n    if (Module["instantiateWasm"]) {\n        try {\n            return Module["instantiateWasm"](info, receiveInstance)\n        } catch (e) {\n            err(`Module.instantiateWasm callback failed with error: ${e}`);\n            return false\n        }\n    }\n    instantiateAsync(wasmBinary, wasmBinaryFile, info, receiveInstantiationResult);\n    return {}\n}\nvar ASM_CONSTS = {\n    2408: $0 => {\n        console.log(UTF8ToString($0))\n    }\n};\n\nfunction ExitStatus(status) {\n    this.name = "ExitStatus";\n    this.message = `Program terminated with exit(${status})`;\n    this.status = status\n}\nvar callRuntimeCallbacks = callbacks => {\n    while (callbacks.length > 0) {\n        callbacks.shift()(Module)\n    }\n};\n\nfunction getValue(ptr, type = "i8") {\n    if (type.endsWith("*")) type = "*";\n    switch (type) {\n        case "i1":\n            return HEAP8[ptr];\n        case "i8":\n            return HEAP8[ptr];\n        case "i16":\n            return HEAP16[ptr >> 1];\n        case "i32":\n            return HEAP32[ptr >> 2];\n        case "i64":\n            abort("to do getValue(i64) use WASM_BIGINT");\n        case "float":\n            return HEAPF32[ptr >> 2];\n        case "double":\n            return HEAPF64[ptr >> 3];\n        case "*":\n            return HEAPU32[ptr >> 2];\n        default:\n            abort(`invalid type for getValue: ${type}`)\n    }\n}\nvar noExitRuntime = Module["noExitRuntime"] || true;\n\nfunction setValue(ptr, value, type = "i8") {\n    if (type.endsWith("*")) type = "*";\n    switch (type) {\n        case "i1":\n            HEAP8[ptr] = value;\n            break;\n        case "i8":\n            HEAP8[ptr] = value;\n            break;\n        case "i16":\n            HEAP16[ptr >> 1] = value;\n            break;\n        case "i32":\n            HEAP32[ptr >> 2] = value;\n            break;\n        case "i64":\n            abort("to do setValue(i64) use WASM_BIGINT");\n        case "float":\n            HEAPF32[ptr >> 2] = value;\n            break;\n        case "double":\n            HEAPF64[ptr >> 3] = value;\n            break;\n        case "*":\n            HEAPU32[ptr >> 2] = value;\n            break;\n        default:\n            abort(`invalid type for setValue: ${type}`)\n    }\n}\nvar stackRestore = val => __emscripten_stack_restore(val);\nvar stackSave = () => _emscripten_stack_get_current();\nvar __emscripten_memcpy_js = (dest, src, num) => HEAPU8.copyWithin(dest, src, src + num);\nvar _abort = () => {\n    abort("")\n};\nvar readEmAsmArgsArray = [];\nvar readEmAsmArgs = (sigPtr, buf) => {\n    readEmAsmArgsArray.length = 0;\n    var ch;\n    while (ch = HEAPU8[sigPtr++]) {\n        var wide = ch != 105;\n        wide &= ch != 112;\n        buf += wide && buf % 8 ? 4 : 0;\n        readEmAsmArgsArray.push(ch == 112 ? HEAPU32[buf >> 2] : ch == 105 ? HEAP32[buf >> 2] : HEAPF64[buf >> 3]);\n        buf += wide ? 8 : 4\n    }\n    return readEmAsmArgsArray\n};\nvar runEmAsmFunction = (code, sigPtr, argbuf) => {\n    var args = readEmAsmArgs(sigPtr, argbuf);\n    return ASM_CONSTS[code](...args)\n};\nvar _emscripten_asm_const_int = (code, sigPtr, argbuf) => runEmAsmFunction(code, sigPtr, argbuf);\nvar _emscripten_date_now = () => Date.now();\nvar getHeapMax = () => 2147483648;\nvar growMemory = size => {\n    var b = wasmMemory.buffer;\n    var pages = (size - b.byteLength + 65535) / 65536;\n    try {\n        wasmMemory.grow(pages);\n        updateMemoryViews();\n        return 1\n    } catch (e) {}\n};\nvar _emscripten_resize_heap = requestedSize => {\n    var oldSize = HEAPU8.length;\n    requestedSize >>>= 0;\n    var maxHeapSize = getHeapMax();\n    if (requestedSize > maxHeapSize) {\n        return false\n    }\n    var alignUp = (x, multiple) => x + (multiple - x % multiple) % multiple;\n    for (var cutDown = 1; cutDown <= 4; cutDown *= 2) {\n        var overGrownHeapSize = oldSize * (1 + .2 / cutDown);\n        overGrownHeapSize = Math.min(overGrownHeapSize, requestedSize + 100663296);\n        var newSize = Math.min(maxHeapSize, alignUp(Math.max(requestedSize, overGrownHeapSize), 65536));\n        var replacement = growMemory(newSize);\n        if (replacement) {\n            return true\n        }\n    }\n    return false\n};\nvar getCFunc = ident => {\n    var func = Module["_" + ident];\n    return func\n};\nvar writeArrayToMemory = (array, buffer) => {\n    HEAP8.set(array, buffer)\n};\nvar lengthBytesUTF8 = str => {\n    var len = 0;\n    for (var i = 0; i < str.length; ++i) {\n        var c = str.charCodeAt(i);\n        if (c <= 127) {\n            len++\n        } else if (c <= 2047) {\n            len += 2\n        } else if (c >= 55296 && c <= 57343) {\n            len += 4;\n            ++i\n        } else {\n            len += 3\n        }\n    }\n    return len\n};\nvar stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {\n    if (!(maxBytesToWrite > 0)) return 0;\n    var startIdx = outIdx;\n    var endIdx = outIdx + maxBytesToWrite - 1;\n    for (var i = 0; i < str.length; ++i) {\n        var u = str.charCodeAt(i);\n        if (u >= 55296 && u <= 57343) {\n            var u1 = str.charCodeAt(++i);\n            u = 65536 + ((u & 1023) << 10) | u1 & 1023\n        }\n        if (u <= 127) {\n            if (outIdx >= endIdx) break;\n            heap[outIdx++] = u\n        } else if (u <= 2047) {\n            if (outIdx + 1 >= endIdx) break;\n            heap[outIdx++] = 192 | u >> 6;\n            heap[outIdx++] = 128 | u & 63\n        } else if (u <= 65535) {\n            if (outIdx + 2 >= endIdx) break;\n            heap[outIdx++] = 224 | u >> 12;\n            heap[outIdx++] = 128 | u >> 6 & 63;\n            heap[outIdx++] = 128 | u & 63\n        } else {\n            if (outIdx + 3 >= endIdx) break;\n            heap[outIdx++] = 240 | u >> 18;\n            heap[outIdx++] = 128 | u >> 12 & 63;\n            heap[outIdx++] = 128 | u >> 6 & 63;\n            heap[outIdx++] = 128 | u & 63\n        }\n    }\n    heap[outIdx] = 0;\n    return outIdx - startIdx\n};\nvar stringToUTF8 = (str, outPtr, maxBytesToWrite) => stringToUTF8Array(str, HEAPU8, outPtr, maxBytesToWrite);\nvar stackAlloc = sz => __emscripten_stack_alloc(sz);\nvar stringToUTF8OnStack = str => {\n    var size = lengthBytesUTF8(str) + 1;\n    var ret = stackAlloc(size);\n    stringToUTF8(str, ret, size);\n    return ret\n};\nvar UTF8Decoder = typeof TextDecoder != "undefined" ? new TextDecoder("utf8") : undefined;\nvar UTF8ArrayToString = (heapOrArray, idx, maxBytesToRead) => {\n    var endIdx = idx + maxBytesToRead;\n    var endPtr = idx;\n    while (heapOrArray[endPtr] && !(endPtr >= endIdx)) ++endPtr;\n    if (endPtr - idx > 16 && heapOrArray.buffer && UTF8Decoder) {\n        return UTF8Decoder.decode(heapOrArray.subarray(idx, endPtr))\n    }\n    var str = "";\n    while (idx < endPtr) {\n        var u0 = heapOrArray[idx++];\n        if (!(u0 & 128)) {\n            str += String.fromCharCode(u0);\n            continue\n        }\n        var u1 = heapOrArray[idx++] & 63;\n        if ((u0 & 224) == 192) {\n            str += String.fromCharCode((u0 & 31) << 6 | u1);\n            continue\n        }\n        var u2 = heapOrArray[idx++] & 63;\n        if ((u0 & 240) == 224) {\n            u0 = (u0 & 15) << 12 | u1 << 6 | u2\n        } else {\n            u0 = (u0 & 7) << 18 | u1 << 12 | u2 << 6 | heapOrArray[idx++] & 63\n        }\n        if (u0 < 65536) {\n            str += String.fromCharCode(u0)\n        } else {\n            var ch = u0 - 65536;\n            str += String.fromCharCode(55296 | ch >> 10, 56320 | ch & 1023)\n        }\n    }\n    return str\n};\nvar UTF8ToString = (ptr, maxBytesToRead) => ptr ? UTF8ArrayToString(HEAPU8, ptr, maxBytesToRead) : "";\nvar ccall = (ident, returnType, argTypes, args, opts) => {\n    var toC = {\n        "string": str => {\n            var ret = 0;\n            if (str !== null && str !== undefined && str !== 0) {\n                ret = stringToUTF8OnStack(str)\n            }\n            return ret\n        },\n        "array": arr => {\n            var ret = stackAlloc(arr.length);\n            writeArrayToMemory(arr, ret);\n            return ret\n        }\n    };\n\n    function convertReturnValue(ret) {\n        if (returnType === "string") {\n            return UTF8ToString(ret)\n        }\n        if (returnType === "boolean") return Boolean(ret);\n        return ret\n    }\n    var func = getCFunc(ident);\n    var cArgs = [];\n    var stack = 0;\n    if (args) {\n        for (var i = 0; i < args.length; i++) {\n            var converter = toC[argTypes[i]];\n            if (converter) {\n                if (stack === 0) stack = stackSave();\n                cArgs[i] = converter(args[i])\n            } else {\n                cArgs[i] = args[i]\n            }\n        }\n    }\n    var ret = func(...cArgs);\n\n    function onDone(ret) {\n        if (stack !== 0) stackRestore(stack);\n        return convertReturnValue(ret)\n    }\n    ret = onDone(ret);\n    return ret\n};\nvar cwrap = (ident, returnType, argTypes, opts) => {\n    var numericArgs = !argTypes || argTypes.every(type => type === "number" || type === "boolean");\n    var numericRet = returnType !== "string";\n    if (numericRet && numericArgs && !opts) {\n        return getCFunc(ident)\n    }\n    return (...args) => ccall(ident, returnType, argTypes, args, opts)\n};\nvar wasmImports = {\n    c: __emscripten_memcpy_js,\n    a: _abort,\n    e: _emscripten_asm_const_int,\n    d: _emscripten_date_now,\n    b: _emscripten_resize_heap\n};\nvar wasmExports = createWasm();\nvar ___wasm_call_ctors = () => (___wasm_call_ctors = wasmExports["g"])();\nvar _SetBatchFractionSize = Module["_SetBatchFractionSize"] = a0 => (_SetBatchFractionSize = Module["_SetBatchFractionSize"] = wasmExports["h"])(a0);\nvar _SetAttractionForce = Module["_SetAttractionForce"] = a0 => (_SetAttractionForce = Module["_SetAttractionForce"] = wasmExports["i"])(a0);\nvar _SetLinkLength = Module["_SetLinkLength"] = a0 => (_SetLinkLength = Module["_SetLinkLength"] = wasmExports["j"])(a0);\nvar _SetRepulsionForce = Module["_SetRepulsionForce"] = a0 => (_SetRepulsionForce = Module["_SetRepulsionForce"] = wasmExports["k"])(a0);\nvar _SetCentralForce = Module["_SetCentralForce"] = a0 => (_SetCentralForce = Module["_SetCentralForce"] = wasmExports["l"])(a0);\nvar _SetDt = Module["_SetDt"] = a0 => (_SetDt = Module["_SetDt"] = wasmExports["m"])(a0);\nvar _Init = Module["_Init"] = (a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11) => (_Init = Module["_Init"] = wasmExports["n"])(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11);\nvar _Update = Module["_Update"] = (a0, a1, a2, a3) => (_Update = Module["_Update"] = wasmExports["o"])(a0, a1, a2, a3);\nvar _SetPosition = Module["_SetPosition"] = (a0, a1, a2) => (_SetPosition = Module["_SetPosition"] = wasmExports["p"])(a0, a1, a2);\nvar _SetSettleness = Module["_SetSettleness"] = a0 => (_SetSettleness = Module["_SetSettleness"] = wasmExports["q"])(a0);\nvar _FreeMemory = Module["_FreeMemory"] = () => (_FreeMemory = Module["_FreeMemory"] = wasmExports["r"])();\nvar _malloc = Module["_malloc"] = a0 => (_malloc = Module["_malloc"] = wasmExports["t"])(a0);\nvar _free = Module["_free"] = a0 => (_free = Module["_free"] = wasmExports["u"])(a0);\nvar __emscripten_stack_restore = a0 => (__emscripten_stack_restore = wasmExports["v"])(a0);\nvar __emscripten_stack_alloc = a0 => (__emscripten_stack_alloc = wasmExports["w"])(a0);\nvar _emscripten_stack_get_current = () => (_emscripten_stack_get_current = wasmExports["x"])();\nvar ___cxa_increment_exception_refcount = a0 => (___cxa_increment_exception_refcount = wasmExports["__cxa_increment_exception_refcount"])(a0);\nvar ___cxa_is_pointer_type = a0 => (___cxa_is_pointer_type = wasmExports["__cxa_is_pointer_type"])(a0);\nModule["cwrap"] = cwrap;\nModule["setValue"] = setValue;\nModule["getValue"] = getValue;\nvar calledRun;\ndependenciesFulfilled = function runCaller() {\n    // if (!calledRun) run();\n    // if (!calledRun) dependenciesFulfilled = runCaller\n};\n\nfunction run() \n{\n    if (runDependencies > 0) {\n        return\n    }\n    preRun();\n    if (runDependencies > 0) {\n        return\n    }\n\n    function doRun() {\n        if (calledRun) return;\n        calledRun = true;\n        Module["calledRun"] = true;\n        if (ABORT) return;\n        initRuntime();\n		console.log("wasm loaded");\n        if (Module["onRuntimeInitialized"]) Module["onRuntimeInitialized"]();\n		console.log("wasm initialized");\n        postRun()\n    }\n    if (Module["setStatus"]) {\n        Module["setStatus"]("Running...");\n        setTimeout(function() {\n            setTimeout(function() {\n                Module["setStatus"]("")\n            }, 1);\n            doRun()\n        }, 1)\n    } else {\n        doRun()\n    }\n}\nif (Module["preInit"]) {\n    if (typeof Module["preInit"] == "function") Module["preInit"] = [Module["preInit"]];\n    while (Module["preInit"].length > 0) {\n        Module["preInit"].pop()()\n    }\n}\n';
+var graph_wasm_txt_default = 'var Module = typeof Module != "undefined" ? Module : {};\r\nvar ENVIRONMENT_IS_WEB = typeof window == "object";\r\nvar ENVIRONMENT_IS_WORKER = typeof importScripts == "function";\r\nvar ENVIRONMENT_IS_NODE = typeof process == "object" && typeof process.versions == "object" && typeof process.versions.node == "string";\r\nif (ENVIRONMENT_IS_NODE) {}\r\nvar moduleOverrides = Object.assign({}, Module);\r\nvar arguments_ = [];\r\nvar thisProgram = "./this.program";\r\nvar quit_ = (status, toThrow) => {\r\n    throw toThrow\r\n};\r\nvar scriptDirectory = "";\r\n\r\nfunction locateFile(path) {\r\n    if (Module["locateFile"]) {\r\n        return Module["locateFile"](path, scriptDirectory)\r\n    }\r\n    return scriptDirectory + path\r\n}\r\nvar read_, readAsync, readBinary;\r\nif (ENVIRONMENT_IS_NODE) {\r\n    var fs = require("fs");\r\n    var nodePath = require("path");\r\n    if (ENVIRONMENT_IS_WORKER) {\r\n        scriptDirectory = nodePath.dirname(scriptDirectory) + "/"\r\n    } else {\r\n        scriptDirectory = __dirname + "/"\r\n    }\r\n    read_ = (filename, binary) => {\r\n        filename = isFileURI(filename) ? new URL(filename) : nodePath.normalize(filename);\r\n        return fs.readFileSync(filename, binary ? undefined : "utf8")\r\n    };\r\n    readBinary = filename => {\r\n        var ret = read_(filename, true);\r\n        if (!ret.buffer) {\r\n            ret = new Uint8Array(ret)\r\n        }\r\n        return ret\r\n    };\r\n    readAsync = (filename, onload, onerror, binary = true) => {\r\n        filename = isFileURI(filename) ? new URL(filename) : nodePath.normalize(filename);\r\n        fs.readFile(filename, binary ? undefined : "utf8", (err, data) => {\r\n            if (err) onerror(err);\r\n            else onload(binary ? data.buffer : data)\r\n        })\r\n    };\r\n    if (!Module["thisProgram"] && process.argv.length > 1) {\r\n        thisProgram = process.argv[1].replace(/\\\\/g, "/")\r\n    }\r\n    arguments_ = process.argv.slice(2);\r\n    if (typeof module != "undefined") {\r\n        module["exports"] = Module\r\n    }\r\n    process.on("uncaughtException", ex => {\r\n        if (ex !== "unwind" && !(ex instanceof ExitStatus) && !(ex.context instanceof ExitStatus)) {\r\n            throw ex\r\n        }\r\n    });\r\n    quit_ = (status, toThrow) => {\r\n        process.exitCode = status;\r\n        throw toThrow\r\n    }\r\n} else if (ENVIRONMENT_IS_WEB || ENVIRONMENT_IS_WORKER) {\r\n    if (ENVIRONMENT_IS_WORKER) {\r\n        scriptDirectory = self.location.href\r\n    } else if (typeof document != "undefined" && document.currentScript) {\r\n        scriptDirectory = document.currentScript.src\r\n    }\r\n    if (scriptDirectory.startsWith("blob:")) {\r\n        scriptDirectory = ""\r\n    } else {\r\n        scriptDirectory = scriptDirectory.substr(0, scriptDirectory.replace(/[?#].*/, "").lastIndexOf("/") + 1)\r\n    } {\r\n        read_ = url => {\r\n            var xhr = new XMLHttpRequest;\r\n            xhr.open("GET", url, false);\r\n            xhr.send(null);\r\n            return xhr.responseText\r\n        };\r\n        if (ENVIRONMENT_IS_WORKER) {\r\n            readBinary = url => {\r\n                var xhr = new XMLHttpRequest;\r\n                xhr.open("GET", url, false);\r\n                xhr.responseType = "arraybuffer";\r\n                xhr.send(null);\r\n                return new Uint8Array(xhr.response)\r\n            }\r\n        }\r\n        readAsync = (url, onload, onerror) => {\r\n            var xhr = new XMLHttpRequest;\r\n            xhr.open("GET", url, true);\r\n            xhr.responseType = "arraybuffer";\r\n            xhr.onload = () => {\r\n                if (xhr.status == 200 || xhr.status == 0 && xhr.response) {\r\n                    onload(xhr.response);\r\n                    return\r\n                }\r\n                onerror()\r\n            };\r\n            xhr.onerror = onerror;\r\n            xhr.send(null)\r\n        }\r\n    }\r\n} else {}\r\nvar out = Module["print"] || console.log.bind(console);\r\nvar err = Module["printErr"] || console.error.bind(console);\r\nObject.assign(Module, moduleOverrides);\r\nmoduleOverrides = null;\r\nif (Module["arguments"]) arguments_ = Module["arguments"];\r\nif (Module["thisProgram"]) thisProgram = Module["thisProgram"];\r\nif (Module["quit"]) quit_ = Module["quit"];\r\nvar wasmBinary;\r\nif (Module["wasmBinary"]) wasmBinary = Module["wasmBinary"];\r\nvar wasmMemory;\r\nvar ABORT = false;\r\nvar EXITSTATUS;\r\nvar HEAP8, HEAPU8, HEAP16, HEAPU16, HEAP32, HEAPU32, HEAPF32, HEAPF64;\r\n\r\nfunction updateMemoryViews() {\r\n    var b = wasmMemory.buffer;\r\n    Module["HEAP8"] = HEAP8 = new Int8Array(b);\r\n    Module["HEAP16"] = HEAP16 = new Int16Array(b);\r\n    Module["HEAPU8"] = HEAPU8 = new Uint8Array(b);\r\n    Module["HEAPU16"] = HEAPU16 = new Uint16Array(b);\r\n    Module["HEAP32"] = HEAP32 = new Int32Array(b);\r\n    Module["HEAPU32"] = HEAPU32 = new Uint32Array(b);\r\n    Module["HEAPF32"] = HEAPF32 = new Float32Array(b);\r\n    Module["HEAPF64"] = HEAPF64 = new Float64Array(b)\r\n}\r\nvar __ATPRERUN__ = [];\r\nvar __ATINIT__ = [];\r\nvar __ATPOSTRUN__ = [];\r\nvar runtimeInitialized = false;\r\n\r\nfunction preRun() {\r\n    if (Module["preRun"]) {\r\n        if (typeof Module["preRun"] == "function") Module["preRun"] = [Module["preRun"]];\r\n        while (Module["preRun"].length) {\r\n            addOnPreRun(Module["preRun"].shift())\r\n        }\r\n    }\r\n    callRuntimeCallbacks(__ATPRERUN__)\r\n}\r\n\r\nfunction initRuntime() {\r\n    runtimeInitialized = true;\r\n    callRuntimeCallbacks(__ATINIT__)\r\n}\r\n\r\nfunction postRun() {\r\n    if (Module["postRun"]) {\r\n        if (typeof Module["postRun"] == "function") Module["postRun"] = [Module["postRun"]];\r\n        while (Module["postRun"].length) {\r\n            addOnPostRun(Module["postRun"].shift())\r\n        }\r\n    }\r\n    callRuntimeCallbacks(__ATPOSTRUN__)\r\n}\r\n\r\nfunction addOnPreRun(cb) {\r\n    __ATPRERUN__.unshift(cb)\r\n}\r\n\r\nfunction addOnInit(cb) {\r\n    __ATINIT__.unshift(cb)\r\n}\r\n\r\nfunction addOnPostRun(cb) {\r\n    __ATPOSTRUN__.unshift(cb)\r\n}\r\nvar runDependencies = 0;\r\nvar runDependencyWatcher = null;\r\nvar dependenciesFulfilled = null;\r\n\r\nfunction addRunDependency(id) {\r\n    runDependencies++;\r\n    Module["monitorRunDependencies"]?.(runDependencies)\r\n}\r\n\r\nfunction removeRunDependency(id) {\r\n    runDependencies--;\r\n    Module["monitorRunDependencies"]?.(runDependencies);\r\n    if (runDependencies == 0) {\r\n        if (runDependencyWatcher !== null) {\r\n            clearInterval(runDependencyWatcher);\r\n            runDependencyWatcher = null\r\n        }\r\n        if (dependenciesFulfilled) {\r\n            var callback = dependenciesFulfilled;\r\n            dependenciesFulfilled = null;\r\n            callback()\r\n        }\r\n    }\r\n}\r\n\r\nfunction abort(what) {\r\n    Module["onAbort"]?.(what);\r\n    what = "Aborted(" + what + ")";\r\n    err(what);\r\n    ABORT = true;\r\n    EXITSTATUS = 1;\r\n    what += ". Build with -sASSERTIONS for more info.";\r\n    var e = new WebAssembly.RuntimeError(what);\r\n    throw e\r\n}\r\nvar dataURIPrefix = "data:application/octet-stream;base64,";\r\nvar isDataURI = filename => filename.startsWith(dataURIPrefix);\r\nvar isFileURI = filename => filename.startsWith("file://");\r\nvar wasmBinaryFile;\r\nwasmBinaryFile = "graph-wasm.wasm";\r\nif (!isDataURI(wasmBinaryFile)) {\r\n    wasmBinaryFile = locateFile(wasmBinaryFile)\r\n}\r\n\r\nfunction getBinarySync(file) {\r\n    if (file == wasmBinaryFile && wasmBinary) {\r\n        return new Uint8Array(wasmBinary)\r\n    }\r\n    if (readBinary) {\r\n        return readBinary(file)\r\n    }\r\n    throw "both async and sync fetching of the wasm failed"\r\n}\r\n\r\nfunction getBinaryPromise(binaryFile) \r\n{\r\n	if (window.location.protocol === \'file:\')\r\n	{\r\n		return new Promise((resolve, reject) =>\r\n		{\r\n			let id = btoa(encodeURI(`site-lib/scripts/${binaryFile}`));\r\n			window.addEventListener(\'DOMContentLoaded\', () => \r\n			{\r\n				const dataEl = document.getElementById(id);\r\n				if (dataEl)\r\n				{\r\n					const data = Uint8Array.from(Array.from(atob(JSON.parse(decodeURI(atob(dataEl.value))).data)).map(s => s.charCodeAt(0)));\r\n					resolve(data);\r\n				}\r\n			});\r\n		});\r\n	}\r\n\r\n    if (!wasmBinary && (ENVIRONMENT_IS_WEB || ENVIRONMENT_IS_WORKER)) {\r\n        if (typeof fetch == "function" && !isFileURI(binaryFile)) {\r\n            return fetch(binaryFile, {\r\n                credentials: "same-origin"\r\n            }).then(response => {\r\n                if (!response["ok"]) {\r\n                    throw `failed to load wasm binary file at \'${binaryFile}\'`\r\n                }\r\n                return response["arrayBuffer"]()\r\n            }).catch(() => getBinarySync(binaryFile))\r\n        } else if (readAsync) {\r\n            return new Promise((resolve, reject) => {\r\n                readAsync(binaryFile, response => resolve(new Uint8Array(response)), reject)\r\n            })\r\n        }\r\n    }\r\n    return Promise.resolve().then(() => getBinarySync(binaryFile))\r\n}\r\n\r\nfunction instantiateArrayBuffer(binaryFile, imports, receiver) \r\n{\r\n	return getBinaryPromise(binaryFile).then(binary => \r\n		{\r\n			console.log("loaded wasm from", binary);\r\n			return WebAssembly.instantiate(binary, imports)\r\n		}).then(receiver, reason => {\r\n		err(`failed to asynchronously prepare wasm: ${reason}`);\r\n		abort(reason)\r\n	})\r\n}\r\n\r\nfunction instantiateAsync(binary, binaryFile, imports, callback) {\r\n    // if (!binary && typeof WebAssembly.instantiateStreaming == "function" && !isDataURI(binaryFile) && !isFileURI(binaryFile) && !ENVIRONMENT_IS_NODE && typeof fetch == "function") {\r\n    //     return fetch(binaryFile, {\r\n    //         credentials: "same-origin"\r\n    //     }).then(response => {\r\n	// 		response.headers.set(\'Content-Type\', \'application/wasm\');\r\n    //         var result = WebAssembly.instantiateStreaming(response, imports);\r\n    //         return result.then(callback, function(reason) {\r\n    //             err(`wasm streaming compile failed: ${reason}`);\r\n    //             err("falling back to ArrayBuffer instantiation");\r\n    //             return instantiateArrayBuffer(binaryFile, imports, callback)\r\n    //         })\r\n    //     })\r\n    // }\r\n    return instantiateArrayBuffer(binaryFile, imports, callback)\r\n}\r\n\r\nfunction getWasmImports() {\r\n    return {\r\n        "a": wasmImports\r\n    }\r\n}\r\n\r\nfunction createWasm() {\r\n    var info = getWasmImports();\r\n\r\n    function receiveInstance(instance, module) {\r\n        wasmExports = instance.exports;\r\n        wasmMemory = wasmExports["f"];\r\n        updateMemoryViews();\r\n        addOnInit(wasmExports["g"]);\r\n        removeRunDependency("wasm-instantiate");\r\n        return wasmExports\r\n    }\r\n    addRunDependency("wasm-instantiate");\r\n\r\n    function receiveInstantiationResult(result) {\r\n        receiveInstance(result["instance"])\r\n    }\r\n    if (Module["instantiateWasm"]) {\r\n        try {\r\n            return Module["instantiateWasm"](info, receiveInstance)\r\n        } catch (e) {\r\n            err(`Module.instantiateWasm callback failed with error: ${e}`);\r\n            return false\r\n        }\r\n    }\r\n    instantiateAsync(wasmBinary, wasmBinaryFile, info, receiveInstantiationResult);\r\n    return {}\r\n}\r\nvar ASM_CONSTS = {\r\n    2408: $0 => {\r\n        console.log(UTF8ToString($0))\r\n    }\r\n};\r\n\r\nfunction ExitStatus(status) {\r\n    this.name = "ExitStatus";\r\n    this.message = `Program terminated with exit(${status})`;\r\n    this.status = status\r\n}\r\nvar callRuntimeCallbacks = callbacks => {\r\n    while (callbacks.length > 0) {\r\n        callbacks.shift()(Module)\r\n    }\r\n};\r\n\r\nfunction getValue(ptr, type = "i8") {\r\n    if (type.endsWith("*")) type = "*";\r\n    switch (type) {\r\n        case "i1":\r\n            return HEAP8[ptr];\r\n        case "i8":\r\n            return HEAP8[ptr];\r\n        case "i16":\r\n            return HEAP16[ptr >> 1];\r\n        case "i32":\r\n            return HEAP32[ptr >> 2];\r\n        case "i64":\r\n            abort("to do getValue(i64) use WASM_BIGINT");\r\n        case "float":\r\n            return HEAPF32[ptr >> 2];\r\n        case "double":\r\n            return HEAPF64[ptr >> 3];\r\n        case "*":\r\n            return HEAPU32[ptr >> 2];\r\n        default:\r\n            abort(`invalid type for getValue: ${type}`)\r\n    }\r\n}\r\nvar noExitRuntime = Module["noExitRuntime"] || true;\r\n\r\nfunction setValue(ptr, value, type = "i8") {\r\n    if (type.endsWith("*")) type = "*";\r\n    switch (type) {\r\n        case "i1":\r\n            HEAP8[ptr] = value;\r\n            break;\r\n        case "i8":\r\n            HEAP8[ptr] = value;\r\n            break;\r\n        case "i16":\r\n            HEAP16[ptr >> 1] = value;\r\n            break;\r\n        case "i32":\r\n            HEAP32[ptr >> 2] = value;\r\n            break;\r\n        case "i64":\r\n            abort("to do setValue(i64) use WASM_BIGINT");\r\n        case "float":\r\n            HEAPF32[ptr >> 2] = value;\r\n            break;\r\n        case "double":\r\n            HEAPF64[ptr >> 3] = value;\r\n            break;\r\n        case "*":\r\n            HEAPU32[ptr >> 2] = value;\r\n            break;\r\n        default:\r\n            abort(`invalid type for setValue: ${type}`)\r\n    }\r\n}\r\nvar stackRestore = val => __emscripten_stack_restore(val);\r\nvar stackSave = () => _emscripten_stack_get_current();\r\nvar __emscripten_memcpy_js = (dest, src, num) => HEAPU8.copyWithin(dest, src, src + num);\r\nvar _abort = () => {\r\n    abort("")\r\n};\r\nvar readEmAsmArgsArray = [];\r\nvar readEmAsmArgs = (sigPtr, buf) => {\r\n    readEmAsmArgsArray.length = 0;\r\n    var ch;\r\n    while (ch = HEAPU8[sigPtr++]) {\r\n        var wide = ch != 105;\r\n        wide &= ch != 112;\r\n        buf += wide && buf % 8 ? 4 : 0;\r\n        readEmAsmArgsArray.push(ch == 112 ? HEAPU32[buf >> 2] : ch == 105 ? HEAP32[buf >> 2] : HEAPF64[buf >> 3]);\r\n        buf += wide ? 8 : 4\r\n    }\r\n    return readEmAsmArgsArray\r\n};\r\nvar runEmAsmFunction = (code, sigPtr, argbuf) => {\r\n    var args = readEmAsmArgs(sigPtr, argbuf);\r\n    return ASM_CONSTS[code](...args)\r\n};\r\nvar _emscripten_asm_const_int = (code, sigPtr, argbuf) => runEmAsmFunction(code, sigPtr, argbuf);\r\nvar _emscripten_date_now = () => Date.now();\r\nvar getHeapMax = () => 2147483648;\r\nvar growMemory = size => {\r\n    var b = wasmMemory.buffer;\r\n    var pages = (size - b.byteLength + 65535) / 65536;\r\n    try {\r\n        wasmMemory.grow(pages);\r\n        updateMemoryViews();\r\n        return 1\r\n    } catch (e) {}\r\n};\r\nvar _emscripten_resize_heap = requestedSize => {\r\n    var oldSize = HEAPU8.length;\r\n    requestedSize >>>= 0;\r\n    var maxHeapSize = getHeapMax();\r\n    if (requestedSize > maxHeapSize) {\r\n        return false\r\n    }\r\n    var alignUp = (x, multiple) => x + (multiple - x % multiple) % multiple;\r\n    for (var cutDown = 1; cutDown <= 4; cutDown *= 2) {\r\n        var overGrownHeapSize = oldSize * (1 + .2 / cutDown);\r\n        overGrownHeapSize = Math.min(overGrownHeapSize, requestedSize + 100663296);\r\n        var newSize = Math.min(maxHeapSize, alignUp(Math.max(requestedSize, overGrownHeapSize), 65536));\r\n        var replacement = growMemory(newSize);\r\n        if (replacement) {\r\n            return true\r\n        }\r\n    }\r\n    return false\r\n};\r\nvar getCFunc = ident => {\r\n    var func = Module["_" + ident];\r\n    return func\r\n};\r\nvar writeArrayToMemory = (array, buffer) => {\r\n    HEAP8.set(array, buffer)\r\n};\r\nvar lengthBytesUTF8 = str => {\r\n    var len = 0;\r\n    for (var i = 0; i < str.length; ++i) {\r\n        var c = str.charCodeAt(i);\r\n        if (c <= 127) {\r\n            len++\r\n        } else if (c <= 2047) {\r\n            len += 2\r\n        } else if (c >= 55296 && c <= 57343) {\r\n            len += 4;\r\n            ++i\r\n        } else {\r\n            len += 3\r\n        }\r\n    }\r\n    return len\r\n};\r\nvar stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {\r\n    if (!(maxBytesToWrite > 0)) return 0;\r\n    var startIdx = outIdx;\r\n    var endIdx = outIdx + maxBytesToWrite - 1;\r\n    for (var i = 0; i < str.length; ++i) {\r\n        var u = str.charCodeAt(i);\r\n        if (u >= 55296 && u <= 57343) {\r\n            var u1 = str.charCodeAt(++i);\r\n            u = 65536 + ((u & 1023) << 10) | u1 & 1023\r\n        }\r\n        if (u <= 127) {\r\n            if (outIdx >= endIdx) break;\r\n            heap[outIdx++] = u\r\n        } else if (u <= 2047) {\r\n            if (outIdx + 1 >= endIdx) break;\r\n            heap[outIdx++] = 192 | u >> 6;\r\n            heap[outIdx++] = 128 | u & 63\r\n        } else if (u <= 65535) {\r\n            if (outIdx + 2 >= endIdx) break;\r\n            heap[outIdx++] = 224 | u >> 12;\r\n            heap[outIdx++] = 128 | u >> 6 & 63;\r\n            heap[outIdx++] = 128 | u & 63\r\n        } else {\r\n            if (outIdx + 3 >= endIdx) break;\r\n            heap[outIdx++] = 240 | u >> 18;\r\n            heap[outIdx++] = 128 | u >> 12 & 63;\r\n            heap[outIdx++] = 128 | u >> 6 & 63;\r\n            heap[outIdx++] = 128 | u & 63\r\n        }\r\n    }\r\n    heap[outIdx] = 0;\r\n    return outIdx - startIdx\r\n};\r\nvar stringToUTF8 = (str, outPtr, maxBytesToWrite) => stringToUTF8Array(str, HEAPU8, outPtr, maxBytesToWrite);\r\nvar stackAlloc = sz => __emscripten_stack_alloc(sz);\r\nvar stringToUTF8OnStack = str => {\r\n    var size = lengthBytesUTF8(str) + 1;\r\n    var ret = stackAlloc(size);\r\n    stringToUTF8(str, ret, size);\r\n    return ret\r\n};\r\nvar UTF8Decoder = typeof TextDecoder != "undefined" ? new TextDecoder("utf8") : undefined;\r\nvar UTF8ArrayToString = (heapOrArray, idx, maxBytesToRead) => {\r\n    var endIdx = idx + maxBytesToRead;\r\n    var endPtr = idx;\r\n    while (heapOrArray[endPtr] && !(endPtr >= endIdx)) ++endPtr;\r\n    if (endPtr - idx > 16 && heapOrArray.buffer && UTF8Decoder) {\r\n        return UTF8Decoder.decode(heapOrArray.subarray(idx, endPtr))\r\n    }\r\n    var str = "";\r\n    while (idx < endPtr) {\r\n        var u0 = heapOrArray[idx++];\r\n        if (!(u0 & 128)) {\r\n            str += String.fromCharCode(u0);\r\n            continue\r\n        }\r\n        var u1 = heapOrArray[idx++] & 63;\r\n        if ((u0 & 224) == 192) {\r\n            str += String.fromCharCode((u0 & 31) << 6 | u1);\r\n            continue\r\n        }\r\n        var u2 = heapOrArray[idx++] & 63;\r\n        if ((u0 & 240) == 224) {\r\n            u0 = (u0 & 15) << 12 | u1 << 6 | u2\r\n        } else {\r\n            u0 = (u0 & 7) << 18 | u1 << 12 | u2 << 6 | heapOrArray[idx++] & 63\r\n        }\r\n        if (u0 < 65536) {\r\n            str += String.fromCharCode(u0)\r\n        } else {\r\n            var ch = u0 - 65536;\r\n            str += String.fromCharCode(55296 | ch >> 10, 56320 | ch & 1023)\r\n        }\r\n    }\r\n    return str\r\n};\r\nvar UTF8ToString = (ptr, maxBytesToRead) => ptr ? UTF8ArrayToString(HEAPU8, ptr, maxBytesToRead) : "";\r\nvar ccall = (ident, returnType, argTypes, args, opts) => {\r\n    var toC = {\r\n        "string": str => {\r\n            var ret = 0;\r\n            if (str !== null && str !== undefined && str !== 0) {\r\n                ret = stringToUTF8OnStack(str)\r\n            }\r\n            return ret\r\n        },\r\n        "array": arr => {\r\n            var ret = stackAlloc(arr.length);\r\n            writeArrayToMemory(arr, ret);\r\n            return ret\r\n        }\r\n    };\r\n\r\n    function convertReturnValue(ret) {\r\n        if (returnType === "string") {\r\n            return UTF8ToString(ret)\r\n        }\r\n        if (returnType === "boolean") return Boolean(ret);\r\n        return ret\r\n    }\r\n    var func = getCFunc(ident);\r\n    var cArgs = [];\r\n    var stack = 0;\r\n    if (args) {\r\n        for (var i = 0; i < args.length; i++) {\r\n            var converter = toC[argTypes[i]];\r\n            if (converter) {\r\n                if (stack === 0) stack = stackSave();\r\n                cArgs[i] = converter(args[i])\r\n            } else {\r\n                cArgs[i] = args[i]\r\n            }\r\n        }\r\n    }\r\n    var ret = func(...cArgs);\r\n\r\n    function onDone(ret) {\r\n        if (stack !== 0) stackRestore(stack);\r\n        return convertReturnValue(ret)\r\n    }\r\n    ret = onDone(ret);\r\n    return ret\r\n};\r\nvar cwrap = (ident, returnType, argTypes, opts) => {\r\n    var numericArgs = !argTypes || argTypes.every(type => type === "number" || type === "boolean");\r\n    var numericRet = returnType !== "string";\r\n    if (numericRet && numericArgs && !opts) {\r\n        return getCFunc(ident)\r\n    }\r\n    return (...args) => ccall(ident, returnType, argTypes, args, opts)\r\n};\r\nvar wasmImports = {\r\n    c: __emscripten_memcpy_js,\r\n    a: _abort,\r\n    e: _emscripten_asm_const_int,\r\n    d: _emscripten_date_now,\r\n    b: _emscripten_resize_heap\r\n};\r\nvar wasmExports = createWasm();\r\nvar ___wasm_call_ctors = () => (___wasm_call_ctors = wasmExports["g"])();\r\nvar _SetBatchFractionSize = Module["_SetBatchFractionSize"] = a0 => (_SetBatchFractionSize = Module["_SetBatchFractionSize"] = wasmExports["h"])(a0);\r\nvar _SetAttractionForce = Module["_SetAttractionForce"] = a0 => (_SetAttractionForce = Module["_SetAttractionForce"] = wasmExports["i"])(a0);\r\nvar _SetLinkLength = Module["_SetLinkLength"] = a0 => (_SetLinkLength = Module["_SetLinkLength"] = wasmExports["j"])(a0);\r\nvar _SetRepulsionForce = Module["_SetRepulsionForce"] = a0 => (_SetRepulsionForce = Module["_SetRepulsionForce"] = wasmExports["k"])(a0);\r\nvar _SetCentralForce = Module["_SetCentralForce"] = a0 => (_SetCentralForce = Module["_SetCentralForce"] = wasmExports["l"])(a0);\r\nvar _SetDt = Module["_SetDt"] = a0 => (_SetDt = Module["_SetDt"] = wasmExports["m"])(a0);\r\nvar _Init = Module["_Init"] = (a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11) => (_Init = Module["_Init"] = wasmExports["n"])(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11);\r\nvar _Update = Module["_Update"] = (a0, a1, a2, a3) => (_Update = Module["_Update"] = wasmExports["o"])(a0, a1, a2, a3);\r\nvar _SetPosition = Module["_SetPosition"] = (a0, a1, a2) => (_SetPosition = Module["_SetPosition"] = wasmExports["p"])(a0, a1, a2);\r\nvar _SetSettleness = Module["_SetSettleness"] = a0 => (_SetSettleness = Module["_SetSettleness"] = wasmExports["q"])(a0);\r\nvar _FreeMemory = Module["_FreeMemory"] = () => (_FreeMemory = Module["_FreeMemory"] = wasmExports["r"])();\r\nvar _malloc = Module["_malloc"] = a0 => (_malloc = Module["_malloc"] = wasmExports["t"])(a0);\r\nvar _free = Module["_free"] = a0 => (_free = Module["_free"] = wasmExports["u"])(a0);\r\nvar __emscripten_stack_restore = a0 => (__emscripten_stack_restore = wasmExports["v"])(a0);\r\nvar __emscripten_stack_alloc = a0 => (__emscripten_stack_alloc = wasmExports["w"])(a0);\r\nvar _emscripten_stack_get_current = () => (_emscripten_stack_get_current = wasmExports["x"])();\r\nvar ___cxa_increment_exception_refcount = a0 => (___cxa_increment_exception_refcount = wasmExports["__cxa_increment_exception_refcount"])(a0);\r\nvar ___cxa_is_pointer_type = a0 => (___cxa_is_pointer_type = wasmExports["__cxa_is_pointer_type"])(a0);\r\nModule["cwrap"] = cwrap;\r\nModule["setValue"] = setValue;\r\nModule["getValue"] = getValue;\r\nvar calledRun;\r\ndependenciesFulfilled = function runCaller() {\r\n    // if (!calledRun) run();\r\n    // if (!calledRun) dependenciesFulfilled = runCaller\r\n};\r\n\r\nfunction run() \r\n{\r\n    if (runDependencies > 0) {\r\n        return\r\n    }\r\n    preRun();\r\n    if (runDependencies > 0) {\r\n        return\r\n    }\r\n\r\n    function doRun() {\r\n        if (calledRun) return;\r\n        calledRun = true;\r\n        Module["calledRun"] = true;\r\n        if (ABORT) return;\r\n        initRuntime();\r\n		console.log("wasm loaded");\r\n        if (Module["onRuntimeInitialized"]) Module["onRuntimeInitialized"]();\r\n		console.log("wasm initialized");\r\n        postRun()\r\n    }\r\n    if (Module["setStatus"]) {\r\n        Module["setStatus"]("Running...");\r\n        setTimeout(function() {\r\n            setTimeout(function() {\r\n                Module["setStatus"]("")\r\n            }, 1);\r\n            doRun()\r\n        }, 1)\r\n    } else {\r\n        doRun()\r\n    }\r\n}\r\nif (Module["preInit"]) {\r\n    if (typeof Module["preInit"] == "function") Module["preInit"] = [Module["preInit"]];\r\n    while (Module["preInit"].length > 0) {\r\n        Module["preInit"].pop()()\r\n    }\r\n}\r\n';
 
 // src/frontend/graph-view/graph-render-worker.txt.js
-var graph_render_worker_txt_default = `if ('function' === typeof importScripts) {
-	importScripts('https://d157l7jdn8e5sf.cloudfront.net/v7.2.0/webworker.js');
-
-	addEventListener('message', onMessage);
-
-	self.WebGLRenderingContext = self.WebGL2RenderingContext || self.WebGLRenderingContext;
-
-	let app = null;
-	let container = null;
-	let graphics = null;
-
-	isDrawing = false;
-
-	let linkCount = 0;
-	let linkSources = [];
-	let linkTargets = [];
-	let nodeCount = 0;
-	let radii = [];
-	let labels = [];
-	let labelFade = [];
-	let labelWidths = [];
-	let pixiLabels = [];
-	let cameraOffset = { x: 0, y: 0 };
-	let positions = new Float32Array(0);
-	let linkLength = 0;
-	let edgePruning = 0;
-	let colors =
-	{
-		background: 0x232323,
-		link: 0xAAAAAA,
-		node: 0xCCCCCC,
-		outline: 0xAAAAAA,
-		text: 0xFFFFFF,
-		accent: 0x4023AA
-	}
-
-	let hoveredNode = -1;
-	let lastHoveredNode = -1;
-	let grabbedNode = -1;
-	let updateAttached = false;
-	let attachedToGrabbed = [];
-	let activeNode = -1;
-	let attachedToActive = [];
-
-	let cameraScale = 1;
-	let cameraScaleRoot = 1;
-
-	function toScreenSpace(x, y, floor = true) {
-		if (floor) {
-			return { x: Math.floor((x * cameraScale) + cameraOffset.x), y: Math.floor((y * cameraScale) + cameraOffset.y) };
-		}
-		else {
-			return { x: (x * cameraScale) + cameraOffset.x, y: (y * cameraScale) + cameraOffset.y };
-		}
-	}
-
-	function vecToScreenSpace({ x, y }, floor = true) {
-		return toScreenSpace(x, y, floor);
-	}
-
-	function toWorldspace(x, y) {
-		return { x: (x - cameraOffset.x) / cameraScale, y: (y - cameraOffset.y) / cameraScale };
-	}
-
-	function vecToWorldspace({ x, y }) {
-		return toWorldspace(x, y);
-	}
-
-	function setCameraCenterWorldspace({ x, y }) {
-		cameraOffset.x = (canvas.width / 2) - (x * cameraScale);
-		cameraOffset.y = (canvas.height / 2) - (y * cameraScale);
-	}
-
-	function getCameraCenterWorldspace() {
-		return toWorldspace(canvas.width / 2, canvas.height / 2);
-	}
-
-	function getNodeScreenRadius(radius) {
-		return radius * cameraScaleRoot;
-	}
-
-	function getNodeWorldspaceRadius(radius) {
-		return radius / cameraScaleRoot;
-	}
-
-	function getPosition(index) {
-		return { x: positions[index * 2], y: positions[index * 2 + 1] };
-	}
-	
-	function parseHex(hex) 
-	{
-		if (typeof hex === 'number') {
-			return hex;
-		} else if (typeof hex === 'string') {
-			// Remove '#' if present
-			hex = hex.replace(/^#/, '');
-			// Parse the string as a hexadecimal number
-			return parseInt(hex, 16);
-		} else {
-			throw new Error('Invalid hex color. Must be a string or number.');
-		}
-	}
-	
-	function hexToRgb(hex) 
-	{
-		const parsed = parseHex(hex);
-		return {
-			r: (parsed >> 16) & 255,
-			g: (parsed >> 8) & 255,
-			b: parsed & 255
-		};
-	}
-	
-	function rgbToHex(r, g, b) {
-		return (clamp(r, 0, 255) << 16) | (clamp(g, 0, 255) << 8) | clamp(b, 0, 255);
-	}
-	
-	function mixColors(hexStart, hexEnd, factor) {
-		const start = hexToRgb(hexStart);
-		const end = hexToRgb(hexEnd);
-		const safeFactor = clamp(factor, 0, 1);
-		return rgbToHex(
-			Math.round(start.r + (end.r - start.r) * safeFactor),
-			Math.round(start.g + (end.g - start.g) * safeFactor),
-			Math.round(start.b + (end.b - start.b) * safeFactor)
-		);
-	}
-	
-	function toHexString(hexNumber) {
-		return '#' + hexNumber.toString(16).padStart(6, '0');
-	}
-
-	
-	
-
-	function invertColor(hex, bw) {
-		hex = hex.toString(16); // force conversion
-		// fill extra space up to 6 characters with 0
-		while (hex.length < 6) hex = "0" + hex;
-
-		if (hex.indexOf('#') === 0) {
-			hex = hex.slice(1);
-		}
-		// convert 3-digit hex to 6-digits.
-		if (hex.length === 3) {
-			hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
-		}
-		if (hex.length !== 6) {
-			throw new Error('Invalid HEX color:' + hex);
-		}
-		var r = parseInt(hex.slice(0, 2), 16),
-			g = parseInt(hex.slice(2, 4), 16),
-			b = parseInt(hex.slice(4, 6), 16);
-		if (bw) {
-			// https://stackoverflow.com/a/3943023/112731
-			return (r * 0.299 + g * 0.587 + b * 0.114) > 186
-				? '#000000'
-				: '#FFFFFF';
-		}
-		// invert color components
-		r = (255 - r).toString(16);
-		g = (255 - g).toString(16);
-		b = (255 - b).toString(16);
-		// pad each with zeros and return
-		return "#" + padZero(r) + padZero(g) + padZero(b);
-	}
-
-	function clamp(value, min, max) {
-		return Math.min(Math.max(value, min), max);
-	}
-
-	function lerp(a, b, t) {
-		return a + (b - a) * t;
-	}
-
-	let hoverFade = 0;
-	let hoverFadeSpeed = 0.04;
-	let hoverFadeSecondary = 0;
-	let hoverFadeSecondarySpeed = 0.08;
-	let hoverFontSize = 15;
-	let normalFontSize = 12;
-	let fontRatio = hoverFontSize / normalFontSize;
-
-	function showLabel(index, fade, hoverFade = 0) {
-		let label = pixiLabels[index];
-		if (!label) return;
-		labelFade[index] = fade;
-
-		if (fade > 0.01) label.visible = true;
-		else {
-			hideLabel(index);
-			return;
-		}
-
-		label.style.fontSize = lerp(normalFontSize, hoverFontSize, hoverFade);
-
-		let nodePos = vecToScreenSpace(getPosition(index));
-		let width = labelWidths[index] * lerp(1, fontRatio, hoverFade) / 2;
-		label.x = nodePos.x - width;
-		label.y = nodePos.y + getNodeScreenRadius(radii[index]) + 9;
-		label.alpha = fade;
-	}
-
-	function hideLabel(index) {
-		let label = pixiLabels[index];
-		label.visible = false;
-	}
-
-	function draw() {
-		graphics.clear();
-
-		let topLines = [];
-		if (updateAttached) {
-			attachedToGrabbed = [];
-			// hoverFade = 0;
-		}
-
-		if (hoveredNode != -1 || grabbedNode != -1) {
-			hoverFade = Math.min(1, hoverFade + hoverFadeSpeed);
-			hoverFadeSecondary = Math.min(1, hoverFadeSecondary + hoverFadeSecondarySpeed);
-		}
-		else {
-			hoverFade = Math.max(0, hoverFade - hoverFadeSpeed);
-			hoverFadeSecondary = Math.max(0, hoverFadeSecondary - hoverFadeSecondarySpeed);
-		}
-
-		graphics.lineStyle(1, mixColors(colors.link, colors.background, hoverFade * 0.5), 0.7);
-
-		for (let i = 0; i < linkCount; i++) {
-			let target = linkTargets[i];
-			let source = linkSources[i];
-
-			if (hoveredNode == source || hoveredNode == target || ((lastHoveredNode == source || lastHoveredNode == target) && hoverFade != 0)) {
-				if (updateAttached && hoveredNode == source)
-					attachedToGrabbed.push(target);
-
-				else if (updateAttached && hoveredNode == target)
-					attachedToGrabbed.push(source);
-
-				topLines.push(i);
-			}
-
-			let startWorld = getPosition(source);
-			let endWorld = getPosition(target);
-
-			let start = vecToScreenSpace(startWorld);
-			let end = vecToScreenSpace(endWorld);
-
-			let dist = Math.sqrt(Math.pow(startWorld.x - endWorld.x, 2) + Math.pow(startWorld.y - endWorld.y, 2));
-
-			if (dist < (radii[source] + radii[target]) * edgePruning) {
-				graphics.moveTo(start.x, start.y);
-				graphics.lineTo(end.x, end.y);
-			}
-		}
-
-		let opacity = 1 - (hoverFade * 0.5);
-		graphics.beginFill(mixColors(colors.node, colors.background, hoverFade * 0.5), opacity);
-		graphics.lineStyle(0, 0xffffff);
-		for (let i = 0; i < nodeCount; i++) {
-			let screenRadius = getNodeScreenRadius(radii[i]);
-
-			if (hoveredNode != i) {
-				if (screenRadius > 2) {
-
-					let labelFade = lerp(0, (screenRadius - 4) / 8 - (1 / cameraScaleRoot) / 6 * 0.9, Math.max(1 - hoverFade, 0.2));
-					showLabel(i, labelFade);
-				}
-				else {
-					hideLabel(i);
-				}
-			}
-
-			if (hoveredNode == i || (lastHoveredNode == i && hoverFade != 0) || (hoveredNode != -1 && attachedToGrabbed.includes(i))) continue;
-
-			let pos = vecToScreenSpace(getPosition(i));
-			graphics.drawCircle(pos.x, pos.y, screenRadius);
-		}
-
-		graphics.endFill();
-
-
-		opacity = hoverFade * 0.7;
-		graphics.lineStyle(1, mixColors(mixColors(colors.link, colors.accent, hoverFade), colors.background, 0.2), opacity);
-
-		for (let i = 0; i < topLines.length; i++) {
-			let target = linkTargets[topLines[i]];
-			let source = linkSources[topLines[i]];
-
-			// draw lines on top when hovered
-			let start = vecToScreenSpace(getPosition(source));
-			let end = vecToScreenSpace(getPosition(target));
-
-
-			graphics.moveTo(start.x, start.y);
-			graphics.lineTo(end.x, end.y);
-		}
-
-		if (hoveredNode != -1 || (lastHoveredNode != -1 && hoverFade != 0)) {
-			graphics.beginFill(mixColors(colors.node, colors.accent, hoverFade * 0.2), 0.9);
-			graphics.lineStyle(0, 0xffffff);
-			for (let i = 0; i < attachedToGrabbed.length; i++) {
-				let point = attachedToGrabbed[i];
-
-				let pos = vecToScreenSpace(getPosition(point));
-
-				graphics.drawCircle(pos.x, pos.y, getNodeScreenRadius(radii[point]));
-				showLabel(point, Math.max(hoverFade * 0.6, labelFade[point]));
-			}
-			graphics.endFill();
-
-			let index = hoveredNode != -1 ? hoveredNode : lastHoveredNode;
-
-			let pos = vecToScreenSpace(getPosition(index));
-			graphics.beginFill(mixColors(colors.node, colors.accent, hoverFade), 1);
-			graphics.lineStyle(hoverFade, mixColors(invertColor(colors.background, true), colors.accent, 0.5));
-			graphics.drawCircle(pos.x, pos.y, getNodeScreenRadius(radii[index]));
-			graphics.endFill();
-
-			showLabel(index, Math.max(hoverFade, labelFade[index]), hoverFadeSecondary);
-		}
-
-
-
-		updateAttached = false;
-
-		graphics.lineStyle(2, colors.accent);
-		// draw the active node
-		if (activeNode != -1) {
-			let pos = vecToScreenSpace(getPosition(activeNode));
-			graphics.drawCircle(pos.x, pos.y, getNodeScreenRadius(radii[activeNode]) + 4);
-
-		}
-	}
-
-	function onMessage(event) {
-		if (event.data.type == "draw") {
-			positions = new Float32Array(event.data.positions);
-			draw();
-		}
-		else if (event.data.type == "update_camera") {
-			cameraOffset = event.data.cameraOffset;
-			cameraScale = event.data.cameraScale;
-			cameraScaleRoot = Math.sqrt(cameraScale);
-		}
-		else if (event.data.type == "update_interaction") {
-			if (hoveredNode != event.data.hoveredNode && event.data.hoveredNode != -1) updateAttached = true;
-			if (grabbedNode != event.data.grabbedNode && event.data.hoveredNode != -1) updateAttached = true;
-
-			if (event.data.hoveredNode == -1) lastHoveredNode = hoveredNode;
-			else lastHoveredNode = -1;
-
-			hoveredNode = event.data.hoveredNode;
-			grabbedNode = event.data.grabbedNode;
-		}
-		else if (event.data.type == "resize") {
-			app.renderer.resize(event.data.width, event.data.height);
-		}
-		else if (event.data.type == "set_active") {
-			activeNode = event.data.active;
-		}
-		else if (event.data.type == "update_colors") {
-			colors = event.data.colors;
-
-			for (let label of pixiLabels) {
-				label.style.fill = invertColor(colors.background, true);
-			}
-		}
-		else if (event.data.type == "init") {
-			// Extract data from message
-			linkCount = event.data.linkCount;
-			linkSources = event.data.linkSources;
-			linkTargets = event.data.linkTargets;
-			nodeCount = event.data.nodeCount;
-			radii = event.data.radii;
-			labels = event.data.labels;
-			linkLength = event.data.linkLength;
-			edgePruning = event.data.edgePruning;
-			positions = new Float32Array(nodeCount);
-
-			if (!app) {
-				app = new PIXI.Application({ ...event.data.options, antialias: true, resolution: 2, backgroundAlpha: 0, transparent: true });
-				container = new PIXI.Container();
-				graphics = new PIXI.Graphics();
-				app.stage.addChild(container);
-				container.addChild(graphics);
-			}
-
-			// destroy old labels
-			for (let label of pixiLabels) {
-				label.destroy();
-			}
-
-			pixiLabels = [];
-			labelWidths = [];
-			labelFade = [];
-			for (let i = 0; i < nodeCount; i++) {
-				let label = new PIXI.Text(labels[i], { fontFamily: 'Arial', fontSize: 12, fontWeight: "normal", fill: invertColor(colors.background, true), align: 'center', anchor: 0.5 });
-				pixiLabels.push(label);
-				labelWidths.push(label.width);
-				labelFade.push(0);
-				app.stage.addChild(label);
-			}
-
-		}
-		else {
-			console.log("Unknown message type sent to graph worker: " + event.data.type);
-		}
-	}
-}
-
-
+var graph_render_worker_txt_default = `if ('function' === typeof importScripts) {\r
+	importScripts('https://d157l7jdn8e5sf.cloudfront.net/v7.2.0/webworker.js');\r
+\r
+	addEventListener('message', onMessage);\r
+\r
+	self.WebGLRenderingContext = self.WebGL2RenderingContext || self.WebGLRenderingContext;\r
+\r
+	let app = null;\r
+	let container = null;\r
+	let graphics = null;\r
+\r
+	isDrawing = false;\r
+\r
+	let linkCount = 0;\r
+	let linkSources = [];\r
+	let linkTargets = [];\r
+	let nodeCount = 0;\r
+	let radii = [];\r
+	let labels = [];\r
+	let labelFade = [];\r
+	let labelWidths = [];\r
+	let pixiLabels = [];\r
+	let cameraOffset = { x: 0, y: 0 };\r
+	let positions = new Float32Array(0);\r
+	let linkLength = 0;\r
+	let edgePruning = 0;\r
+	let colors =\r
+	{\r
+		background: 0x232323,\r
+		link: 0xAAAAAA,\r
+		node: 0xCCCCCC,\r
+		outline: 0xAAAAAA,\r
+		text: 0xFFFFFF,\r
+		accent: 0x4023AA\r
+	}\r
+\r
+	let hoveredNode = -1;\r
+	let lastHoveredNode = -1;\r
+	let grabbedNode = -1;\r
+	let updateAttached = false;\r
+	let attachedToGrabbed = [];\r
+	let activeNode = -1;\r
+	let attachedToActive = [];\r
+\r
+	let cameraScale = 1;\r
+	let cameraScaleRoot = 1;\r
+\r
+	function toScreenSpace(x, y, floor = true) {\r
+		if (floor) {\r
+			return { x: Math.floor((x * cameraScale) + cameraOffset.x), y: Math.floor((y * cameraScale) + cameraOffset.y) };\r
+		}\r
+		else {\r
+			return { x: (x * cameraScale) + cameraOffset.x, y: (y * cameraScale) + cameraOffset.y };\r
+		}\r
+	}\r
+\r
+	function vecToScreenSpace({ x, y }, floor = true) {\r
+		return toScreenSpace(x, y, floor);\r
+	}\r
+\r
+	function toWorldspace(x, y) {\r
+		return { x: (x - cameraOffset.x) / cameraScale, y: (y - cameraOffset.y) / cameraScale };\r
+	}\r
+\r
+	function vecToWorldspace({ x, y }) {\r
+		return toWorldspace(x, y);\r
+	}\r
+\r
+	function setCameraCenterWorldspace({ x, y }) {\r
+		cameraOffset.x = (canvas.width / 2) - (x * cameraScale);\r
+		cameraOffset.y = (canvas.height / 2) - (y * cameraScale);\r
+	}\r
+\r
+	function getCameraCenterWorldspace() {\r
+		return toWorldspace(canvas.width / 2, canvas.height / 2);\r
+	}\r
+\r
+	function getNodeScreenRadius(radius) {\r
+		return radius * cameraScaleRoot;\r
+	}\r
+\r
+	function getNodeWorldspaceRadius(radius) {\r
+		return radius / cameraScaleRoot;\r
+	}\r
+\r
+	function getPosition(index) {\r
+		return { x: positions[index * 2], y: positions[index * 2 + 1] };\r
+	}\r
+	\r
+	function parseHex(hex) \r
+	{\r
+		if (typeof hex === 'number') {\r
+			return hex;\r
+		} else if (typeof hex === 'string') {\r
+			// Remove '#' if present\r
+			hex = hex.replace(/^#/, '');\r
+			// Parse the string as a hexadecimal number\r
+			return parseInt(hex, 16);\r
+		} else {\r
+			throw new Error('Invalid hex color. Must be a string or number.');\r
+		}\r
+	}\r
+	\r
+	function hexToRgb(hex) \r
+	{\r
+		const parsed = parseHex(hex);\r
+		return {\r
+			r: (parsed >> 16) & 255,\r
+			g: (parsed >> 8) & 255,\r
+			b: parsed & 255\r
+		};\r
+	}\r
+	\r
+	function rgbToHex(r, g, b) {\r
+		return (clamp(r, 0, 255) << 16) | (clamp(g, 0, 255) << 8) | clamp(b, 0, 255);\r
+	}\r
+	\r
+	function mixColors(hexStart, hexEnd, factor) {\r
+		const start = hexToRgb(hexStart);\r
+		const end = hexToRgb(hexEnd);\r
+		const safeFactor = clamp(factor, 0, 1);\r
+		return rgbToHex(\r
+			Math.round(start.r + (end.r - start.r) * safeFactor),\r
+			Math.round(start.g + (end.g - start.g) * safeFactor),\r
+			Math.round(start.b + (end.b - start.b) * safeFactor)\r
+		);\r
+	}\r
+	\r
+	function toHexString(hexNumber) {\r
+		return '#' + hexNumber.toString(16).padStart(6, '0');\r
+	}\r
+\r
+	\r
+	\r
+\r
+	function invertColor(hex, bw) {\r
+		hex = hex.toString(16); // force conversion\r
+		// fill extra space up to 6 characters with 0\r
+		while (hex.length < 6) hex = "0" + hex;\r
+\r
+		if (hex.indexOf('#') === 0) {\r
+			hex = hex.slice(1);\r
+		}\r
+		// convert 3-digit hex to 6-digits.\r
+		if (hex.length === 3) {\r
+			hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];\r
+		}\r
+		if (hex.length !== 6) {\r
+			throw new Error('Invalid HEX color:' + hex);\r
+		}\r
+		var r = parseInt(hex.slice(0, 2), 16),\r
+			g = parseInt(hex.slice(2, 4), 16),\r
+			b = parseInt(hex.slice(4, 6), 16);\r
+		if (bw) {\r
+			// https://stackoverflow.com/a/3943023/112731\r
+			return (r * 0.299 + g * 0.587 + b * 0.114) > 186\r
+				? '#000000'\r
+				: '#FFFFFF';\r
+		}\r
+		// invert color components\r
+		r = (255 - r).toString(16);\r
+		g = (255 - g).toString(16);\r
+		b = (255 - b).toString(16);\r
+		// pad each with zeros and return\r
+		return "#" + padZero(r) + padZero(g) + padZero(b);\r
+	}\r
+\r
+	function clamp(value, min, max) {\r
+		return Math.min(Math.max(value, min), max);\r
+	}\r
+\r
+	function lerp(a, b, t) {\r
+		return a + (b - a) * t;\r
+	}\r
+\r
+	let hoverFade = 0;\r
+	let hoverFadeSpeed = 0.04;\r
+	let hoverFadeSecondary = 0;\r
+	let hoverFadeSecondarySpeed = 0.08;\r
+	let hoverFontSize = 15;\r
+	let normalFontSize = 12;\r
+	let fontRatio = hoverFontSize / normalFontSize;\r
+\r
+	function showLabel(index, fade, hoverFade = 0) {\r
+		let label = pixiLabels[index];\r
+		if (!label) return;\r
+		labelFade[index] = fade;\r
+\r
+		if (fade > 0.01) label.visible = true;\r
+		else {\r
+			hideLabel(index);\r
+			return;\r
+		}\r
+\r
+		label.style.fontSize = lerp(normalFontSize, hoverFontSize, hoverFade);\r
+\r
+		let nodePos = vecToScreenSpace(getPosition(index));\r
+		let width = labelWidths[index] * lerp(1, fontRatio, hoverFade) / 2;\r
+		label.x = nodePos.x - width;\r
+		label.y = nodePos.y + getNodeScreenRadius(radii[index]) + 9;\r
+		label.alpha = fade;\r
+	}\r
+\r
+	function hideLabel(index) {\r
+		let label = pixiLabels[index];\r
+		label.visible = false;\r
+	}\r
+\r
+	function draw() {\r
+		graphics.clear();\r
+\r
+		let topLines = [];\r
+		if (updateAttached) {\r
+			attachedToGrabbed = [];\r
+			// hoverFade = 0;\r
+		}\r
+\r
+		if (hoveredNode != -1 || grabbedNode != -1) {\r
+			hoverFade = Math.min(1, hoverFade + hoverFadeSpeed);\r
+			hoverFadeSecondary = Math.min(1, hoverFadeSecondary + hoverFadeSecondarySpeed);\r
+		}\r
+		else {\r
+			hoverFade = Math.max(0, hoverFade - hoverFadeSpeed);\r
+			hoverFadeSecondary = Math.max(0, hoverFadeSecondary - hoverFadeSecondarySpeed);\r
+		}\r
+\r
+		graphics.lineStyle(1, mixColors(colors.link, colors.background, hoverFade * 0.5), 0.7);\r
+\r
+		for (let i = 0; i < linkCount; i++) {\r
+			let target = linkTargets[i];\r
+			let source = linkSources[i];\r
+\r
+			if (hoveredNode == source || hoveredNode == target || ((lastHoveredNode == source || lastHoveredNode == target) && hoverFade != 0)) {\r
+				if (updateAttached && hoveredNode == source)\r
+					attachedToGrabbed.push(target);\r
+\r
+				else if (updateAttached && hoveredNode == target)\r
+					attachedToGrabbed.push(source);\r
+\r
+				topLines.push(i);\r
+			}\r
+\r
+			let startWorld = getPosition(source);\r
+			let endWorld = getPosition(target);\r
+\r
+			let start = vecToScreenSpace(startWorld);\r
+			let end = vecToScreenSpace(endWorld);\r
+\r
+			let dist = Math.sqrt(Math.pow(startWorld.x - endWorld.x, 2) + Math.pow(startWorld.y - endWorld.y, 2));\r
+\r
+			if (dist < (radii[source] + radii[target]) * edgePruning) {\r
+				graphics.moveTo(start.x, start.y);\r
+				graphics.lineTo(end.x, end.y);\r
+			}\r
+		}\r
+\r
+		let opacity = 1 - (hoverFade * 0.5);\r
+		graphics.beginFill(mixColors(colors.node, colors.background, hoverFade * 0.5), opacity);\r
+		graphics.lineStyle(0, 0xffffff);\r
+		for (let i = 0; i < nodeCount; i++) {\r
+			let screenRadius = getNodeScreenRadius(radii[i]);\r
+\r
+			if (hoveredNode != i) {\r
+				if (screenRadius > 2) {\r
+\r
+					let labelFade = lerp(0, (screenRadius - 4) / 8 - (1 / cameraScaleRoot) / 6 * 0.9, Math.max(1 - hoverFade, 0.2));\r
+					showLabel(i, labelFade);\r
+				}\r
+				else {\r
+					hideLabel(i);\r
+				}\r
+			}\r
+\r
+			if (hoveredNode == i || (lastHoveredNode == i && hoverFade != 0) || (hoveredNode != -1 && attachedToGrabbed.includes(i))) continue;\r
+\r
+			let pos = vecToScreenSpace(getPosition(i));\r
+			graphics.drawCircle(pos.x, pos.y, screenRadius);\r
+		}\r
+\r
+		graphics.endFill();\r
+\r
+\r
+		opacity = hoverFade * 0.7;\r
+		graphics.lineStyle(1, mixColors(mixColors(colors.link, colors.accent, hoverFade), colors.background, 0.2), opacity);\r
+\r
+		for (let i = 0; i < topLines.length; i++) {\r
+			let target = linkTargets[topLines[i]];\r
+			let source = linkSources[topLines[i]];\r
+\r
+			// draw lines on top when hovered\r
+			let start = vecToScreenSpace(getPosition(source));\r
+			let end = vecToScreenSpace(getPosition(target));\r
+\r
+\r
+			graphics.moveTo(start.x, start.y);\r
+			graphics.lineTo(end.x, end.y);\r
+		}\r
+\r
+		if (hoveredNode != -1 || (lastHoveredNode != -1 && hoverFade != 0)) {\r
+			graphics.beginFill(mixColors(colors.node, colors.accent, hoverFade * 0.2), 0.9);\r
+			graphics.lineStyle(0, 0xffffff);\r
+			for (let i = 0; i < attachedToGrabbed.length; i++) {\r
+				let point = attachedToGrabbed[i];\r
+\r
+				let pos = vecToScreenSpace(getPosition(point));\r
+\r
+				graphics.drawCircle(pos.x, pos.y, getNodeScreenRadius(radii[point]));\r
+				showLabel(point, Math.max(hoverFade * 0.6, labelFade[point]));\r
+			}\r
+			graphics.endFill();\r
+\r
+			let index = hoveredNode != -1 ? hoveredNode : lastHoveredNode;\r
+\r
+			let pos = vecToScreenSpace(getPosition(index));\r
+			graphics.beginFill(mixColors(colors.node, colors.accent, hoverFade), 1);\r
+			graphics.lineStyle(hoverFade, mixColors(invertColor(colors.background, true), colors.accent, 0.5));\r
+			graphics.drawCircle(pos.x, pos.y, getNodeScreenRadius(radii[index]));\r
+			graphics.endFill();\r
+\r
+			showLabel(index, Math.max(hoverFade, labelFade[index]), hoverFadeSecondary);\r
+		}\r
+\r
+\r
+\r
+		updateAttached = false;\r
+\r
+		graphics.lineStyle(2, colors.accent);\r
+		// draw the active node\r
+		if (activeNode != -1) {\r
+			let pos = vecToScreenSpace(getPosition(activeNode));\r
+			graphics.drawCircle(pos.x, pos.y, getNodeScreenRadius(radii[activeNode]) + 4);\r
+\r
+		}\r
+	}\r
+\r
+	function onMessage(event) {\r
+		if (event.data.type == "draw") {\r
+			positions = new Float32Array(event.data.positions);\r
+			draw();\r
+		}\r
+		else if (event.data.type == "update_camera") {\r
+			cameraOffset = event.data.cameraOffset;\r
+			cameraScale = event.data.cameraScale;\r
+			cameraScaleRoot = Math.sqrt(cameraScale);\r
+		}\r
+		else if (event.data.type == "update_interaction") {\r
+			if (hoveredNode != event.data.hoveredNode && event.data.hoveredNode != -1) updateAttached = true;\r
+			if (grabbedNode != event.data.grabbedNode && event.data.hoveredNode != -1) updateAttached = true;\r
+\r
+			if (event.data.hoveredNode == -1) lastHoveredNode = hoveredNode;\r
+			else lastHoveredNode = -1;\r
+\r
+			hoveredNode = event.data.hoveredNode;\r
+			grabbedNode = event.data.grabbedNode;\r
+		}\r
+		else if (event.data.type == "resize") {\r
+			app.renderer.resize(event.data.width, event.data.height);\r
+		}\r
+		else if (event.data.type == "set_active") {\r
+			activeNode = event.data.active;\r
+		}\r
+		else if (event.data.type == "update_colors") {\r
+			colors = event.data.colors;\r
+\r
+			for (let label of pixiLabels) {\r
+				label.style.fill = invertColor(colors.background, true);\r
+			}\r
+		}\r
+		else if (event.data.type == "init") {\r
+			// Extract data from message\r
+			linkCount = event.data.linkCount;\r
+			linkSources = event.data.linkSources;\r
+			linkTargets = event.data.linkTargets;\r
+			nodeCount = event.data.nodeCount;\r
+			radii = event.data.radii;\r
+			labels = event.data.labels;\r
+			linkLength = event.data.linkLength;\r
+			edgePruning = event.data.edgePruning;\r
+			positions = new Float32Array(nodeCount);\r
+\r
+			if (!app) {\r
+				app = new PIXI.Application({ ...event.data.options, antialias: true, resolution: 2, backgroundAlpha: 0, transparent: true });\r
+				container = new PIXI.Container();\r
+				graphics = new PIXI.Graphics();\r
+				app.stage.addChild(container);\r
+				container.addChild(graphics);\r
+			}\r
+\r
+			// destroy old labels\r
+			for (let label of pixiLabels) {\r
+				label.destroy();\r
+			}\r
+\r
+			pixiLabels = [];\r
+			labelWidths = [];\r
+			labelFade = [];\r
+			for (let i = 0; i < nodeCount; i++) {\r
+				let label = new PIXI.Text(labels[i], { fontFamily: 'Arial', fontSize: 12, fontWeight: "normal", fill: invertColor(colors.background, true), align: 'center', anchor: 0.5 });\r
+				pixiLabels.push(label);\r
+				labelWidths.push(label.width);\r
+				labelFade.push(0);\r
+				app.stage.addChild(label);\r
+			}\r
+\r
+		}\r
+		else {\r
+			console.log("Unknown message type sent to graph worker: " + event.data.type);\r
+		}\r
+	}\r
+}\r
+\r
+\r
 `;
 
 // src/frontend/graph-view/graph-wasm.wasm
 var graph_wasm_default = __toBinary("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QQdqQXhxIgFBEGo2AgAgACELIAEpAwAhBCABKQMIIQgjAEEgayIJJAAgCEL///////8/gyEFAn4gCEIwiEL//wGDIganIgJBgfgAa0H9D00EQCAFQgSGIARCPIiEIQMgAkGA+ABrrSEGAkAgBEL//////////w+DIgRCgYCAgICAgIAIWgRAIANCAXwhAwwBCyAEQoCAgICAgICACFINACADQgGDIAN8IQMLQgAgAyADQv////////8HViIAGyEDIACtIAZ8DAELAkAgBCAFhFANACAGQv//AVINACAFQgSGIARCPIiEQoCAgICAgIAEhCEDQv8PDAELQv8PIAJB/ocBSw0AGkIAQYD4AEGB+AAgBlAiARsiACACayIKQfAASg0AGiAEIQMgBSAFQoCAgICAgMAAhCABGyIHIQUCQEGAASAKayIBQcAAcQRAIAQgAUFAaq2GIQVCACEDDAELIAFFDQAgBSABrSIGhiADQcAAIAFrrYiEIQUgAyAGhiEDCyAJIAM3AxAgCSAFNwMYAkAgCkHAAHEEQCAHIApBQGqtiCEEQgAhBwwBCyAKRQ0AIAdBwAAgCmuthiAEIAqtIgOIhCEEIAcgA4ghBwsgCSAENwMAIAkgBzcDCCAJKQMIQgSGIAkpAwAiA0I8iIQhBAJAIAAgAkcgCSkDECAJKQMYhEIAUnGtIANC//////////8Pg4QiA0KBgICAgICAgAhaBEAgBEIBfCEEDAELIANCgICAgICAgIAIUg0AIARCAYMgBHwhBAsgBEKAgICAgICACIUgBCAEQv////////8HViIAGyEDIACtCyEEIAlBIGokACALIAhCgICAgICAgICAf4MgBEI0hoQgA4S/OQMACw8LIAIgAigCACIBQQRqNgIAIAAgATQCADcDAA8LIAIgAigCACIBQQRqNgIAIAAgATUCADcDAA8LIAIgAigCAEEHakF4cSIBQQhqNgIAIAAgASkDADcDAAtzAQZ/IAAoAgAiAywAAEEwayIBQQlLBEBBAA8LA0BBfyEEIAJBzJmz5gBNBEBBfyACQQpsIgUgAWogASAFQf////8Hc0sbIQQLIAAgA0EBaiIFNgIAIAMsAAEhBiAEIQIgBSEDIAZBMGsiAUEKSQ0ACyACC8csAyB/AnwDfiMAQUBqIgskACALIAE2AjwgC0EnaiEgIAtBKGoh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");
 
 // src/assets/plugin-styles.txt.css
-var plugin_styles_txt_default = `
-/*#region Variables */
-body {
-	--color-fade-speed: 0.2s;
-}
-
-/*#endregion */
-
-/*#region Tree */
-
-.tree-icon {
-	border: 1px solid transparent;
-	margin: 0px 4px 0px 0px;
-	display: flex;
-	align-self: center;
-}
-
-.tree-icon :is(svg, img) {
-	width: 1em !important;
-	height: 1em !important;
-}
-
-.tree-icon *:has(svg, img) {
-	display: contents !important;
-}
-
-a.tree-item-self.is-clickable {
-	text-decoration: none !important;
-	text-decoration-line: none !important;
-}
-
-.tree-item-inner>p {
-	display: contents !important;
-}
-
-
-.tree-container .feature-title {
-	flex-grow: 0 !important;
-	margin-right: .5em !important;
-	font-size: inherit !important;
-	color: var(--text-normal) !important;
-}
-
-.tree-item-children:empty {
-	display: none !important;
-}
-
-.tree-item.filtered-out {
-	display: none;
-}
-
-#outline .tree-item[data-depth="1"]:not(.mod-collapsible)>.tree-item-self {
-	font-weight: 900;
-	font-size: 1.05em;
-}
-
-.tree-item:not(.mod-collapsible)>.tree-item-self
-{
-	padding-left: calc(var(--nav-item-children-margin-start,var(--nav-item-children-margin-left)) - 0.35em);
-}
-
-.tree-item-self {
-	display: flex !important;
-	align-items: center !important;
-}
-
-#file-explorer {
-	padding: 0 !important;
-}
-
-/*#region Headers */
-
-.heading p {
-	margin: 0 !important;
-}
-
-#webpage-icon :is(svg, img) {
-	width: 100%;
-	height: 100%;
-	box-shadow: none !important;
-	border: none !important;
-	border-radius: 0 !important;
-	stroke: currentColor;
-	margin: 0 !important;
-	padding: 0 !important;
-}
-
-#webpage-icon *:has(:is(svg, img)) {
-	display: contents !important;
-}
-
-#webpage-icon:has(:is(svg, img)) {
-	font-size: 40px;
-	width: 40px;
-	height: 40px;
-}
-
-#webpage-icon {
-	font-size: 40px;
-	margin-bottom: 8px;
-	font-family: emoji;
-	width: fit-content;
-}
-
-body.show-inline-title .page-title {
-	font-weight: var(--inline-title-weight);
-	font-size: var(--inline-title-size);
-	font-style: var(--inline-title-style);
-	font-variant: var(--inline-title-variant);
-	font-family: var(--inline-title-font);
-	letter-spacing: -0.015em;
-	color: var(--inline-title-color);
-}
-
-h1 li {
-	translate: calc(0px - var(--list-indent)) 0;
-}
-
-.heading {
-	position: relative;
-}
-
-.heading.is-collapsed::after {
-	content: "..." !important;
-	display: inline-block !important;
-	position: absolute !important;
-	margin: 0 !important;
-	padding: 0 !important;
-	margin-left: 0.3em !important;
-	color: var(--text-muted);
-}
-
-/* high specificity in order to override other style */
-html>body>#main-horizontal>#center-content>.obsidian-document>.markdown-preview-sizer>div:not(:is(.footer, .header)) {
-	margin-inline: 0 !important;
-	margin: 0 !important;
-	padding: 0 !important;
-}
-
-html>body>#main-horizontal>#center-content>.obsidian-document>.markdown-preview-sizer>div {
-	width: 100%;
-	max-width: 100%;
-}
-
-.collapse-icon:not(.list-collapse-indicator) svg.svg-icon {
-	color: var(--nav-collapse-icon-color);
-	width: var(--collapse-arrow-size);
-	height: var(--collapse-arrow-size);
-	transition: transform 100ms ease-in-out 0s;
-	stroke-width: 4px;
-	min-width: 10px;
-	min-height: 10px;
-	max-width: 24px;
-	max-height: 24px;
-}
-
-.heading-collapse-indicator.collapse-icon.is-collapsed>svg {
-	transition: transform 0.1s ease-in-out;
-	transform: rotate(-90deg);
-}
-
-.heading .heading-collapse-indicator {
-	opacity: 0;
-	transition: opacity 0.15s ease-in-out;
-	position: absolute;
-	z-index: 1;
-	padding: 0 !important;
-	padding-left: 2em !important;
-	padding-right: 1em !important;
-	left: -2em !important;
-}
-
-.heading:hover>.heading-collapse-indicator{
-	opacity: 1;
-}
-
-.tree-container {
-	--nav-item-size: 1em;
-	overflow: hidden auto;
-	height: 100%;
-}
-
-.nav-file-title,
-.nav-folder-title {
-	line-height: var(--tree-vertical-spacing) !important;
-}
-
-
-/*#endregion */
-
-/*#region Theme Toggle */
-
-.theme-toggle-container {
-	--toggle-width: 3.5em;
-	--toggle-height: 1.75em;
-	--border-radius: calc(var(--toggle-height) / 2);
-	--handle-width: calc(var(--toggle-height) * 0.65);
-	--handle-radius: calc(var(--handle-width) / 2);
-	--handle-margin: calc((var(--toggle-height) / 2.0) - var(--handle-radius));
-	--handle-translation: calc(var(--toggle-width) - var(--handle-width) - (var(--handle-margin) * 2));
-
-	cursor: pointer;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	gap: 1em;
-}
-
-.feature-title,
-.clickable-icon {
-	transition: color var(--color-fade-speed) ease-in-out;
-}
-
-/* animation to expand width, move handle, then contract width */
-@keyframes toggle-slide-right {
-	0% {
-		width: var(--handle-width);
-		transform: translateX(0);
-	}
-
-	50% {
-		width: calc(var(--toggle-width) * 0.5);
-	}
-
-	90% {
-		width: var(--handle-width);
-	}
-
-	100% {
-		transform: translateX(var(--handle-translation));
-	}
-}
-
-@keyframes toggle-slide-left {
-	0% {
-		width: var(--handle-width);
-		transform: translateX(calc(var(--handle-translation) - ((var(--toggle-width) * 0.33) - var(--handle-width))));
-	}
-
-	70% {
-		width: calc(var(--toggle-width) * 0.5);
-	}
-
-	100% {
-		width: var(--handle-width);
-		transform: translateX(0);
-	}
-}
-
-/* just exapnd and contract */
-@keyframes toggle-expand-right {
-	0% {
-		width: var(--handle-width);
-	}
-
-	100% {
-		width: calc(var(--toggle-width) * 0.33);
-	}
-}
-
-@keyframes toggle-expand-left {
-	0% {
-		width: var(--handle-width);
-		transform: translateX(var(--handle-translation));
-	}
-
-	100% {
-		width: calc(var(--toggle-width) * 0.33);
-		transform: translateX(calc(var(--handle-translation) - ((var(--toggle-width) * 0.33) - var(--handle-width))));
-	}
-}
-
-@keyframes toggle-contract {
-	0% {
-		width: calc(var(--toggle-width) * 0.33);
-	}
-
-	100% {
-		width: var(--handle-width);
-	}
-}
-
-.theme-toggle-input {
-	display: none;
-	z-index: 1000;
-}
-
-/* Fill in dark mode / default */
-.toggle-background {
-	position: relative;
-	width: var(--toggle-width);
-	height: var(--toggle-height);
-	border-radius: var(--border-radius);
-	background-color: var(--background-modifier-border);
-
-	transition: background-color var(--color-fade-speed);
-	z-index: 1000;
-
-	animation-duration: 0.2s;
-}
-
-/* Handle default */
-.toggle-background::before {
-	content: "";
-	position: absolute;
-	left: var(--handle-margin);
-	top: var(--handle-margin);
-	height: var(--handle-width);
-	width: var(--handle-width);
-
-	border-radius: var(--handle-radius);
-	background-color: var(--text-normal);
-	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2);
-	animation: toggle-slide-left ease-in-out normal both;
-	animation-duration: inherit;
-	z-index: 1000;
-}
-
-/* handle light*/
-.theme-toggle-input:checked~.toggle-background::before {
-	animation: toggle-slide-right ease-in-out normal both;
-	animation-duration: inherit;
-}
-
-.theme-toggle-input:active~.toggle-background::before {
-	animation: toggle-expand-right ease-in-out normal both;
-	animation-duration: inherit;
-}
-
-.theme-toggle-input:active:checked~.toggle-background::before {
-	animation: toggle-expand-left ease-in-out normal both;
-	animation-duration: inherit;
-}
-
-/* sun moon icon icon default */
-.toggle-background::after {
-	content: "";
-	position: absolute;
-	right: var(--handle-margin);
-	top: calc(var(--handle-margin));
-	height: var(--handle-width);
-	width: var(--handle-width);
-	transition: transform 0.3s;
-	background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>') no-repeat center center;
-	transform: scale(0.9);
-}
-
-/* sun moon icon icon light */
-.theme-toggle-input:checked~.toggle-background::after {
-	transform: translateX(calc(var(--handle-translation) * -1)) scale(0.9);
-	background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>') no-repeat center center;
-}
-
-/*#endregion */
-
-/*#region Graph View */
-
-.graph-view-wrapper {
-	--graph-view-max-height: 35vh;
-}
-
-#graph-canvas {
-	width: 100%;
-	height: 100%;
-	aspect-ratio: 1;
-	transition: opacity 0.2s ease-in-out;
-}
-
-.graph-view-container.expanded {
-	position: fixed;
-	width: 90%;
-	height: 90%;
-	max-height: unset;
-	right: 5%;
-	top: 5%;
-	background-color: var(--background-secondary);
-	z-index: 100;
-}
-
-body:is(.is-phone, .is-tablet) .graph-view-container.expanded {
-	width: 95%;
-	height: 95%;
-	right: 2.5%;
-	top: 2.5%;
-}
-
-.graph-view-container {
-	position: relative;
-	width: 100%;
-	aspect-ratio: 1;
-	max-height: var(--graph-view-max-height);
-	display: flex;
-	transition: background-color var(--color-fade-speed) ease-in-out;
-	touch-action: none;
-	border: 1px solid var(--modal-border-color);
-	border-radius: var(--modal-radius);
-	overflow: hidden;
-}
-
-.graph-icon {
-	position: absolute;
-	cursor: pointer;
-	color: var(--text-muted);
-	transition: color 0.2s ease-in-out;
-}
-
-.graph-icon svg {
-	width: 20px;
-	height: 20px;
-}
-
-.graph-icon:hover {
-	color: var(--interactive-accent);
-}
-
-.graph-icon.graph-expand {
-	top: 6px;
-	right: 6px;
-}
-
-.graph-icon.graph-global {
-	top: 6px;
-	right: 32px;
-}
-
-
-.graph-view-placeholder {
-	padding: 0;
-	width: 100%;
-	aspect-ratio: 1;
-	max-height: var(--graph-view-max-height);
-	position: relative;
-	flex: none;
-}
-
-.graph-view-placeholder:has(.expanded) {
-	border-radius: var(--modal-radius);
-	border: 1px solid var(--modal-border-color);
-}
-
-.scale-down {
-	transition: transform 0.2s ease-in-out;
-	transform: scale(0.9);
-}
-
-.scale-up {
-	transition: transform 0.2s ease-in-out;
-	transform: scale(1);
-}
-
-
-
-
-/*#endregion */
-
-/*#region Canvas */
-
-body :is(.canvas-node-container, .canvas-wrapper) {
-	cursor: unset !important;
-}
-
-body .canvas-wrapper {
-	max-width: 100% !important;
-}
-
-.canvas {
-	translate: 0 0;
-	scale: 1 1;
-	will-change: translate, scale;
-}
-
-.canvas-controls {
-	display: none;
-	cursor: default !important;
-}
-
-.canvas-card-menu {
-	display: none;
-	cursor: default !important;
-}
-
-.canvas-node-content-blocker {
-	pointer-events: none;
-}
-
-.canvas.small-scale :is(.canvas-node-label, .canvas-path-label, .obsidian-document) {
-	display: none;
-}
-
-/*#endregion */
-
-/*#region Phone */
-
-body.is-phone .sidebar {
-	font-size: 1.15em;
-	--tree-vertical-spacing: 1.8em;
-	--sidebar-width: 85vw !important;
-}
-
-body.is-phone {
-	--collapse-arrow-size: 14px;
-	--tree-vertical-spacing: 0.8em;
-}
-
-/*#endregion */
-
-/*#region Loading */
-
-.loading-icon {
-	--width: 80px;
-	--height: 80px;
-
-	display: inline-block;
-	position: fixed;
-	left: calc(50% - var(--width) / 2);
-	top: calc(50% - var(--height) / 2);
-	width: var(--width);
-	height: var(--height);
-
-	opacity: 0;
-	transition: opacity 0.5s ease-in-out;
-	pointer-events: none;
-}
-
-.loading-icon.show {
-	opacity: 1;
-}
-
-.loading-icon div {
-	position: absolute;
-	top: 33px;
-	width: 13px;
-	height: 13px;
-	border-radius: 50%;
-	background: var(--interactive-accent);
-	animation-timing-function: cubic-bezier(0, 1, 1, 0);
-}
-
-.loading-icon div:nth-child(1) {
-	left: 8px;
-	animation: lds-ellipsis1 0.6s infinite;
-}
-
-.loading-icon div:nth-child(2) {
-	left: 8px;
-	animation: lds-ellipsis2 0.6s infinite;
-}
-
-.loading-icon div:nth-child(3) {
-	left: 32px;
-	animation: lds-ellipsis2 0.6s infinite;
-}
-
-.loading-icon div:nth-child(4) {
-	left: 56px;
-	animation: lds-ellipsis3 0.6s infinite;
-}
-
-.loading-icon:not(.show) div {
-	animation-play-state: paused;
-}
-
-@keyframes lds-ellipsis1 {
-	0% {
-		transform: scale(0);
-	}
-
-	100% {
-		transform: scale(1);
-	}
-}
-
-@keyframes lds-ellipsis3 {
-	0% {
-		transform: scale(1);
-	}
-
-	100% {
-		transform: scale(0);
-	}
-}
-
-@keyframes lds-ellipsis2 {
-	0% {
-		transform: translate(0, 0);
-	}
-
-	100% {
-		transform: translate(24px, 0);
-	}
-}
-
-/*#endregion  */
-
-/*#region Media Queries */
-
-@media print {
-	html body.publish :is(.sidebar, script, style, include) {
-		display: none !important;
-	}
-
-	:root,
-	html body.publish> :is(#main-horizontal, #center-content, .obsidian-document):not(script, style, include) {
-		display: contents !important;
-	}
-
-	:root,
-	html body.publish #center-content>.obsidian-document {
-		background-color: transparent !important;
-	}
-
-	body {
-		display: inline !important;
-		background: var(--background-primary);
-	}
-
-	body #center-content>.obsidian-document>.markdown-preview-sizer {
-		padding: 0;
-		margin: 0;
-		padding: var(--file-margins);
-		padding-bottom: 0;
-	}
-
-	html body.publish :is(#center-content, .obsidian-document) {
-		margin: 0 !important;
-		padding: 0 !important;
-	}
-
-
-}
-
-/*#endregion  */
-
-/*#region Search */
-
-#search-results {
-	padding: 1em;
-}
-
-.search-result {
-	display: flex;
-}
-
-.search-result a {
-	padding: calc(var(--tree-vertical-spacing) / 2);
-	border-radius: var(--radius-s);
-	width: 100%;
-	color: var(--nav-item-color);
-	text-decoration: none;
-}
-
-.search-result a:hover {
-	background-color: var(--nav-item-background-hover);
-	text-decoration: underline;
-	color: var(--nav-item-color-active);
-}
-
-.tree-hint-label {
-	font-size: var(--font-smallest);
-	color: var(--text-accent);
-	width: 100%;
-	width: -webkit-fill-available;
-	width: -moz-available;
-	width: fill-available;
-	text-decoration-line: none;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
-
-.tree-hint-label.internal-link::before {
-	content: "H";
-	font-size: 1.2em;
-	font-weight: 700;
-	position: relative;
-	display: inline-block;
-	margin-right: 0.5em;
-	translate: 0 0.05em;
-	color: var(--nav-item-color);
-}
-
-.tree-hint-label:hover {
-	text-decoration-line: underline;
-}
-
-.tree-hint-container {
-	width: 100%;
-	padding: var(--nav-item-padding);
-	padding-bottom: 0;
-	padding-top: 0;
-	padding-right: 0;
-	display: flex;
-	flex-direction: column;
-	margin-left: 22px;
-}
-
-/* find hints inside folders with no other folders in them */
-.tree-container .nav-folder:not(:has(.nav-folder)) .nav-file>.tree-link>.tree-hint-container {
-	padding-left: calc(1em * 2);
-}
-
-a.tree-hint-label:hover {
-	text-decoration-line: underline;
-}
-
-.search-mark {
-	margin: 0 !important;
-	padding: 0 !important;
-	scroll-margin: 2em !important;
-}
-
-.search-input-container:has(+ #search-results)>input[type="search"] {
-	border-bottom-left-radius: 0;
-	border-bottom-right-radius: 0;
-}
-
-#search-container {
-	--input-height: 2.6em;
-}
-
-input[type=search] {
-	box-shadow: none !important;
-	height: var(--input-height);
-	font-size: 1em;
-	transition: background, background-color, border;
-	transition-duration: var(--color-fade-speed);
-	transition-timing-function: ease-in-out;
-}
-
-.search-input-container {
-	display: flex !important;
-}
-
-.search-input-wrapper {
-	position: relative;
-	width: 100%;
-}
-
-.search-input-container::before {
-	mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='11' cy='11' r='8'></circle><line x1='21' y1='21' x2='16.65' y2='16.65'></line></svg>");
-	mask-repeat: no-repeat;
-	top: 50%;
-	transform: translateY(-50%);
-	z-index: 1;
-}
-
-/*#endregion */
-
-/*#region Sidebar Resize */
-
-.sidebar .sidebar-handle:hover~.leaf-content,
-.sidebar.is-resizing .leaf-content {
-	box-shadow: 0 0 0 var(--divider-width-hover) var(--divider-color-hover);
-}
-
-.sidebar-handle {
-	width: min(max(calc(var(--sidebar-margin) / 2.0), 3px), 12px);
-	height: calc(100vh - 2 * var(--radius-l));
-	margin-top: var(--radius-l);
-	margin-bottom: var(--radius-l);
-	top: 0;
-	position: absolute;
-	cursor: ew-resize;
-	z-index: 1;
-	transition: background-color .2s ease-in-out;
-}
-
-#left-sidebar .sidebar-handle {
-	right: 0;
-}
-
-#right-sidebar .sidebar-handle {
-	left: 0;
-}
-
-
-
-/*#endregion */
-
-/* Themes */
-
-/*#region General */
-
-.nav-folder-children .nav-folder-title-content::before {
-	margin-right: 0.5em;
-}
-
-.tree-item-contents:has(.tree-item-icon) .tree-item-title::before,
-.tree-item-contents:has(.tree-item-icon)::before,
-.tree-item:has(.tree-item-contents > .tree-item-icon)::before {
-	display: none !important;
-}
-
-/*#endregion */
-
-/*#endregion */
-
-/*#region Backlinks */
-
-#backlinks {
-	border: 1px solid var(--background-modifier-border);
-	border-radius: var(--radius-m);
-	transition: opacity 0.2s ease-in-out;
-}
-
-#backlinks .feature-header {
-	border-bottom: 1px solid;
-	border-color: inherit;
-	padding: var(--size-4-2);
-	padding-left: var(--size-4-3);
-}
-
-#backlinks .feature-header .feature-title {
-	margin: 0.25em;
-}
-
-.backlinks-content {
-	padding: var(--size-4-1);
-	gap: var(--size-4-1);
-	display: flex;
-	flex-direction: column;
-}
-
-a.backlink {
-	display: flex;
-	gap: 0.5em;
-	color: var(--text-muted);
-	text-decoration: none;
-	padding: var(--size-4-1);
-	padding-left: var(--size-4-2);
-	border-radius: var(--radius-s);
-}
-
-a.backlink:hover {
-	background-color: var(--background-modifier-hover);
-	text-decoration: underline;
-}
-
-.backlink-icon {
-	display: flex;
-	align-items: center;
-}
-
-/*#endregion */
-
-/*#region Tags */
-
-#tags, #aliases {
-	display: flex;
-	align-items: baseline;
-	gap: 1em;
-}
-
-#tags .tags-content, #aliases .aliases-content {
-	display: flex;
-	gap: 0.5em;
-}
-
-#aliases .aliases-content .alias
-{
-	font-size: var(--tag-size);
-	padding-inline: 0.25em;
-}
-
-/*#endregion */
-
-/*#region Features */
-
-.data-bar .feature-title {
-	color: var(--text-muted);
-	font-weight: 400;
-	font-size: 0.9em;
-}
-
-.feature-header:empty,
-.feature-title:empty {
-	display: none;
-}
-
-/*#endregion */
-
-/*#region Header & Footer */
-
-.header .data-bar
-{
-	display: flex;
-	flex-wrap: wrap;
-}
-
-.header .data-bar > :not(:first-child)
-{
-	border-left: 1px solid var(--background-modifier-border);
-	padding-left: 0.5em;
-	margin-left: 0.5em;
-}
-
-.header .data-bar:not(:empty) {
-	padding-bottom: 1em;
-	margin-bottom: 1em;
-	border-bottom: 1px solid var(--background-modifier-border);
-}
-
-.footer:not(:has(div:first-child:last-child)):not(:empty),
-.footer .data-bar:not(:empty) {
-	border-top: 1px solid var(--background-modifier-border);
-	padding-top: var(--size-4-6);
-	margin-top: var(--size-4-6);
-}
-
-.header:last-child {
-	margin-bottom: var(--p-spacing);
-}
-
-/*#endregion */
-
-/*#region Hover Preview*/
-
-.file-preview.popover.hover-popover .markdown-embed {
-	max-height: unset !important;
-	width: 100% !important;
-	min-width: var(--popover-width);
-	min-height: 8em;
-}
-
-.file-preview.popover.hover-popover {
-	opacity: 1;
-	transition: opacity 0.2s ease-in-out;
-	resize: both;
-	min-width: var(--popover-width);
-	min-height: 8em;
-	height: var(--popover-height);
-	width: var(--popover-width);
-}
-
-.preview-action-container {
-	position: absolute;
-	top: 0;
-	left: 0;
-	padding: 5px;
-	padding-right: 10px;
-	width: 100% !important;
-	display: flex;
-	gap: 5px;
-	z-index: 1000;
-}
-
-.popover-action {
-	display: block;
-	background-color: var(--icon-color);
-	width: var(--icon-size);
-	height: var(--icon-size);
-	mask-size: 100% 100%;
-	mask-position: center;
-	mask-repeat: no-repeat;
-}
-
-.popover-action:hover {
-	background-color: var(--icon-color-hover);
-}
-
-.popover-action:active {
-	background-color: var(--interactive-accent);
-}
-
-.popover-action.drag-handle {
-	margin-right: auto;
-	cursor: move;
-	mask-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-grip"><circle cx="12" cy="5" r="1"/><circle cx="19" cy="5" r="1"/><circle cx="5" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/><circle cx="12" cy="19" r="1"/><circle cx="19" cy="19" r="1"/><circle cx="5" cy="19" r="1"/></svg>');
-}
-
-.popover-action.pin-button {
-	cursor: pointer;
-	mask-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pin"><path d="M12 17v5"/><path d="M9 10.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V7a1 1 0 0 1 1-1 2 2 0 0 0 0-4H8a2 2 0 0 0 0 4 1 1 0 0 1 1 1z"/></svg>');
-	transition: mask-image 0.3s ease;
-}
-
-.popover-action.pin-button.pinned {
-	background-color: var(--interactive-accent);
-	mask-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pin-off"><path d="M12 17v5"/><path d="M15 9.34V7a1 1 0 0 1 1-1 2 2 0 0 0 0-4H7.89"/><path d="m2 2 20 20"/><path d="M9 9v1.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16a1 1 0 0 0 1 1h11"/></svg>');
-}
-
-.popover-action.go-to-button {
-	cursor: pointer;
-	mask-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-symlink"><path d="m10 18 3-3-3-3"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M4 11V4a2 2 0 0 1 2-2h9l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h7"/></svg>');
-}
-
-
-/*#endregion*/
-
-/* Plugins: */
-
-/*#region Kanban */
-
-#center-content .kanban-plugin {
-	position: absolute;
-	padding: 0;
-	margin: 0;
-	height: 100%;
-}
-
-#center-content .kanban-plugin {
-	font-family: var(--font-text, var(--default-font));
-	font-size: .875rem;
-	line-height: var(--line-height-tight);
-	width: unset;
-	overflow-y: unset;
-	overflow-wrap: unset;
-	color: unset;
-	user-select: unset;
-	-webkit-user-select: unset;
-}
-
-#center-content .kanban-plugin__item-button-wrapper,
-.kanban-plugin__lane-grip,
-.kanban-plugin__lane-settings-button.clickable-icon,
-.kanban-plugin__item-postfix-button.clickable-icon {
-	display: none;
-}
-
-/*#endregion */
-
-/*#region Excalidraw */
-
-.excalidraw-svg rect,
-.excalidraw-plugin rect {
-	fill: transparent;
-}
-
-/** Preserve mask fill **/
-.excalidraw-plugin mask rect[fill="#fff"],
-.excalidraw-svg mask rect[fill="#fff"],
-.excalidraw-plugin mask rect[fill="#ffffff"],
-.excalidraw-svg mask rect[fill="#ffffff"] {
-	fill: #ffffff;
-}
-
-.excalidraw-plugin mask rect[fill="#000"],
-.excalidraw-svg mask rect[fill="#000"],
-.excalidraw-plugin mask rect[fill="#000000"],
-.excalidraw-svg mask rect[fill="#000000"] {
-	fill: #000000;
-}
-
-body.theme-dark .excalidraw-svg svg.dark,
-body.theme-dark .excalidraw-plugin svg.dark,
-body.theme-light .excalidraw-svg svg.light,
-body.theme-light .excalidraw-plugin svg.light {
-	filter: invert(93%) hue-rotate(180deg);
-}
-
-
-.excalidraw-plugin>svg {
-	width: 100%;
-	height: 100%;
-}
-
-.excalidraw-plugin {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-
-	height: 100%;
-	width: 100%;
-
-	padding: 10px;
-}
-
-/*#endregion  */
-
-/*#region Obsidian Columns Plugin */
-.columnParent {
-	display: flex;
-	padding: 15px 20px;
-	flex-wrap: wrap;
-	gap: 20px;
-}
-
-.columnParent {
-	white-space: normal;
-}
-
-.columnChild {
-	flex-grow: 1;
-	flex-basis: 0px;
-}
-
-/*#endregion */
-
-/*#region Banners */
-
-.obsidian-banner .lock-button {
-	display: none;
-}
-
-.obsidian-document:has(.obsidian-banner-wrapper) {
-	padding-top: 0 !important;
-}
-
-/*#endregion */
-
-/*#region Mind Map  */
-
-.obsidian-document:not([data-type='markdown']):has(.mm-mindmap) {
-	overflow-y: none;
-}
-
-.obsidian-document:not([data-type='markdown']) .mm-mindmap {
-	transform: scale(1);
-	translate: -4000px -4000px;
-	top: 70%;
-	left: 50%;
-	position: absolute;
-	overflow: hidden;
-	width: 100vw;
-}
-
-/*#endregion  */
+var plugin_styles_txt_default = `\r
+/*#region Variables */\r
+body {\r
+	--color-fade-speed: 0.2s;\r
+}\r
+\r
+/*#endregion */\r
+\r
+/*#region Tree */\r
+\r
+.tree-icon {\r
+	border: 1px solid transparent;\r
+	margin: 0px 4px 0px 0px;\r
+	display: flex;\r
+	align-self: center;\r
+}\r
+\r
+.tree-icon :is(svg, img) {\r
+	width: 1em !important;\r
+	height: 1em !important;\r
+}\r
+\r
+.tree-icon *:has(svg, img) {\r
+	display: contents !important;\r
+}\r
+\r
+a.tree-item-self.is-clickable {\r
+	text-decoration: none !important;\r
+	text-decoration-line: none !important;\r
+}\r
+\r
+.tree-item-inner>p {\r
+	display: contents !important;\r
+}\r
+\r
+\r
+.tree-container .feature-title {\r
+	flex-grow: 0 !important;\r
+	margin-right: .5em !important;\r
+	font-size: inherit !important;\r
+	color: var(--text-normal) !important;\r
+}\r
+\r
+.tree-item-children:empty {\r
+	display: none !important;\r
+}\r
+\r
+.tree-item.filtered-out {\r
+	display: none;\r
+}\r
+\r
+#outline .tree-item[data-depth="1"]:not(.mod-collapsible)>.tree-item-self {\r
+	font-weight: 900;\r
+	font-size: 1.05em;\r
+}\r
+\r
+.tree-item:not(.mod-collapsible)>.tree-item-self\r
+{\r
+	padding-left: calc(var(--nav-item-children-margin-start,var(--nav-item-children-margin-left)) - 0.35em);\r
+}\r
+\r
+.tree-item-self {\r
+	display: flex !important;\r
+	align-items: center !important;\r
+}\r
+\r
+#file-explorer {\r
+	padding: 0 !important;\r
+}\r
+\r
+/*#region Headers */\r
+\r
+.heading p {\r
+	margin: 0 !important;\r
+}\r
+\r
+#webpage-icon :is(svg, img) {\r
+	width: 100%;\r
+	height: 100%;\r
+	box-shadow: none !important;\r
+	border: none !important;\r
+	border-radius: 0 !important;\r
+	stroke: currentColor;\r
+	margin: 0 !important;\r
+	padding: 0 !important;\r
+}\r
+\r
+#webpage-icon *:has(:is(svg, img)) {\r
+	display: contents !important;\r
+}\r
+\r
+#webpage-icon:has(:is(svg, img)) {\r
+	font-size: 40px;\r
+	width: 40px;\r
+	height: 40px;\r
+}\r
+\r
+#webpage-icon {\r
+	font-size: 40px;\r
+	margin-bottom: 8px;\r
+	font-family: emoji;\r
+	width: fit-content;\r
+}\r
+\r
+body.show-inline-title .page-title {\r
+	font-weight: var(--inline-title-weight);\r
+	font-size: var(--inline-title-size);\r
+	font-style: var(--inline-title-style);\r
+	font-variant: var(--inline-title-variant);\r
+	font-family: var(--inline-title-font);\r
+	letter-spacing: -0.015em;\r
+	color: var(--inline-title-color);\r
+}\r
+\r
+h1 li {\r
+	translate: calc(0px - var(--list-indent)) 0;\r
+}\r
+\r
+.heading {\r
+	position: relative;\r
+}\r
+\r
+.heading.is-collapsed::after {\r
+	content: "..." !important;\r
+	display: inline-block !important;\r
+	position: absolute !important;\r
+	margin: 0 !important;\r
+	padding: 0 !important;\r
+	margin-left: 0.3em !important;\r
+	color: var(--text-muted);\r
+}\r
+\r
+/* high specificity in order to override other style */\r
+html>body>#main-horizontal>#center-content>.obsidian-document>.markdown-preview-sizer>div:not(:is(.footer, .header)) {\r
+	margin-inline: 0 !important;\r
+	margin: 0 !important;\r
+	padding: 0 !important;\r
+}\r
+\r
+html>body>#main-horizontal>#center-content>.obsidian-document>.markdown-preview-sizer>div {\r
+	width: 100%;\r
+	max-width: 100%;\r
+}\r
+\r
+.collapse-icon:not(.list-collapse-indicator) svg.svg-icon {\r
+	color: var(--nav-collapse-icon-color);\r
+	width: var(--collapse-arrow-size);\r
+	height: var(--collapse-arrow-size);\r
+	transition: transform 100ms ease-in-out 0s;\r
+	stroke-width: 4px;\r
+	min-width: 10px;\r
+	min-height: 10px;\r
+	max-width: 24px;\r
+	max-height: 24px;\r
+}\r
+\r
+.heading-collapse-indicator.collapse-icon.is-collapsed>svg {\r
+	transition: transform 0.1s ease-in-out;\r
+	transform: rotate(-90deg);\r
+}\r
+\r
+.heading .heading-collapse-indicator {\r
+	opacity: 0;\r
+	transition: opacity 0.15s ease-in-out;\r
+	position: absolute;\r
+	z-index: 1;\r
+	padding: 0 !important;\r
+	padding-left: 2em !important;\r
+	padding-right: 1em !important;\r
+	left: -2em !important;\r
+}\r
+\r
+.heading:hover>.heading-collapse-indicator{\r
+	opacity: 1;\r
+}\r
+\r
+.tree-container {\r
+	--nav-item-size: 1em;\r
+	overflow: hidden auto;\r
+	height: 100%;\r
+}\r
+\r
+.nav-file-title,\r
+.nav-folder-title {\r
+	line-height: var(--tree-vertical-spacing) !important;\r
+}\r
+\r
+\r
+/*#endregion */\r
+\r
+/*#region Theme Toggle */\r
+\r
+.theme-toggle-container {\r
+	--toggle-width: 3.5em;\r
+	--toggle-height: 1.75em;\r
+	--border-radius: calc(var(--toggle-height) / 2);\r
+	--handle-width: calc(var(--toggle-height) * 0.65);\r
+	--handle-radius: calc(var(--handle-width) / 2);\r
+	--handle-margin: calc((var(--toggle-height) / 2.0) - var(--handle-radius));\r
+	--handle-translation: calc(var(--toggle-width) - var(--handle-width) - (var(--handle-margin) * 2));\r
+\r
+	cursor: pointer;\r
+	display: flex;\r
+	flex-direction: row;\r
+	align-items: center;\r
+	gap: 1em;\r
+}\r
+\r
+.feature-title,\r
+.clickable-icon {\r
+	transition: color var(--color-fade-speed) ease-in-out;\r
+}\r
+\r
+/* animation to expand width, move handle, then contract width */\r
+@keyframes toggle-slide-right {\r
+	0% {\r
+		width: var(--handle-width);\r
+		transform: translateX(0);\r
+	}\r
+\r
+	50% {\r
+		width: calc(var(--toggle-width) * 0.5);\r
+	}\r
+\r
+	90% {\r
+		width: var(--handle-width);\r
+	}\r
+\r
+	100% {\r
+		transform: translateX(var(--handle-translation));\r
+	}\r
+}\r
+\r
+@keyframes toggle-slide-left {\r
+	0% {\r
+		width: var(--handle-width);\r
+		transform: translateX(calc(var(--handle-translation) - ((var(--toggle-width) * 0.33) - var(--handle-width))));\r
+	}\r
+\r
+	70% {\r
+		width: calc(var(--toggle-width) * 0.5);\r
+	}\r
+\r
+	100% {\r
+		width: var(--handle-width);\r
+		transform: translateX(0);\r
+	}\r
+}\r
+\r
+/* just exapnd and contract */\r
+@keyframes toggle-expand-right {\r
+	0% {\r
+		width: var(--handle-width);\r
+	}\r
+\r
+	100% {\r
+		width: calc(var(--toggle-width) * 0.33);\r
+	}\r
+}\r
+\r
+@keyframes toggle-expand-left {\r
+	0% {\r
+		width: var(--handle-width);\r
+		transform: translateX(var(--handle-translation));\r
+	}\r
+\r
+	100% {\r
+		width: calc(var(--toggle-width) * 0.33);\r
+		transform: translateX(calc(var(--handle-translation) - ((var(--toggle-width) * 0.33) - var(--handle-width))));\r
+	}\r
+}\r
+\r
+@keyframes toggle-contract {\r
+	0% {\r
+		width: calc(var(--toggle-width) * 0.33);\r
+	}\r
+\r
+	100% {\r
+		width: var(--handle-width);\r
+	}\r
+}\r
+\r
+.theme-toggle-input {\r
+	display: none;\r
+	z-index: 1000;\r
+}\r
+\r
+/* Fill in dark mode / default */\r
+.toggle-background {\r
+	position: relative;\r
+	width: var(--toggle-width);\r
+	height: var(--toggle-height);\r
+	border-radius: var(--border-radius);\r
+	background-color: var(--background-modifier-border);\r
+\r
+	transition: background-color var(--color-fade-speed);\r
+	z-index: 1000;\r
+\r
+	animation-duration: 0.2s;\r
+}\r
+\r
+/* Handle default */\r
+.toggle-background::before {\r
+	content: "";\r
+	position: absolute;\r
+	left: var(--handle-margin);\r
+	top: var(--handle-margin);\r
+	height: var(--handle-width);\r
+	width: var(--handle-width);\r
+\r
+	border-radius: var(--handle-radius);\r
+	background-color: var(--text-normal);\r
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2);\r
+	animation: toggle-slide-left ease-in-out normal both;\r
+	animation-duration: inherit;\r
+	z-index: 1000;\r
+}\r
+\r
+/* handle light*/\r
+.theme-toggle-input:checked~.toggle-background::before {\r
+	animation: toggle-slide-right ease-in-out normal both;\r
+	animation-duration: inherit;\r
+}\r
+\r
+.theme-toggle-input:active~.toggle-background::before {\r
+	animation: toggle-expand-right ease-in-out normal both;\r
+	animation-duration: inherit;\r
+}\r
+\r
+.theme-toggle-input:active:checked~.toggle-background::before {\r
+	animation: toggle-expand-left ease-in-out normal both;\r
+	animation-duration: inherit;\r
+}\r
+\r
+/* sun moon icon icon default */\r
+.toggle-background::after {\r
+	content: "";\r
+	position: absolute;\r
+	right: var(--handle-margin);\r
+	top: calc(var(--handle-margin));\r
+	height: var(--handle-width);\r
+	width: var(--handle-width);\r
+	transition: transform 0.3s;\r
+	background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>') no-repeat center center;\r
+	transform: scale(0.9);\r
+}\r
+\r
+/* sun moon icon icon light */\r
+.theme-toggle-input:checked~.toggle-background::after {\r
+	transform: translateX(calc(var(--handle-translation) * -1)) scale(0.9);\r
+	background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>') no-repeat center center;\r
+}\r
+\r
+/*#endregion */\r
+\r
+/*#region Graph View */\r
+\r
+.graph-view-wrapper {\r
+	--graph-view-max-height: 35vh;\r
+}\r
+\r
+#graph-canvas {\r
+	width: 100%;\r
+	height: 100%;\r
+	aspect-ratio: 1;\r
+	transition: opacity 0.2s ease-in-out;\r
+}\r
+\r
+.graph-view-container.expanded {\r
+	position: fixed;\r
+	width: 90%;\r
+	height: 90%;\r
+	max-height: unset;\r
+	right: 5%;\r
+	top: 5%;\r
+	background-color: var(--background-secondary);\r
+	z-index: 100;\r
+}\r
+\r
+body:is(.is-phone, .is-tablet) .graph-view-container.expanded {\r
+	width: 95%;\r
+	height: 95%;\r
+	right: 2.5%;\r
+	top: 2.5%;\r
+}\r
+\r
+.graph-view-container {\r
+	position: relative;\r
+	width: 100%;\r
+	aspect-ratio: 1;\r
+	max-height: var(--graph-view-max-height);\r
+	display: flex;\r
+	transition: background-color var(--color-fade-speed) ease-in-out;\r
+	touch-action: none;\r
+	border: 1px solid var(--modal-border-color);\r
+	border-radius: var(--modal-radius);\r
+	overflow: hidden;\r
+}\r
+\r
+.graph-icon {\r
+	position: absolute;\r
+	cursor: pointer;\r
+	color: var(--text-muted);\r
+	transition: color 0.2s ease-in-out;\r
+}\r
+\r
+.graph-icon svg {\r
+	width: 20px;\r
+	height: 20px;\r
+}\r
+\r
+.graph-icon:hover {\r
+	color: var(--interactive-accent);\r
+}\r
+\r
+.graph-icon.graph-expand {\r
+	top: 6px;\r
+	right: 6px;\r
+}\r
+\r
+.graph-icon.graph-global {\r
+	top: 6px;\r
+	right: 32px;\r
+}\r
+\r
+\r
+.graph-view-placeholder {\r
+	padding: 0;\r
+	width: 100%;\r
+	aspect-ratio: 1;\r
+	max-height: var(--graph-view-max-height);\r
+	position: relative;\r
+	flex: none;\r
+}\r
+\r
+.graph-view-placeholder:has(.expanded) {\r
+	border-radius: var(--modal-radius);\r
+	border: 1px solid var(--modal-border-color);\r
+}\r
+\r
+.scale-down {\r
+	transition: transform 0.2s ease-in-out;\r
+	transform: scale(0.9);\r
+}\r
+\r
+.scale-up {\r
+	transition: transform 0.2s ease-in-out;\r
+	transform: scale(1);\r
+}\r
+\r
+\r
+\r
+\r
+/*#endregion */\r
+\r
+/*#region Canvas */\r
+\r
+body :is(.canvas-node-container, .canvas-wrapper) {\r
+	cursor: unset !important;\r
+}\r
+\r
+body .canvas-wrapper {\r
+	max-width: 100% !important;\r
+}\r
+\r
+.canvas {\r
+	translate: 0 0;\r
+	scale: 1 1;\r
+	will-change: translate, scale;\r
+}\r
+\r
+.canvas-controls {\r
+	display: none;\r
+	cursor: default !important;\r
+}\r
+\r
+.canvas-card-menu {\r
+	display: none;\r
+	cursor: default !important;\r
+}\r
+\r
+.canvas-node-content-blocker {\r
+	pointer-events: none;\r
+}\r
+\r
+.canvas.small-scale :is(.canvas-node-label, .canvas-path-label, .obsidian-document) {\r
+	display: none;\r
+}\r
+\r
+/*#endregion */\r
+\r
+/*#region Phone */\r
+\r
+body.is-phone .sidebar {\r
+	font-size: 1.15em;\r
+	--tree-vertical-spacing: 1.8em;\r
+	--sidebar-width: 85vw !important;\r
+}\r
+\r
+body.is-phone {\r
+	--collapse-arrow-size: 14px;\r
+	--tree-vertical-spacing: 0.8em;\r
+}\r
+\r
+/*#endregion */\r
+\r
+/*#region Loading */\r
+\r
+.loading-icon {\r
+	--width: 80px;\r
+	--height: 80px;\r
+\r
+	display: inline-block;\r
+	position: fixed;\r
+	left: calc(50% - var(--width) / 2);\r
+	top: calc(50% - var(--height) / 2);\r
+	width: var(--width);\r
+	height: var(--height);\r
+\r
+	opacity: 0;\r
+	transition: opacity 0.5s ease-in-out;\r
+	pointer-events: none;\r
+}\r
+\r
+.loading-icon.show {\r
+	opacity: 1;\r
+}\r
+\r
+.loading-icon div {\r
+	position: absolute;\r
+	top: 33px;\r
+	width: 13px;\r
+	height: 13px;\r
+	border-radius: 50%;\r
+	background: var(--interactive-accent);\r
+	animation-timing-function: cubic-bezier(0, 1, 1, 0);\r
+}\r
+\r
+.loading-icon div:nth-child(1) {\r
+	left: 8px;\r
+	animation: lds-ellipsis1 0.6s infinite;\r
+}\r
+\r
+.loading-icon div:nth-child(2) {\r
+	left: 8px;\r
+	animation: lds-ellipsis2 0.6s infinite;\r
+}\r
+\r
+.loading-icon div:nth-child(3) {\r
+	left: 32px;\r
+	animation: lds-ellipsis2 0.6s infinite;\r
+}\r
+\r
+.loading-icon div:nth-child(4) {\r
+	left: 56px;\r
+	animation: lds-ellipsis3 0.6s infinite;\r
+}\r
+\r
+.loading-icon:not(.show) div {\r
+	animation-play-state: paused;\r
+}\r
+\r
+@keyframes lds-ellipsis1 {\r
+	0% {\r
+		transform: scale(0);\r
+	}\r
+\r
+	100% {\r
+		transform: scale(1);\r
+	}\r
+}\r
+\r
+@keyframes lds-ellipsis3 {\r
+	0% {\r
+		transform: scale(1);\r
+	}\r
+\r
+	100% {\r
+		transform: scale(0);\r
+	}\r
+}\r
+\r
+@keyframes lds-ellipsis2 {\r
+	0% {\r
+		transform: translate(0, 0);\r
+	}\r
+\r
+	100% {\r
+		transform: translate(24px, 0);\r
+	}\r
+}\r
+\r
+/*#endregion  */\r
+\r
+/*#region Media Queries */\r
+\r
+@media print {\r
+	html body.publish :is(.sidebar, script, style, include) {\r
+		display: none !important;\r
+	}\r
+\r
+	:root,\r
+	html body.publish> :is(#main-horizontal, #center-content, .obsidian-document):not(script, style, include) {\r
+		display: contents !important;\r
+	}\r
+\r
+	:root,\r
+	html body.publish #center-content>.obsidian-document {\r
+		background-color: transparent !important;\r
+	}\r
+\r
+	body {\r
+		display: inline !important;\r
+		background: var(--background-primary);\r
+	}\r
+\r
+	body #center-content>.obsidian-document>.markdown-preview-sizer {\r
+		padding: 0;\r
+		margin: 0;\r
+		padding: var(--file-margins);\r
+		padding-bottom: 0;\r
+	}\r
+\r
+	html body.publish :is(#center-content, .obsidian-document) {\r
+		margin: 0 !important;\r
+		padding: 0 !important;\r
+	}\r
+\r
+\r
+}\r
+\r
+/*#endregion  */\r
+\r
+/*#region Search */\r
+\r
+#search-results {\r
+	padding: 1em;\r
+}\r
+\r
+.search-result {\r
+	display: flex;\r
+}\r
+\r
+.search-result a {\r
+	padding: calc(var(--tree-vertical-spacing) / 2);\r
+	border-radius: var(--radius-s);\r
+	width: 100%;\r
+	color: var(--nav-item-color);\r
+	text-decoration: none;\r
+}\r
+\r
+.search-result a:hover {\r
+	background-color: var(--nav-item-background-hover);\r
+	text-decoration: underline;\r
+	color: var(--nav-item-color-active);\r
+}\r
+\r
+.tree-hint-label {\r
+	font-size: var(--font-smallest);\r
+	color: var(--text-accent);\r
+	width: 100%;\r
+	width: -webkit-fill-available;\r
+	width: -moz-available;\r
+	width: fill-available;\r
+	text-decoration-line: none;\r
+	white-space: nowrap;\r
+	overflow: hidden;\r
+	text-overflow: ellipsis;\r
+}\r
+\r
+.tree-hint-label.internal-link::before {\r
+	content: "H";\r
+	font-size: 1.2em;\r
+	font-weight: 700;\r
+	position: relative;\r
+	display: inline-block;\r
+	margin-right: 0.5em;\r
+	translate: 0 0.05em;\r
+	color: var(--nav-item-color);\r
+}\r
+\r
+.tree-hint-label:hover {\r
+	text-decoration-line: underline;\r
+}\r
+\r
+.tree-hint-container {\r
+	width: 100%;\r
+	padding: var(--nav-item-padding);\r
+	padding-bottom: 0;\r
+	padding-top: 0;\r
+	padding-right: 0;\r
+	display: flex;\r
+	flex-direction: column;\r
+	margin-left: 22px;\r
+}\r
+\r
+/* find hints inside folders with no other folders in them */\r
+.tree-container .nav-folder:not(:has(.nav-folder)) .nav-file>.tree-link>.tree-hint-container {\r
+	padding-left: calc(1em * 2);\r
+}\r
+\r
+a.tree-hint-label:hover {\r
+	text-decoration-line: underline;\r
+}\r
+\r
+.search-mark {\r
+	margin: 0 !important;\r
+	padding: 0 !important;\r
+	scroll-margin: 2em !important;\r
+}\r
+\r
+.search-input-container:has(+ #search-results)>input[type="search"] {\r
+	border-bottom-left-radius: 0;\r
+	border-bottom-right-radius: 0;\r
+}\r
+\r
+#search-container {\r
+	--input-height: 2.6em;\r
+}\r
+\r
+input[type=search] {\r
+	box-shadow: none !important;\r
+	height: var(--input-height);\r
+	font-size: 1em;\r
+	transition: background, background-color, border;\r
+	transition-duration: var(--color-fade-speed);\r
+	transition-timing-function: ease-in-out;\r
+}\r
+\r
+.search-input-container {\r
+	display: flex !important;\r
+}\r
+\r
+.search-input-wrapper {\r
+	position: relative;\r
+	width: 100%;\r
+}\r
+\r
+.search-input-container::before {\r
+	mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='11' cy='11' r='8'></circle><line x1='21' y1='21' x2='16.65' y2='16.65'></line></svg>");\r
+	mask-repeat: no-repeat;\r
+	top: 50%;\r
+	transform: translateY(-50%);\r
+	z-index: 1;\r
+}\r
+\r
+/*#endregion */\r
+\r
+/*#region Sidebar Resize */\r
+\r
+.sidebar .sidebar-handle:hover~.leaf-content,\r
+.sidebar.is-resizing .leaf-content {\r
+	box-shadow: 0 0 0 var(--divider-width-hover) var(--divider-color-hover);\r
+}\r
+\r
+.sidebar-handle {\r
+	width: min(max(calc(var(--sidebar-margin) / 2.0), 3px), 12px);\r
+	height: calc(100vh - 2 * var(--radius-l));\r
+	margin-top: var(--radius-l);\r
+	margin-bottom: var(--radius-l);\r
+	top: 0;\r
+	position: absolute;\r
+	cursor: ew-resize;\r
+	z-index: 1;\r
+	transition: background-color .2s ease-in-out;\r
+}\r
+\r
+#left-sidebar .sidebar-handle {\r
+	right: 0;\r
+}\r
+\r
+#right-sidebar .sidebar-handle {\r
+	left: 0;\r
+}\r
+\r
+\r
+\r
+/*#endregion */\r
+\r
+/* Themes */\r
+\r
+/*#region General */\r
+\r
+.nav-folder-children .nav-folder-title-content::before {\r
+	margin-right: 0.5em;\r
+}\r
+\r
+.tree-item-contents:has(.tree-item-icon) .tree-item-title::before,\r
+.tree-item-contents:has(.tree-item-icon)::before,\r
+.tree-item:has(.tree-item-contents > .tree-item-icon)::before {\r
+	display: none !important;\r
+}\r
+\r
+/*#endregion */\r
+\r
+/*#endregion */\r
+\r
+/*#region Backlinks */\r
+\r
+#backlinks {\r
+	border: 1px solid var(--background-modifier-border);\r
+	border-radius: var(--radius-m);\r
+	transition: opacity 0.2s ease-in-out;\r
+}\r
+\r
+#backlinks .feature-header {\r
+	border-bottom: 1px solid;\r
+	border-color: inherit;\r
+	padding: var(--size-4-2);\r
+	padding-left: var(--size-4-3);\r
+}\r
+\r
+#backlinks .feature-header .feature-title {\r
+	margin: 0.25em;\r
+}\r
+\r
+.backlinks-content {\r
+	padding: var(--size-4-1);\r
+	gap: var(--size-4-1);\r
+	display: flex;\r
+	flex-direction: column;\r
+}\r
+\r
+a.backlink {\r
+	display: flex;\r
+	gap: 0.5em;\r
+	color: var(--text-muted);\r
+	text-decoration: none;\r
+	padding: var(--size-4-1);\r
+	padding-left: var(--size-4-2);\r
+	border-radius: var(--radius-s);\r
+}\r
+\r
+a.backlink:hover {\r
+	background-color: var(--background-modifier-hover);\r
+	text-decoration: underline;\r
+}\r
+\r
+.backlink-icon {\r
+	display: flex;\r
+	align-items: center;\r
+}\r
+\r
+/*#endregion */\r
+\r
+/*#region Tags */\r
+\r
+#tags, #aliases {\r
+	display: flex;\r
+	align-items: baseline;\r
+	gap: 1em;\r
+}\r
+\r
+#tags .tags-content, #aliases .aliases-content {\r
+	display: flex;\r
+	gap: 0.5em;\r
+}\r
+\r
+#aliases .aliases-content .alias\r
+{\r
+	font-size: var(--tag-size);\r
+	padding-inline: 0.25em;\r
+}\r
+\r
+/*#endregion */\r
+\r
+/*#region Features */\r
+\r
+.data-bar .feature-title {\r
+	color: var(--text-muted);\r
+	font-weight: 400;\r
+	font-size: 0.9em;\r
+}\r
+\r
+.feature-header:empty,\r
+.feature-title:empty {\r
+	display: none;\r
+}\r
+\r
+/*#endregion */\r
+\r
+/*#region Header & Footer */\r
+\r
+.header .data-bar\r
+{\r
+	display: flex;\r
+	flex-wrap: wrap;\r
+}\r
+\r
+.header .data-bar > :not(:first-child)\r
+{\r
+	border-left: 1px solid var(--background-modifier-border);\r
+	padding-left: 0.5em;\r
+	margin-left: 0.5em;\r
+}\r
+\r
+.header .data-bar:not(:empty) {\r
+	padding-bottom: 1em;\r
+	margin-bottom: 1em;\r
+	border-bottom: 1px solid var(--background-modifier-border);\r
+}\r
+\r
+.footer:not(:has(div:first-child:last-child)):not(:empty),\r
+.footer .data-bar:not(:empty) {\r
+	border-top: 1px solid var(--background-modifier-border);\r
+	padding-top: var(--size-4-6);\r
+	margin-top: var(--size-4-6);\r
+}\r
+\r
+.header:last-child {\r
+	margin-bottom: var(--p-spacing);\r
+}\r
+\r
+/*#endregion */\r
+\r
+/*#region Hover Preview*/\r
+\r
+.file-preview.popover.hover-popover .markdown-embed {\r
+	max-height: unset !important;\r
+	width: 100% !important;\r
+	min-width: var(--popover-width);\r
+	min-height: 8em;\r
+}\r
+\r
+.file-preview.popover.hover-popover {\r
+	opacity: 1;\r
+	transition: opacity 0.2s ease-in-out;\r
+	resize: both;\r
+	min-width: var(--popover-width);\r
+	min-height: 8em;\r
+	height: var(--popover-height);\r
+	width: var(--popover-width);\r
+}\r
+\r
+.preview-action-container {\r
+	position: absolute;\r
+	top: 0;\r
+	left: 0;\r
+	padding: 5px;\r
+	padding-right: 10px;\r
+	width: 100% !important;\r
+	display: flex;\r
+	gap: 5px;\r
+	z-index: 1000;\r
+}\r
+\r
+.popover-action {\r
+	display: block;\r
+	background-color: var(--icon-color);\r
+	width: var(--icon-size);\r
+	height: var(--icon-size);\r
+	mask-size: 100% 100%;\r
+	mask-position: center;\r
+	mask-repeat: no-repeat;\r
+}\r
+\r
+.popover-action:hover {\r
+	background-color: var(--icon-color-hover);\r
+}\r
+\r
+.popover-action:active {\r
+	background-color: var(--interactive-accent);\r
+}\r
+\r
+.popover-action.drag-handle {\r
+	margin-right: auto;\r
+	cursor: move;\r
+	mask-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-grip"><circle cx="12" cy="5" r="1"/><circle cx="19" cy="5" r="1"/><circle cx="5" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/><circle cx="12" cy="19" r="1"/><circle cx="19" cy="19" r="1"/><circle cx="5" cy="19" r="1"/></svg>');\r
+}\r
+\r
+.popover-action.pin-button {\r
+	cursor: pointer;\r
+	mask-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pin"><path d="M12 17v5"/><path d="M9 10.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V7a1 1 0 0 1 1-1 2 2 0 0 0 0-4H8a2 2 0 0 0 0 4 1 1 0 0 1 1 1z"/></svg>');\r
+	transition: mask-image 0.3s ease;\r
+}\r
+\r
+.popover-action.pin-button.pinned {\r
+	background-color: var(--interactive-accent);\r
+	mask-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pin-off"><path d="M12 17v5"/><path d="M15 9.34V7a1 1 0 0 1 1-1 2 2 0 0 0 0-4H7.89"/><path d="m2 2 20 20"/><path d="M9 9v1.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16a1 1 0 0 0 1 1h11"/></svg>');\r
+}\r
+\r
+.popover-action.go-to-button {\r
+	cursor: pointer;\r
+	mask-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-symlink"><path d="m10 18 3-3-3-3"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M4 11V4a2 2 0 0 1 2-2h9l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h7"/></svg>');\r
+}\r
+\r
+\r
+/*#endregion*/\r
+\r
+/* Plugins: */\r
+\r
+/*#region Kanban */\r
+\r
+#center-content .kanban-plugin {\r
+	position: absolute;\r
+	padding: 0;\r
+	margin: 0;\r
+	height: 100%;\r
+}\r
+\r
+#center-content .kanban-plugin {\r
+	font-family: var(--font-text, var(--default-font));\r
+	font-size: .875rem;\r
+	line-height: var(--line-height-tight);\r
+	width: unset;\r
+	overflow-y: unset;\r
+	overflow-wrap: unset;\r
+	color: unset;\r
+	user-select: unset;\r
+	-webkit-user-select: unset;\r
+}\r
+\r
+#center-content .kanban-plugin__item-button-wrapper,\r
+.kanban-plugin__lane-grip,\r
+.kanban-plugin__lane-settings-button.clickable-icon,\r
+.kanban-plugin__item-postfix-button.clickable-icon {\r
+	display: none;\r
+}\r
+\r
+/*#endregion */\r
+\r
+/*#region Excalidraw */\r
+\r
+.excalidraw-svg rect,\r
+.excalidraw-plugin rect {\r
+	fill: transparent;\r
+}\r
+\r
+/** Preserve mask fill **/\r
+.excalidraw-plugin mask rect[fill="#fff"],\r
+.excalidraw-svg mask rect[fill="#fff"],\r
+.excalidraw-plugin mask rect[fill="#ffffff"],\r
+.excalidraw-svg mask rect[fill="#ffffff"] {\r
+	fill: #ffffff;\r
+}\r
+\r
+.excalidraw-plugin mask rect[fill="#000"],\r
+.excalidraw-svg mask rect[fill="#000"],\r
+.excalidraw-plugin mask rect[fill="#000000"],\r
+.excalidraw-svg mask rect[fill="#000000"] {\r
+	fill: #000000;\r
+}\r
+\r
+body.theme-dark .excalidraw-svg svg.dark,\r
+body.theme-dark .excalidraw-plugin svg.dark,\r
+body.theme-light .excalidraw-svg svg.light,\r
+body.theme-light .excalidraw-plugin svg.light {\r
+	filter: invert(93%) hue-rotate(180deg);\r
+}\r
+\r
+\r
+.excalidraw-plugin>svg {\r
+	width: 100%;\r
+	height: 100%;\r
+}\r
+\r
+.excalidraw-plugin {\r
+	display: flex;\r
+	flex-direction: column;\r
+	align-items: center;\r
+	justify-content: center;\r
+\r
+	height: 100%;\r
+	width: 100%;\r
+\r
+	padding: 10px;\r
+}\r
+\r
+/*#endregion  */\r
+\r
+/*#region Obsidian Columns Plugin */\r
+.columnParent {\r
+	display: flex;\r
+	padding: 15px 20px;\r
+	flex-wrap: wrap;\r
+	gap: 20px;\r
+}\r
+\r
+.columnParent {\r
+	white-space: normal;\r
+}\r
+\r
+.columnChild {\r
+	flex-grow: 1;\r
+	flex-basis: 0px;\r
+}\r
+\r
+/*#endregion */\r
+\r
+/*#region Banners */\r
+\r
+.obsidian-banner .lock-button {\r
+	display: none;\r
+}\r
+\r
+.obsidian-document:has(.obsidian-banner-wrapper) {\r
+	padding-top: 0 !important;\r
+}\r
+\r
+/*#endregion */\r
+\r
+/*#region Mind Map  */\r
+\r
+.obsidian-document:not([data-type='markdown']):has(.mm-mindmap) {\r
+	overflow-y: none;\r
+}\r
+\r
+.obsidian-document:not([data-type='markdown']) .mm-mindmap {\r
+	transform: scale(1);\r
+	translate: -4000px -4000px;\r
+	top: 70%;\r
+	left: 50%;\r
+	position: absolute;\r
+	overflow: hidden;\r
+	width: 100vw;\r
+}\r
+\r
+/*#endregion  */\r
 `;
 
 // src/assets/deferred.txt.js
-var deferred_txt_default = `async function loadIncludes()
-{
-	// replace include tags with the contents of the file
-	let includeTags = document.querySelectorAll("link[itemprop='include']");
-	for (const includeTag of includeTags)
-	{
-		let includePath = includeTag.getAttribute("href");
-
-		try
-		{
-			let includeText = "";
-			
-			if (includePath.startsWith("https:") || includePath.startsWith("http:") || window.location.protocol != "file:")
-			{
-				const request = await fetch(includePath);
-				if (!request.ok) 
-				{
-					console.log("Could not include file: " + includePath);
-					includeTag?.remove();
-					continue;
-				}
-				
-				includeText = await request.text();
-			}
-			else
-			{
-				const dataEl = document.getElementById(btoa(encodeURI(includePath)));
-				if (dataEl)
-				{
-					const data = JSON.parse(decodeURI(atob(dataEl.getAttribute("value") ?? "")));
-					includeText = data?.data ?? "";
-				}
-			}
-
-
-			let docFrag = document.createRange().createContextualFragment(includeText);
-			includeTag.before(docFrag);
-			includeTag.remove();
-
-			console.log("Included text: " + includeText);
-
-			console.log("Included file: " + includePath);
-		}
-		catch (e)
-		{
-			includeTag?.remove();
-			console.log("Could not include file: " + includePath, e);
-			continue;
-		}
-	}
-}
-
-document.addEventListener("DOMContentLoaded", () => 
-{
-	loadIncludes();
-});
-
-let isFileProtocol = location.protocol == "file:";
-
-function waitLoadScripts(scriptNames, callback)
-{
-	let scripts = scriptNames.map(name => document.getElementById(name + "-script"));
-
-	function loadNext(index)
-	{
-		let script = scripts[index];
-		let nextIndex = index + 1;
-		if (!script)
-		{
-			if (index < scripts.length)
-				loadNext(nextIndex);
-			else
-			{
-				callback();
-			}
-			return;
-		}
-
-		if (!script || script.getAttribute('loaded') == "true") // if already loaded 
-		{
-			if (index < scripts.length)
-				loadNext(nextIndex);
-		}
-		
-		if (index < scripts.length) 
-		{
-			script.addEventListener("load", () => loadNext(nextIndex));
-		}
-	}
-
-	loadNext(0);
-}
+var deferred_txt_default = `async function loadIncludes()\r
+{\r
+	// replace include tags with the contents of the file\r
+	let includeTags = document.querySelectorAll("link[itemprop='include']");\r
+	for (const includeTag of includeTags)\r
+	{\r
+		let includePath = includeTag.getAttribute("href");\r
+\r
+		try\r
+		{\r
+			let includeText = "";\r
+			\r
+			if (includePath.startsWith("https:") || includePath.startsWith("http:") || window.location.protocol != "file:")\r
+			{\r
+				const request = await fetch(includePath);\r
+				if (!request.ok) \r
+				{\r
+					console.log("Could not include file: " + includePath);\r
+					includeTag?.remove();\r
+					continue;\r
+				}\r
+				\r
+				includeText = await request.text();\r
+			}\r
+			else\r
+			{\r
+				const dataEl = document.getElementById(btoa(encodeURI(includePath)));\r
+				if (dataEl)\r
+				{\r
+					const data = JSON.parse(decodeURI(atob(dataEl.getAttribute("value") ?? "")));\r
+					includeText = data?.data ?? "";\r
+				}\r
+			}\r
+\r
+\r
+			let docFrag = document.createRange().createContextualFragment(includeText);\r
+			includeTag.before(docFrag);\r
+			includeTag.remove();\r
+\r
+			console.log("Included text: " + includeText);\r
+\r
+			console.log("Included file: " + includePath);\r
+		}\r
+		catch (e)\r
+		{\r
+			includeTag?.remove();\r
+			console.log("Could not include file: " + includePath, e);\r
+			continue;\r
+		}\r
+	}\r
+}\r
+\r
+document.addEventListener("DOMContentLoaded", () => \r
+{\r
+	loadIncludes();\r
+});\r
+\r
+let isFileProtocol = location.protocol == "file:";\r
+\r
+function waitLoadScripts(scriptNames, callback)\r
+{\r
+	let scripts = scriptNames.map(name => document.getElementById(name + "-script"));\r
+\r
+	function loadNext(index)\r
+	{\r
+		let script = scripts[index];\r
+		let nextIndex = index + 1;\r
+		if (!script)\r
+		{\r
+			if (index < scripts.length)\r
+				loadNext(nextIndex);\r
+			else\r
+			{\r
+				callback();\r
+			}\r
+			return;\r
+		}\r
+\r
+		if (!script || script.getAttribute('loaded') == "true") // if already loaded \r
+		{\r
+			if (index < scripts.length)\r
+				loadNext(nextIndex);\r
+		}\r
+		\r
+		if (index < scripts.length) \r
+		{\r
+			script.addEventListener("load", () => loadNext(nextIndex));\r
+		}\r
+	}\r
+\r
+	loadNext(0);\r
+}\r
 `;
 
 // src/assets/deferred.txt.css
-var deferred_txt_default2 = `/* Define default values for variables */
-body
-{
-    --line-width: 40em;
-    --line-width-adaptive: 40em;
-    --file-line-width: 40em;
-    --sidebar-width: min(20em, 80vw);
-    --collapse-arrow-size: 11px;
-    --tree-vertical-spacing: 1.3em;
-    --sidebar-margin: 12px;
-}
-
-:root
-{
-    background-color: #202124;
-}
-
-/*#region Sidebars */
-
-.sidebar {
-    height: 100%;
-    font-size: 14px;
-    z-index: 10;
-    min-width: calc(var(--sidebar-width) + var(--divider-width-hover));
-    max-width: calc(var(--sidebar-width) + var(--divider-width-hover));
-    position: relative;
-    overflow: hidden;
-    overflow: clip;
-
-    transition: min-width ease-in-out, max-width ease-in-out;
-    transition-duration: .2s;
-    contain: size;
-}
-
-#left-sidebar {
-    left: 0;
-}
-
-#right-sidebar {
-    right: 0;
-}
-
-.sidebar.is-collapsed {
-    min-width: 0;
-    max-width: 0;
-}
-
-.sidebar.floating {
-    position: absolute;
-}
-
-.sidebar .leaf-content {
-    height: 100%;
-    min-width: calc(var(--sidebar-width) - var(--divider-width-hover));
-    top: 0;
-    padding: var(--sidebar-margin);
-    padding-top: 4em;
-    line-height: var(--line-height-tight);
-    background-color: var(--background-secondary);
-    transition: background-color,border-right,border-left,box-shadow;
-    transition-duration: var(--color-fade-speed);
-    transition-timing-function: ease-in-out;
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-}
-
-/* If the sidebar isn't collapsed the content should have the same width as it */
-.sidebar:not(.is-collapsed) .leaf-content {
-    min-width: calc(max(100%,var(--sidebar-width)) - 3px);
-    max-width: calc(max(100%,var(--sidebar-width)) - 3px);
-}
-
-#left-sidebar-content
-{
-    left: 0;
-    border-top-right-radius: var(--radius-l);
-    border-bottom-right-radius: var(--radius-l);
-}
-
-#right-sidebar-content
-{
-    right: 0;
-    border-top-left-radius: var(--radius-l);
-    border-bottom-left-radius: var(--radius-l);
-}
-
-.sidebar #right-sidebar-content, .sidebar #left-sidebar-content
-{
-    contain: none !important;
-    container-type: normal !important;
-    animation: none !important;
-}
-
-/* Hide empty sidebars */
-.sidebar:has(.leaf-content:empty):has(.topbar-content:empty)
-{
-    display: none;
-}
-
-.sidebar-topbar {
-    height: calc(2.3em + 2 * var(--sidebar-margin));
-    width: var(--sidebar-width);
-    padding: var(--sidebar-margin);
-    z-index: 1;
-
-    position: fixed;
-    display: flex;
-    align-items: center;
-
-    transition: width ease-in-out;
-    transition-duration: inherit;
-}
-
-.sidebar.is-collapsed .sidebar-topbar {
-    width: calc(2.3em + var(--sidebar-margin) * 2);
-}
-
-.sidebar .sidebar-topbar.is-collapsed
-{
-    width: 0;
-}
-
-#left-sidebar .sidebar-topbar {
-    left: 0;
-    flex-direction: row;
-	border-top-right-radius: var(--radius-l);
-}
-
-#right-sidebar .sidebar-topbar {
-    right: 0;
-    flex-direction: row-reverse;
-	border-top-left-radius: var(--radius-l);
-}
-
-#left-sidebar .topbar-content {
-    margin-right: calc(2.3em + var(--sidebar-margin));
-    flex-direction: row;
-}
-
-#right-sidebar .topbar-content {
-    margin-left: calc(2.3em + var(--sidebar-margin));
-    flex-direction: row-reverse;
-}
-
-.topbar-content {
-    overflow: hidden visible;
-    overflow: clip visible;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    transition: inherit;
-}
-
-.sidebar.is-collapsed .topbar-content {
-    width: 0;
-    transition: inherit;
-}
-
-.clickable-icon.sidebar-collapse-icon {
-    background-color: transparent;
-    color: var(--icon-color-focused);
-    padding: 2px!important;
-    margin: 0!important;
-    height: 100%!important;
-    width: 2.3em !important;
-    margin-inline: 0.14em!important;
-    position: absolute;
-}
-
-#left-sidebar .clickable-icon.sidebar-collapse-icon {
-    transform: rotateY(180deg);
-    right: var(--sidebar-margin);
-}
-
-#right-sidebar .clickable-icon.sidebar-collapse-icon {
-    transform: rotateY(180deg);
-    left: var(--sidebar-margin);
-}
-
-.clickable-icon.sidebar-collapse-icon svg.svg-icon {
-    width: 100%;
-    height: 100%;
-}
-
-.feature-title {
-    margin-left: 1px;
-    text-transform: uppercase;
-    letter-spacing: .06em;
-    margin-top: 0.75em;
-    margin-bottom: 0.75em;
-}
-
-.feature-header
-{
-    display: flex;
-    align-items: center;
-    padding-top: 0;
-    font-size: 1em;
-    padding-left: 0;
-}
-
-body.floating-sidebars .sidebar
-{
-    position: absolute;
-}
-
-/*#endregion */
-
-/*#region Content / Markdown Preview View */
-
-body
-{
-    transition: background-color var(--color-fade-speed) ease-in-out;
-}
-
-#navbar:not(:empty)
-{
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	padding: 0.5em 1em;
-	width: 100%;
-}
-
-#main {
-	display: flex;
-	flex-direction: column;
-	height: 100%;
-	width: 100%;
-	align-items: stretch;
-	justify-content: center;
-}
-
-#main-horizontal {
-    display: flex;
-    flex-direction: row;
-	flex-grow: 1;
-    width: 100%;
-    align-items: stretch;
-    justify-content: center;
-}
-
-#center-content 
-{
-    flex-basis: 100%;
-    max-width: 100%;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: opacity 0.2s ease-in-out;
-    contain: inline-size;
-}
-
-.hide
-{
-    opacity: 0 !important;
-    transition: opacity 0.2s ease-in-out;
-    pointer-events: none;
-}
-
-#center-content>.obsidian-document 
-{
-    padding-left: 2em;
-    padding-right: 1em;
-    margin-bottom: 0;
-    width: 100%;
-    width: -webkit-fill-available;
-    width: -moz-available;
-    width: fill-available;
-    transition: background-color var(--color-fade-speed) ease-in-out;
-    border-top-right-radius: var(--window-radius, var(--radius-m));
-    border-top-left-radius: var(--window-radius, var(--radius-m));
-    overflow-x: hidden !important;
-    overflow-y: auto !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    contain: inline-size;
-}
-
-body #center-content>.obsidian-document>.markdown-preview-sizer 
-{
-    padding-bottom: 80vh;
-    width: 100%;
-    max-width: var(--line-width);
-    flex-basis: var(--line-width);
-    transition: background-color var(--color-fade-speed) ease-in-out;
-    contain: inline-size;
-}
-
-#center-content>.obsidian-document>div
-{
-    width: 100% !important;
-    transition: background-color var(--color-fade-speed) ease-in-out;
-    contain: inline-size;
-}
-
-/* If the markdown view is displaying a raw file or embed then increase it's size to make everything as large as possible */
-#center-content > .obsidian-document:not([data-type='markdown']).embed {
-    display: flex;
-    padding: 1em;
-    height: 100%;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-}
-
-#center-content > .obsidian-document:not([data-type='markdown']).embed > *
-{
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-}
-
-:not(h1,h2,h3,h4,h5,h6,li):has(> :is(.math, table)) 
-{
-    overflow-x: auto !important;
-}
-
-/* For custom view exports */
-#center-content > .obsidian-document:not([data-type='markdown'])
-{
-    overflow-x: auto;
-    contain: content;
-    padding: 0;
-    margin: 0;
-    height: 100%;
-}
-
-.obsidian-document[data-type="attachment"]
-{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
-}
-
-.obsidian-document[data-type="attachment"] > *
-{
-    outline: none;
-    border: none;
-    box-shadow: none;
-}
-
-.obsidian-document[data-type="attachment"] :is(img)
-{
-    max-width: 90%;
-    max-height: 90%;
-    object-fit: contain;
-}
-
-.obsidian-document[data-type="attachment"] > :is(audio)
-{
-    width: 100%;
-    max-width: min(90%, var(--line-width));
-}
-
-.obsidian-document[data-type="attachment"] > :is(embed, iframe, video)
-{
-    width: 100%;
-    height: 100%;
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-}
-
-.canvas-wrapper > :is(.header, .footer)
-{
-    z-index: 100;
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    width: 100%;
-    align-items: center;
-}
-
-/*#endregion */
-
-/*#region Loading */
-
-.scroll-highlight 
-{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 1000;
-    background-color: hsla(var(--color-accent-hsl),.25);
-    opacity: 0;
-    padding: 1em;
-    inset: 50%;
-    translate: -50% -50%;
-    border-radius: var(--radius-s);
-}
-
-/*#endregion */
+var deferred_txt_default2 = `/* Define default values for variables */\r
+body\r
+{\r
+    --line-width: 40em;\r
+    --line-width-adaptive: 40em;\r
+    --file-line-width: 40em;\r
+    --sidebar-width: min(20em, 80vw);\r
+    --collapse-arrow-size: 11px;\r
+    --tree-vertical-spacing: 1.3em;\r
+    --sidebar-margin: 12px;\r
+}\r
+\r
+:root\r
+{\r
+    background-color: #202124;\r
+}\r
+\r
+/*#region Sidebars */\r
+\r
+.sidebar {\r
+    height: 100%;\r
+    font-size: 14px;\r
+    z-index: 10;\r
+    min-width: calc(var(--sidebar-width) + var(--divider-width-hover));\r
+    max-width: calc(var(--sidebar-width) + var(--divider-width-hover));\r
+    position: relative;\r
+    overflow: hidden;\r
+    overflow: clip;\r
+\r
+    transition: min-width ease-in-out, max-width ease-in-out;\r
+    transition-duration: .2s;\r
+    contain: size;\r
+}\r
+\r
+#left-sidebar {\r
+    left: 0;\r
+}\r
+\r
+#right-sidebar {\r
+    right: 0;\r
+}\r
+\r
+.sidebar.is-collapsed {\r
+    min-width: 0;\r
+    max-width: 0;\r
+}\r
+\r
+.sidebar.floating {\r
+    position: absolute;\r
+}\r
+\r
+.sidebar .leaf-content {\r
+    height: 100%;\r
+    min-width: calc(var(--sidebar-width) - var(--divider-width-hover));\r
+    top: 0;\r
+    padding: var(--sidebar-margin);\r
+    padding-top: 4em;\r
+    line-height: var(--line-height-tight);\r
+    background-color: var(--background-secondary);\r
+    transition: background-color,border-right,border-left,box-shadow;\r
+    transition-duration: var(--color-fade-speed);\r
+    transition-timing-function: ease-in-out;\r
+    position: absolute;\r
+    display: flex;\r
+    flex-direction: column;\r
+}\r
+\r
+/* If the sidebar isn't collapsed the content should have the same width as it */\r
+.sidebar:not(.is-collapsed) .leaf-content {\r
+    min-width: calc(max(100%,var(--sidebar-width)) - 3px);\r
+    max-width: calc(max(100%,var(--sidebar-width)) - 3px);\r
+}\r
+\r
+#left-sidebar-content\r
+{\r
+    left: 0;\r
+    border-top-right-radius: var(--radius-l);\r
+    border-bottom-right-radius: var(--radius-l);\r
+}\r
+\r
+#right-sidebar-content\r
+{\r
+    right: 0;\r
+    border-top-left-radius: var(--radius-l);\r
+    border-bottom-left-radius: var(--radius-l);\r
+}\r
+\r
+.sidebar #right-sidebar-content, .sidebar #left-sidebar-content\r
+{\r
+    contain: none !important;\r
+    container-type: normal !important;\r
+    animation: none !important;\r
+}\r
+\r
+/* Hide empty sidebars */\r
+.sidebar:has(.leaf-content:empty):has(.topbar-content:empty)\r
+{\r
+    display: none;\r
+}\r
+\r
+.sidebar-topbar {\r
+    height: calc(2.3em + 2 * var(--sidebar-margin));\r
+    width: var(--sidebar-width);\r
+    padding: var(--sidebar-margin);\r
+    z-index: 1;\r
+\r
+    position: fixed;\r
+    display: flex;\r
+    align-items: center;\r
+\r
+    transition: width ease-in-out;\r
+    transition-duration: inherit;\r
+}\r
+\r
+.sidebar.is-collapsed .sidebar-topbar {\r
+    width: calc(2.3em + var(--sidebar-margin) * 2);\r
+}\r
+\r
+.sidebar .sidebar-topbar.is-collapsed\r
+{\r
+    width: 0;\r
+}\r
+\r
+#left-sidebar .sidebar-topbar {\r
+    left: 0;\r
+    flex-direction: row;\r
+	border-top-right-radius: var(--radius-l);\r
+}\r
+\r
+#right-sidebar .sidebar-topbar {\r
+    right: 0;\r
+    flex-direction: row-reverse;\r
+	border-top-left-radius: var(--radius-l);\r
+}\r
+\r
+#left-sidebar .topbar-content {\r
+    margin-right: calc(2.3em + var(--sidebar-margin));\r
+    flex-direction: row;\r
+}\r
+\r
+#right-sidebar .topbar-content {\r
+    margin-left: calc(2.3em + var(--sidebar-margin));\r
+    flex-direction: row-reverse;\r
+}\r
+\r
+.topbar-content {\r
+    overflow: hidden visible;\r
+    overflow: clip visible;\r
+    width: 100%;\r
+    height: 100%;\r
+    display: flex;\r
+    align-items: center;\r
+    transition: inherit;\r
+}\r
+\r
+.sidebar.is-collapsed .topbar-content {\r
+    width: 0;\r
+    transition: inherit;\r
+}\r
+\r
+.clickable-icon.sidebar-collapse-icon {\r
+    background-color: transparent;\r
+    color: var(--icon-color-focused);\r
+    padding: 2px!important;\r
+    margin: 0!important;\r
+    height: 100%!important;\r
+    width: 2.3em !important;\r
+    margin-inline: 0.14em!important;\r
+    position: absolute;\r
+}\r
+\r
+#left-sidebar .clickable-icon.sidebar-collapse-icon {\r
+    transform: rotateY(180deg);\r
+    right: var(--sidebar-margin);\r
+}\r
+\r
+#right-sidebar .clickable-icon.sidebar-collapse-icon {\r
+    transform: rotateY(180deg);\r
+    left: var(--sidebar-margin);\r
+}\r
+\r
+.clickable-icon.sidebar-collapse-icon svg.svg-icon {\r
+    width: 100%;\r
+    height: 100%;\r
+}\r
+\r
+.feature-title {\r
+    margin-left: 1px;\r
+    text-transform: uppercase;\r
+    letter-spacing: .06em;\r
+    margin-top: 0.75em;\r
+    margin-bottom: 0.75em;\r
+}\r
+\r
+.feature-header\r
+{\r
+    display: flex;\r
+    align-items: center;\r
+    padding-top: 0;\r
+    font-size: 1em;\r
+    padding-left: 0;\r
+}\r
+\r
+body.floating-sidebars .sidebar\r
+{\r
+    position: absolute;\r
+}\r
+\r
+/*#endregion */\r
+\r
+/*#region Content / Markdown Preview View */\r
+\r
+body\r
+{\r
+    transition: background-color var(--color-fade-speed) ease-in-out;\r
+}\r
+\r
+#navbar:not(:empty)\r
+{\r
+	display: flex;\r
+	align-items: center;\r
+	justify-content: space-between;\r
+	padding: 0.5em 1em;\r
+	width: 100%;\r
+}\r
+\r
+#main {\r
+	display: flex;\r
+	flex-direction: column;\r
+	height: 100%;\r
+	width: 100%;\r
+	align-items: stretch;\r
+	justify-content: center;\r
+}\r
+\r
+#main-horizontal {\r
+    display: flex;\r
+    flex-direction: row;\r
+	flex-grow: 1;\r
+    width: 100%;\r
+    align-items: stretch;\r
+    justify-content: center;\r
+}\r
+\r
+#center-content \r
+{\r
+    flex-basis: 100%;\r
+    max-width: 100%;\r
+    width: 100%;\r
+    height: 100%;\r
+    display: flex;\r
+    flex-direction: column;\r
+    align-items: center;\r
+    transition: opacity 0.2s ease-in-out;\r
+    contain: inline-size;\r
+}\r
+\r
+.hide\r
+{\r
+    opacity: 0 !important;\r
+    transition: opacity 0.2s ease-in-out;\r
+    pointer-events: none;\r
+}\r
+\r
+#center-content>.obsidian-document \r
+{\r
+    padding-left: 2em;\r
+    padding-right: 1em;\r
+    margin-bottom: 0;\r
+    width: 100%;\r
+    width: -webkit-fill-available;\r
+    width: -moz-available;\r
+    width: fill-available;\r
+    transition: background-color var(--color-fade-speed) ease-in-out;\r
+    border-top-right-radius: var(--window-radius, var(--radius-m));\r
+    border-top-left-radius: var(--window-radius, var(--radius-m));\r
+    overflow-x: hidden !important;\r
+    overflow-y: auto !important;\r
+    display: flex !important;\r
+    flex-direction: column !important;\r
+    align-items: center !important;\r
+    contain: inline-size;\r
+}\r
+\r
+body #center-content>.obsidian-document>.markdown-preview-sizer \r
+{\r
+    padding-bottom: 80vh;\r
+    width: 100%;\r
+    max-width: var(--line-width);\r
+    flex-basis: var(--line-width);\r
+    transition: background-color var(--color-fade-speed) ease-in-out;\r
+    contain: inline-size;\r
+}\r
+\r
+#center-content>.obsidian-document>div\r
+{\r
+    width: 100% !important;\r
+    transition: background-color var(--color-fade-speed) ease-in-out;\r
+    contain: inline-size;\r
+}\r
+\r
+/* If the markdown view is displaying a raw file or embed then increase it's size to make everything as large as possible */\r
+#center-content > .obsidian-document:not([data-type='markdown']).embed {\r
+    display: flex;\r
+    padding: 1em;\r
+    height: 100%;\r
+    width: 100%;\r
+    align-items: center;\r
+    justify-content: center;\r
+}\r
+\r
+#center-content > .obsidian-document:not([data-type='markdown']).embed > *\r
+{\r
+    max-width: 100%;\r
+    max-height: 100%;\r
+    object-fit: contain;\r
+}\r
+\r
+:not(h1,h2,h3,h4,h5,h6,li):has(> :is(.math, table)) \r
+{\r
+    overflow-x: auto !important;\r
+}\r
+\r
+/* For custom view exports */\r
+#center-content > .obsidian-document:not([data-type='markdown'])\r
+{\r
+    overflow-x: auto;\r
+    contain: content;\r
+    padding: 0;\r
+    margin: 0;\r
+    height: 100%;\r
+}\r
+\r
+.obsidian-document[data-type="attachment"]\r
+{\r
+    display: flex;\r
+    flex-direction: column;\r
+    align-items: center;\r
+    justify-content: center;\r
+    height: 100%;\r
+    width: 100%;\r
+}\r
+\r
+.obsidian-document[data-type="attachment"] > *\r
+{\r
+    outline: none;\r
+    border: none;\r
+    box-shadow: none;\r
+}\r
+\r
+.obsidian-document[data-type="attachment"] :is(img)\r
+{\r
+    max-width: 90%;\r
+    max-height: 90%;\r
+    object-fit: contain;\r
+}\r
+\r
+.obsidian-document[data-type="attachment"] > :is(audio)\r
+{\r
+    width: 100%;\r
+    max-width: min(90%, var(--line-width));\r
+}\r
+\r
+.obsidian-document[data-type="attachment"] > :is(embed, iframe, video)\r
+{\r
+    width: 100%;\r
+    height: 100%;\r
+    max-width: 100%;\r
+    max-height: 100%;\r
+    object-fit: contain;\r
+}\r
+\r
+.canvas-wrapper > :is(.header, .footer)\r
+{\r
+    z-index: 100;\r
+    position: absolute;\r
+    display: flex;\r
+    justify-content: center;\r
+    flex-direction: column;\r
+    width: 100%;\r
+    align-items: center;\r
+}\r
+\r
+/*#endregion */\r
+\r
+/*#region Loading */\r
+\r
+.scroll-highlight \r
+{\r
+    position: absolute;\r
+    width: 100%;\r
+    height: 100%;\r
+    pointer-events: none;\r
+    z-index: 1000;\r
+    background-color: hsla(var(--color-accent-hsl),.25);\r
+    opacity: 0;\r
+    padding: 1em;\r
+    inset: 50%;\r
+    translate: -50% -50%;\r
+    border-radius: var(--radius-s);\r
+}\r
+\r
+/*#endregion */\r
 `;
 
 // src/assets/theme-load.txt.js
-var theme_load_txt_default = 'let theme = localStorage.getItem("theme") || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");\nif (theme == "dark")\n{\n	document.body.classList.add("theme-dark");\n	document.body.classList.remove("theme-light");\n}\nelse\n{\n	document.body.classList.add("theme-light");\n	document.body.classList.remove("theme-dark");\n}\n\nif (window.innerWidth < 480) document.body.classList.add("is-phone");\nelse if (window.innerWidth < 768) document.body.classList.add("is-tablet");\nelse if (window.innerWidth < 1024) document.body.classList.add("is-small-screen");\nelse document.body.classList.add("is-large-screen");\n';
+var theme_load_txt_default = 'let theme = localStorage.getItem("theme") || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");\r\nif (theme == "dark")\r\n{\r\n	document.body.classList.add("theme-dark");\r\n	document.body.classList.remove("theme-light");\r\n}\r\nelse\r\n{\r\n	document.body.classList.add("theme-light");\r\n	document.body.classList.remove("theme-dark");\r\n}\r\n\r\nif (window.innerWidth < 480) document.body.classList.add("is-phone");\r\nelse if (window.innerWidth < 768) document.body.classList.add("is-tablet");\r\nelse if (window.innerWidth < 1024) document.body.classList.add("is-small-screen");\r\nelse document.body.classList.add("is-large-screen");\r\n';
 
 // src/plugin/utils/path.ts
 var import_fs = require("fs");
@@ -72370,7 +72370,7 @@ var IncludeGenerator = class {
 var import_obsidian7 = require("obsidian");
 
 // src/assets/third-party-styles-blacklist.txt
-var third_party_styles_blacklist_default = "advanced-pdf-export\ncustom-classes\nfile-tree-alternative\nhomepage\nOA-file-hider\nobsidian-asciimath\nobsidian-discordrpc\nobsidian-dynamic-background\nobsidian-dynamic-toc\nobsidian-excel-to-markdown-table\nobsidian-full-calendar\nobsidian-graphviz\nobsidian-latex\nobsidian-latex-suite\nobsidian-minimal-settings\nobsidian-plantuml\nobsidian-prozen\nobsidian-statusbar-pomo\nobsidian-style-settings\nobsidian-underline\nsettings-search\nsurfing\ntable-editor-obsidian\ntext-snippets-obsidian\nwebpage-html-export\nlapel\nobsidian-regex-replace\ntemplater-obsidian\nediting-toolbar\nobsidian-admonition\nobsidian-banners\nobsidian-charts\nobsidian-excalidraw-plugin\nobsidian42-brat\nobsidian-icon-folder\nvscode-editor\n";
+var third_party_styles_blacklist_default = "advanced-pdf-export\r\ncustom-classes\r\nfile-tree-alternative\r\nhomepage\r\nOA-file-hider\r\nobsidian-asciimath\r\nobsidian-discordrpc\r\nobsidian-dynamic-background\r\nobsidian-dynamic-toc\r\nobsidian-excel-to-markdown-table\r\nobsidian-full-calendar\r\nobsidian-graphviz\r\nobsidian-latex\r\nobsidian-latex-suite\r\nobsidian-minimal-settings\r\nobsidian-plantuml\r\nobsidian-prozen\r\nobsidian-statusbar-pomo\r\nobsidian-style-settings\r\nobsidian-underline\r\nsettings-search\r\nsurfing\r\ntable-editor-obsidian\r\ntext-snippets-obsidian\r\nwebpage-html-export\r\nlapel\r\nobsidian-regex-replace\r\ntemplater-obsidian\r\nediting-toolbar\r\nobsidian-admonition\r\nobsidian-banners\r\nobsidian-charts\r\nobsidian-excalidraw-plugin\r\nobsidian42-brat\r\nobsidian-icon-folder\r\nvscode-editor\r\n";
 
 // src/plugin/render-api/api-options.ts
 var MarkdownRendererOptions = class {
@@ -75477,7 +75477,7 @@ AssetLoader.replacements = {
 };
 
 // src/assets/obsidian-styles.txt.css
-var obsidian_styles_txt_default = ".obsidian-document .heading-collapse-indicator \n{\n    margin-left: calc( 0px - var(--collapse-arrow-size) - 10px) !important;\n    padding: 0px 0px !important;\n}\n\n.node-insert-event \n{\n    animation-duration: unset !important;\n    animation-name: none !important;\n}\n\nhr\n{\n    border: none;\n	border-top: var(--hr-thickness) solid;\n    border-color: var(--hr-color);\n}\n\nh1:hover .collapse-indicator, h2:hover .collapse-indicator, h3:hover .collapse-indicator, h4:hover .collapse-indicator, h5:hover .collapse-indicator, h6:hover .collapse-indicator, .collapse-indicator:hover, .is-collapsed .collapse-indicator, .cm-fold-indicator.is-collapsed .collapse-indicator, .cm-gutterElement:hover .collapse-indicator, .cm-gutterElement .is-collapsed .collapse-indicator, .cm-line:hover .cm-fold-indicator .collapse-indicator, .fold-gutter.is-collapsed, .fold-gutter:hover, .metadata-properties-heading:hover .collapse-indicator {\n    opacity: 1;\n	transition: opacity 0.15s ease-in-out;\n}\n\n.collapse-indicator, .fold-gutter\n{\n	opacity: 0;\n	transition: opacity 0.15s ease-in-out;\n}\n\n@media print \n{\n    html body > :not(.print) \n    {\n        display: unset !important;\n    }\n\n    .collapse-indicator\n    {\n        display: none !important;\n    }\n\n    .is-collapsed > element > .collapse-indicator\n    {\n        display: unset !important;\n    }\n}\n\n/*#region Misc Hiding */\n\n.mod-header .metadata-container\n{\n	display: none !important;\n}\n\n.canvas-empty-embed-action-list\n{\n	display: none !important;\n}\n\n/*#endregion */\n\n/*#region Transclusions */\n\n.markdown-embed .heading-collapse-indicator {\n    translate: -1em 0;\n}\n\n.markdown-embed.internal-embed.inline-embed .markdown-embed-content,\n.markdown-embed.internal-embed.inline-embed .markdown-embed-content .obsidian-document\n{\n	overflow: visible !important;\n}\n\n.markdown-embed-link\n{\n	display: none !important;\n}\n\n/*#endregion  */\n\n/*#region Canvas */\n\n.canvas-wrapper:not(.mod-readonly) .canvas-node-content.markdown-embed>.markdown-embed-content>.obsidian-document\n{\n	user-select: text !important;\n}\n\n.canvas-card-menu {\n	display: none;\n	cursor: default !important;\n\n}\n\n.canvas-controls {\n	display: none;\n	cursor: default !important;\n\n}\n\n.canvas-background\n{\n	pointer-events: visible !important;\n	cursor: grab !important;\n}\n\n.canvas-background:active\n{\n	cursor: grabbing !important;\n}\n\n.canvas-node-connection-point \n{\n	display: none;\n	cursor: default !important;\n\n}\n\n.canvas-node-content\n{\n	backface-visibility: visible !important;\n}\n\n.canvas-menu-container {\n	display: none;\n}\n\n.canvas-node-content-blocker\n{\n	cursor: pointer !important;\n}\n\n.canvas-wrapper\n{\n	position: relative;\n	cursor: default !important;\n}\n\n.canvas-node-resizer\n{\n	cursor: default !important;\n}\n\n.canvas-node-container\n{\n	cursor: default !important;\n}\n\n.canvas-node .obsidian-document.is-readable-line-width .markdown-preview-sizer {\n    max-width: 100%;\n    margin-left: unset;\n    margin-right: unset;\n}\n\n/*#endregion */\n\n/*#region Code Copy */\n\n/* Make code block copy button fade in and out */\n.markdown-rendered pre:not(:hover) > button.copy-code-button\n{\n	display: unset;\n	opacity: 0;\n}\n\n.markdown-rendered pre:hover > button.copy-code-button\n{\n	opacity: 1;\n}\n\n.markdown-rendered pre button.copy-code-button\n{\n	transition: opacity 0.2s ease-in-out, width 0.3s ease-in-out, background-color 0.2s ease-in-out;\n	text-overflow: clip;\n}\n\n.markdown-rendered pre > button.copy-code-button:hover\n{\n	background-color: var(--interactive-normal);\n}\n\n.markdown-rendered pre > button.copy-code-button:active\n{\n	background-color: var(--interactive-hover);\n	box-shadow: var(--input-shadow);\n	transition: none;\n}\n\n/*#endregion */\n\n/*#region Lists */\n\n#main-horizontal .is-collapsed .list-collapse-indicator svg.svg-icon, \n#main-horizontal .is-collapsed .collapse-indicator svg.svg-icon\n{\n	color: var(--collapse-icon-color-collapsed);\n}\n\n/*#endregion */\n";
+var obsidian_styles_txt_default = ".obsidian-document .heading-collapse-indicator \r\n{\r\n    margin-left: calc( 0px - var(--collapse-arrow-size) - 10px) !important;\r\n    padding: 0px 0px !important;\r\n}\r\n\r\n.node-insert-event \r\n{\r\n    animation-duration: unset !important;\r\n    animation-name: none !important;\r\n}\r\n\r\nhr\r\n{\r\n    border: none;\r\n	border-top: var(--hr-thickness) solid;\r\n    border-color: var(--hr-color);\r\n}\r\n\r\nh1:hover .collapse-indicator, h2:hover .collapse-indicator, h3:hover .collapse-indicator, h4:hover .collapse-indicator, h5:hover .collapse-indicator, h6:hover .collapse-indicator, .collapse-indicator:hover, .is-collapsed .collapse-indicator, .cm-fold-indicator.is-collapsed .collapse-indicator, .cm-gutterElement:hover .collapse-indicator, .cm-gutterElement .is-collapsed .collapse-indicator, .cm-line:hover .cm-fold-indicator .collapse-indicator, .fold-gutter.is-collapsed, .fold-gutter:hover, .metadata-properties-heading:hover .collapse-indicator {\r\n    opacity: 1;\r\n	transition: opacity 0.15s ease-in-out;\r\n}\r\n\r\n.collapse-indicator, .fold-gutter\r\n{\r\n	opacity: 0;\r\n	transition: opacity 0.15s ease-in-out;\r\n}\r\n\r\n@media print \r\n{\r\n    html body > :not(.print) \r\n    {\r\n        display: unset !important;\r\n    }\r\n\r\n    .collapse-indicator\r\n    {\r\n        display: none !important;\r\n    }\r\n\r\n    .is-collapsed > element > .collapse-indicator\r\n    {\r\n        display: unset !important;\r\n    }\r\n}\r\n\r\n/*#region Misc Hiding */\r\n\r\n.mod-header .metadata-container\r\n{\r\n	display: none !important;\r\n}\r\n\r\n.canvas-empty-embed-action-list\r\n{\r\n	display: none !important;\r\n}\r\n\r\n/*#endregion */\r\n\r\n/*#region Transclusions */\r\n\r\n.markdown-embed .heading-collapse-indicator {\r\n    translate: -1em 0;\r\n}\r\n\r\n.markdown-embed.internal-embed.inline-embed .markdown-embed-content,\r\n.markdown-embed.internal-embed.inline-embed .markdown-embed-content .obsidian-document\r\n{\r\n	overflow: visible !important;\r\n}\r\n\r\n.markdown-embed-link\r\n{\r\n	display: none !important;\r\n}\r\n\r\n/*#endregion  */\r\n\r\n/*#region Canvas */\r\n\r\n.canvas-wrapper:not(.mod-readonly) .canvas-node-content.markdown-embed>.markdown-embed-content>.obsidian-document\r\n{\r\n	user-select: text !important;\r\n}\r\n\r\n.canvas-card-menu {\r\n	display: none;\r\n	cursor: default !important;\r\n\r\n}\r\n\r\n.canvas-controls {\r\n	display: none;\r\n	cursor: default !important;\r\n\r\n}\r\n\r\n.canvas-background\r\n{\r\n	pointer-events: visible !important;\r\n	cursor: grab !important;\r\n}\r\n\r\n.canvas-background:active\r\n{\r\n	cursor: grabbing !important;\r\n}\r\n\r\n.canvas-node-connection-point \r\n{\r\n	display: none;\r\n	cursor: default !important;\r\n\r\n}\r\n\r\n.canvas-node-content\r\n{\r\n	backface-visibility: visible !important;\r\n}\r\n\r\n.canvas-menu-container {\r\n	display: none;\r\n}\r\n\r\n.canvas-node-content-blocker\r\n{\r\n	cursor: pointer !important;\r\n}\r\n\r\n.canvas-wrapper\r\n{\r\n	position: relative;\r\n	cursor: default !important;\r\n}\r\n\r\n.canvas-node-resizer\r\n{\r\n	cursor: default !important;\r\n}\r\n\r\n.canvas-node-container\r\n{\r\n	cursor: default !important;\r\n}\r\n\r\n.canvas-node .obsidian-document.is-readable-line-width .markdown-preview-sizer {\r\n    max-width: 100%;\r\n    margin-left: unset;\r\n    margin-right: unset;\r\n}\r\n\r\n/*#endregion */\r\n\r\n/*#region Code Copy */\r\n\r\n/* Make code block copy button fade in and out */\r\n.markdown-rendered pre:not(:hover) > button.copy-code-button\r\n{\r\n	display: unset;\r\n	opacity: 0;\r\n}\r\n\r\n.markdown-rendered pre:hover > button.copy-code-button\r\n{\r\n	opacity: 1;\r\n}\r\n\r\n.markdown-rendered pre button.copy-code-button\r\n{\r\n	transition: opacity 0.2s ease-in-out, width 0.3s ease-in-out, background-color 0.2s ease-in-out;\r\n	text-overflow: clip;\r\n}\r\n\r\n.markdown-rendered pre > button.copy-code-button:hover\r\n{\r\n	background-color: var(--interactive-normal);\r\n}\r\n\r\n.markdown-rendered pre > button.copy-code-button:active\r\n{\r\n	background-color: var(--interactive-hover);\r\n	box-shadow: var(--input-shadow);\r\n	transition: none;\r\n}\r\n\r\n/*#endregion */\r\n\r\n/*#region Lists */\r\n\r\n#main-horizontal .is-collapsed .list-collapse-indicator svg.svg-icon, \r\n#main-horizontal .is-collapsed .collapse-indicator svg.svg-icon\r\n{\r\n	color: var(--collapse-icon-color-collapsed);\r\n}\r\n\r\n/*#endregion */\r\n";
 
 // src/plugin/asset-loaders/obsidian-styles.ts
 var _ObsidianStyles = class extends AssetLoader {
@@ -78762,8 +78762,10 @@ var FileTree = class extends Tree {
           currentParentNode.originalExtension = file.extensionName;
           if (!this.keepOriginalExtensions && MarkdownRendererAPI.isConvertable(targetPath.extensionName))
             targetPath.setExtension("html");
-          if (tfile)
+          if (tfile) {
             currentParentNode.title = (await _MarkdownRendererInternal.getTitleForFile(tfile)).title;
+            currentParentNode.icon = (await _MarkdownRendererInternal.getIconForFile(tfile)).icon;
+          }
         }
         currentParentNode.href = targetPath.path;
       }
@@ -82122,6 +82124,9 @@ var _HTMLExportPlugin = class extends import_obsidian12.Plugin {
   async exportDocker() {
     await HTMLExporter.export(true, void 0, new Path("/output"));
   }
+  async exportVault(path) {
+    await HTMLExporter.exportVault(new Path(path), true, false);
+  }
   async onload() {
     console.log("Loading webpage-html-export plugin");
     this.checkForUpdates();
@@ -82241,5 +82246,3 @@ HTMLExportPlugin.pluginVersion = "0.0.0";
  * MIT Licensed
  */
 /*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
-
-/* nosourcemap */

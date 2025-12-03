@@ -1,0 +1,5 @@
+command:
+- convert
+config_path: html-config.yml
+literals:
+  -i: html-config.yml

@@ -33,6 +33,8 @@
           - name: Build from quartz
             run: npx quartz build -d ../vault -o ../output
             working-directory: ./quartz
+          - name: Copy favicon
+            run: cp ./vault/attachments/favicon.ico ./output/favicon.ico
           - name: Upload artifact
             uses: actions/upload-artifact@v4
             with:

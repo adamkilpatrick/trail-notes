@@ -14,7 +14,7 @@
               "type": "markdown",
               "state": {
                 "file": "index.md",
-                "mode": "preview",
+                "mode": "source",
                 "source": false,
                 "backlinks": true,
                 "backlinkOpts": {
@@ -193,12 +193,12 @@
   },
   "active": "d52e7bb7e28989dd",
   "lastOpenFiles": [
+    "Misc/Tech.md",
     "index.md",
     "Test.md",
+    "Misc/Contact.md",
     "snowAlone.png",
     "TestFolder/TestNestedNote.md",
-    "Misc/Tech.md",
-    "Misc/Contact.md",
     "New folder",
     "output/misc/tech.html",
     "output/misc/contact.html",

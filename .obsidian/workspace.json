@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "index.md",
+                "file": "Misc/Tech.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "index"
+              "title": "Tech"
             }
           }
         ]
@@ -191,11 +191,13 @@
       "webpage-html-export:Export as HTML": false
     }
   },
-  "active": "d52e7bb7e28989dd",
+  "active": "eea94c262c59077f",
   "lastOpenFiles": [
-    "Misc/Tech.md",
-    "index.md",
+    "attachments/icon.png",
+    "attachments/snowAlone.png",
     "Test.md",
+    "index.md",
+    "Misc/Tech.md",
     "Misc/Contact.md",
     "snowAlone.png",
     "TestFolder/TestNestedNote.md",

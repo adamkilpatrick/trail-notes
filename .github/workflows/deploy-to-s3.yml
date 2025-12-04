@@ -35,6 +35,8 @@
             working-directory: ./quartz
           - name: Copy favicon
             run: cp ./vault/attachments/favicon.ico ./output/favicon.ico
+          - name: Copy icon
+            run: cp ./vault/attachments/icon.png ./output/static/icon.png
           - name: Upload artifact
             uses: actions/upload-artifact@v4
             with:

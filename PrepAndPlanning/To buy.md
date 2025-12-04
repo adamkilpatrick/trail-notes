@@ -1,0 +1,5 @@
+- [ ] Outer jacket
+- [ ] Non shit sleeping pad
+- [ ] Dry bag
+- [ ] Poles
+- [ ] Lighter tarp

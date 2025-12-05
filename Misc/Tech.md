@@ -39,3 +39,9 @@ Going from the Obsidian assets to a static site was more of a pain than I expect
 Hosting is real straightforward. Static site lives in an S3 bucket and I point a CloudFront distribution at it so I can get some caching and ability to do some route tweaking. The infra code for that all lives at [adamkilpatrick/trail-notes-infra](https://github.com/adamkilpatrick/trail-notes-infra). This probably costs me 60 cents a month or something, as opposed to the 0 it would cost living in my VPS or in GitHub pages, or in Vercel, whatever, money isn't real.
 
 Overall this setup seems to be working pretty well and hasn't fallen apart after 48 hours which, for any kind of software project, is pretty satisfying and unexpected.
+
+
+## ToDo
+- [ ] Wire in dead man switch
+	- [ ] Expose last check in time
+- [ ] Add location tracking

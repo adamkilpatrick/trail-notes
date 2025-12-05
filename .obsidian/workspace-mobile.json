@@ -13,8 +13,8 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "index.md",
-                "mode": "preview",
+                "file": "PrepAndPlanning/TestRuns/SanMarin/init.md",
+                "mode": "source",
                 "source": false,
                 "backlinks": true,
                 "backlinkOpts": {
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "index"
+              "title": "init"
             }
           }
         ]
@@ -167,9 +167,14 @@
   },
   "active": "7c3114f9ac5c68c2",
   "lastOpenFiles": [
+    "Misc/Tech.md",
+    "PrepAndPlanning/TestRuns/SanMarin/init.md",
+    "PrepAndPlanning/To-do.md",
+    "index.md",
+    "PrepAndPlanning/TestRuns/SanMarin",
+    "PrepAndPlanning/TestRuns",
     "PrepAndPlanning/Schedule.md",
     "PrepAndPlanning/To buy.md",
-    "index.md",
     "PrepAndPlanning"
   ]
 }

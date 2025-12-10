@@ -13,9 +13,9 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "PrepAndPlanning/TestRuns/SanMarin/init.md",
-                "mode": "source",
-                "source": false,
+                "file": "Test.md",
+                "mode": "preview",
+                "source": true,
                 "backlinks": true,
                 "backlinkOpts": {
                   "collapseAll": false,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "init"
+              "title": "Test"
             }
           }
         ]
@@ -167,8 +167,10 @@
   },
   "active": "7c3114f9ac5c68c2",
   "lastOpenFiles": [
-    "Misc/Tech.md",
+    "attachments/PXL_20240907_223023809.jpg",
     "PrepAndPlanning/TestRuns/SanMarin/init.md",
+    "Test.md",
+    "Misc/Tech.md",
     "PrepAndPlanning/To-do.md",
     "index.md",
     "PrepAndPlanning/TestRuns/SanMarin",

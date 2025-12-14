@@ -2,4 +2,4 @@
 - [ ] Non shit sleeping pad
 - [ ] Dry bag
 - [ ] Poles
-- [ ] Lighter tarp
+- [x] Lighter tarp

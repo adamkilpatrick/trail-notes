@@ -1,0 +1,42 @@
+<html>
+    <head>
+         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+      <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+    </head>
+    <body style="height: 100%;">
+         <div id="map" style="height: 100%; width: 100%;"></div>
+         <script>
+            const hashString = window.location.hash.substring(1);
+            // Ugh Quartz or something is screwing with the ability to pass in hash prefixed url params which breaks so much of this so I have to do this hack
+            const pathParam = hashString.split('_')[0];
+
+            if (!pathParam) {
+                document.body.innerHTML = '<p>Error: No path parameter provided</p>';
+            } else {
+                fetch(`/paths/${pathParam}.json`)
+                    .then(response => response.json())
+                    .then(pathPayload => {
+                        const path = pathPayload.path;
+                        const latestPoint = path[path.length-1].loc;
+                        var map = L.map('map').setView(latestPoint, 13);
+                        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                            maxZoom: 19,
+                            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                        }).addTo(map);
+                        L.polyline(path.map(x=>x.loc)).addTo(map);
+                        path.forEach(point => {
+                            const marker = L.marker(point.loc).addTo(map);
+                            marker.bindPopup(point.label);
+                        });
+                    })
+                    .catch(error => {
+                        document.body.innerHTML = `<p>Error loading path data: ${error.message}</p>`;
+                    });
+            }
+         </script>
+    </body>
+</html>

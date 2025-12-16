@@ -1,0 +1,17 @@
+{   
+    "root": "PrepAndPlanning/TestRuns/SanMarin",
+    "path": [
+        {
+            "loc": [30.4021,-97.7191],
+            "label": "Foo"
+        },
+        {
+            "loc": [30.4030, -97.7186],
+            "label": "Bar"
+        },
+        {
+            "loc": [30.40043608510201, -97.70383303373029],
+            "label": "Baz"
+        }
+    ]
+}

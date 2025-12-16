@@ -13,9 +13,9 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Misc/Tech.md",
+                "file": "PrepAndPlanning/TestRuns/SanMarin/2025-12-13.md",
                 "mode": "source",
-                "source": false,
+                "source": true,
                 "backlinks": true,
                 "backlinkOpts": {
                   "collapseAll": false,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Tech"
+              "title": "2025-12-13"
             }
           }
         ]
@@ -188,29 +188,36 @@
       "command-palette:Open command palette": false,
       "bases:Create new base": false,
       "obsidian-git:Open Git source control": false,
-      "webpage-html-export:Export as HTML": false
+      "webpage-html-export:Export as HTML": false,
+      "templater-obsidian:Templater": false
     }
   },
-  "active": "eea94c262c59077f",
+  "active": "d52e7bb7e28989dd",
   "lastOpenFiles": [
+    "paths/test.json",
+    "paths/test",
+    "paths",
+    "htmlTemplates/mapPath.html",
+    "htmlTemplates",
+    "templates/templater",
+    "templates/geoplop.js",
+    "templates",
+    "New folder",
+    "PrepAndPlanning/TestRuns/SanMarin/2025-12-13.md",
+    "attachments/2024-resupply-options.pdf",
+    "PrepAndPlanning/TestRuns/SanMarin/init.md",
+    "PrepAndPlanning/TestRuns/SanMarin",
+    "PrepAndPlanning/To-do.md",
+    "PrepAndPlanning/To buy.md",
+    "PrepAndPlanning/Schedule.md",
+    "Misc/Tech.md",
     "attachments/icon.png",
     "attachments/snowAlone.png",
     "Test.md",
     "index.md",
-    "Misc/Tech.md",
     "Misc/Contact.md",
     "snowAlone.png",
     "TestFolder/TestNestedNote.md",
-    "New folder",
-    "output/misc/tech.html",
-    "output/misc/contact.html",
-    "output/misc",
-    "Misc",
-    "Prep",
-    "Gear",
-    "output/testfolder/testnestednote.html",
-    "output/testfolder",
-    "TestFolder",
     "output/snowalone.png",
     "output/output/site-lib/media/favicon.png",
     "InvioDocs/Introduction.md",

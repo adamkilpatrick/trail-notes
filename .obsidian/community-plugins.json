@@ -2,5 +2,6 @@
   "obsidian-git",
   "webpage-html-export",
   "dataview",
-  "dataview-serializer"
+  "dataview-serializer",
+  "templater-obsidian"
 ]

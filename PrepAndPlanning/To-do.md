@@ -1,1 +1,4 @@
 - [ ] Black out at whole foods bar
+- [ ] automate location flow
+- [ ] catalog initial gear
+- [ ] test some more image stuff

@@ -13,9 +13,9 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Test.md",
-                "mode": "preview",
-                "source": true,
+                "file": "PrepAndPlanning/TestRuns/SanMarin/2015-12-22.md",
+                "mode": "source",
+                "source": false,
                 "backlinks": true,
                 "backlinkOpts": {
                   "collapseAll": false,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Test"
+              "title": "2015-12-22"
             }
           }
         ]
@@ -155,6 +155,7 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "templater-obsidian:Templater": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
@@ -167,6 +168,8 @@
   },
   "active": "7c3114f9ac5c68c2",
   "lastOpenFiles": [
+    "attachments/PXL_20251222_174027923.jpg",
+    "PrepAndPlanning/TestRuns/SanMarin/2015-12-22.md",
     "attachments/PXL_20240907_223023809.jpg",
     "PrepAndPlanning/TestRuns/SanMarin/init.md",
     "Test.md",

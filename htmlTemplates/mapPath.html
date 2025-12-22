@@ -11,8 +11,20 @@
          <div id="map" style="height: 100%; width: 100%;"></div>
          <script>
             const hashString = window.location.hash.substring(1);
-            // Ugh Quartz or something is screwing with the ability to pass in hash prefixed url params which breaks so much of this so I have to do this hack
-            const pathParam = hashString.split('_')[0];
+            const urlParams = new URLSearchParams(window.location.search);
+            const pathParam = urlParams.get("path");
+            const endDate = urlParams.get("endDate");
+
+            function filterPath(path, endDate) {
+                if (!endDate || (!new Date(endDate))) {
+                    return path;
+                } else {
+                    const filteredPoints = 
+                                path
+                                .filter(x => new Date(x.label) && endDate >= x.label.substring(0,10));
+                    return filteredPoints;
+                }
+            }
 
             if (!pathParam) {
                 document.body.innerHTML = '<p>Error: No path parameter provided</p>';
@@ -20,8 +32,8 @@
                 fetch(`/paths/${pathParam}.json`)
                     .then(response => response.json())
                     .then(pathPayload => {
-                        const path = pathPayload.path;
-                        const latestPoint = path[path.length-1].loc;
+                        const path = filterPath(pathPayload.path, endDate);
+                        const latestPoint = path[path.length - 1].loc;
                         var map = L.map('map').setView(latestPoint, 13);
                         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                             maxZoom: 19,
@@ -29,8 +41,9 @@
                         }).addTo(map);
                         L.polyline(path.map(x=>x.loc)).addTo(map);
                         path.forEach(point => {
-                            const marker = L.marker(point.loc).addTo(map);
-                            marker.bindPopup(point.label);
+                            const opacity = point.loc == latestPoint ? 1.0 : 0.8;
+                            const marker = L.marker(point.loc, {opacity:opacity}).addTo(map);
+                            marker.bindPopup(`<a href="/${point.label.substring(0,10)}">${point.label}</a>`);
                         });
                     })
                     .catch(error => {

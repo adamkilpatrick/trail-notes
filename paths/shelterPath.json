@@ -1,0 +1,2346 @@
+{
+    "root":"/",
+    "path": 
+    [
+    {
+        "loc": [
+            34.62933,
+            -84.19275
+        ],
+        "label": "Springer Mountain Shelter",
+        "miles": 0.2,
+        "eta": "2025-02-14"
+    },
+    {
+        "loc": [
+            34.65028,
+            -84.1972
+        ],
+        "label": "Stover Creek Shelter",
+        "miles": 2.8,
+        "eta": "2025-02-14"
+    },
+    {
+        "loc": [
+            34.66608,
+            -84.13638
+        ],
+        "label": "Hawk Mountain Shelter",
+        "miles": 8.1,
+        "eta": "2025-02-14"
+    },
+    {
+        "loc": [
+            34.65573,
+            -84.04998
+        ],
+        "label": "Gooch Mountain Shelter",
+        "miles": 15.7,
+        "eta": "2025-02-15"
+    },
+    {
+        "loc": [
+            34.73713,
+            -83.955
+        ],
+        "label": "Woods Hole Shelter",
+        "miles": 27.7,
+        "eta": "2025-02-16"
+    },
+    {
+        "loc": [
+            34.73998,
+            -83.93738
+        ],
+        "label": "Blood Mountain Shelter",
+        "miles": 28.9,
+        "eta": "2025-02-16"
+    },
+    {
+        "loc": [
+            34.71238,
+            -83.8344
+        ],
+        "label": "Whitley Gap Shelter",
+        "miles": 38.0,
+        "eta": "2025-02-17"
+    },
+    {
+        "loc": [
+            34.77626,
+            -83.8245
+        ],
+        "label": "Low Gap Shelter",
+        "miles": 43.0,
+        "eta": "2025-02-17"
+    },
+    {
+        "loc": [
+            34.81721,
+            -83.76673
+        ],
+        "label": "Blue Mountain Shelter",
+        "miles": 50.3,
+        "eta": "2025-02-18"
+    },
+    {
+        "loc": [
+            34.80396,
+            -83.6769
+        ],
+        "label": "Tray Mountain Shelter",
+        "miles": 58.4,
+        "eta": "2025-02-18"
+    },
+    {
+        "loc": [
+            34.88249,
+            -83.64597
+        ],
+        "label": "Deep Gap Shelter",
+        "miles": 65.8,
+        "eta": "2025-02-19"
+    },
+    {
+        "loc": [
+            34.94603,
+            -83.5883
+        ],
+        "label": "Plumorchard Gap Shelter",
+        "miles": 73.9,
+        "eta": "2025-02-20"
+    },
+    {
+        "loc": [
+            35.02053,
+            -83.5816
+        ],
+        "label": "Muskrat Creek Shelter",
+        "miles": 81.2,
+        "eta": "2025-02-20"
+    },
+    {
+        "loc": [
+            35.042,
+            -83.54806
+        ],
+        "label": "Standing Indian Shelter",
+        "miles": 86.1,
+        "eta": "2025-02-21"
+    },
+    {
+        "loc": [
+            34.99898,
+            -83.49413
+        ],
+        "label": "Carter Gap Shelter",
+        "miles": 93.7,
+        "eta": "2025-02-21"
+    },
+    {
+        "loc": [
+            35.06996,
+            -83.49815
+        ],
+        "label": "Long Branch Shelter",
+        "miles": 102.4,
+        "eta": "2025-02-22"
+    },
+    {
+        "loc": [
+            35.09143,
+            -83.5231
+        ],
+        "label": "Rock Gap Shelter",
+        "miles": 105.8,
+        "eta": "2025-02-22"
+    },
+    {
+        "loc": [
+            35.14413,
+            -83.5725
+        ],
+        "label": "Siler Bald Shelter",
+        "miles": 113.3,
+        "eta": "2025-02-23"
+    },
+    {
+        "loc": [
+            35.18784,
+            -83.56201
+        ],
+        "label": "Wayah Shelter",
+        "miles": 120.6,
+        "eta": "2025-02-24"
+    },
+    {
+        "loc": [
+            35.2309,
+            -83.5599
+        ],
+        "label": "Cold Spring Shelter",
+        "miles": 125.4,
+        "eta": "2025-02-24"
+    },
+    {
+        "loc": [
+            35.28235,
+            -83.5822
+        ],
+        "label": "Wesser Bald Shelter",
+        "miles": 131.2,
+        "eta": "2025-02-24"
+    },
+    {
+        "loc": [
+            35.32418,
+            -83.5902
+        ],
+        "label": "A. Rufus Morgan Shelter",
+        "miles": 136.1,
+        "eta": "2025-02-25"
+    },
+    {
+        "loc": [
+            35.33068,
+            -83.667
+        ],
+        "label": "Sassafras Gap Shelter",
+        "miles": 144.0,
+        "eta": "2025-02-26"
+    },
+    {
+        "loc": [
+            35.37423,
+            -83.7339
+        ],
+        "label": "Brown Fork Gap Shelter",
+        "miles": 153.1,
+        "eta": "2025-02-26"
+    },
+    {
+        "loc": [
+            35.41521,
+            -83.7736
+        ],
+        "label": "Cable Gap Shelter",
+        "miles": 159.4,
+        "eta": "2025-02-27"
+    },
+    {
+        "loc": [
+            35.44853,
+            -83.79396
+        ],
+        "label": "Fontana Dam Shelter",
+        "miles": 166.2,
+        "eta": "2025-02-27"
+    },
+    {
+        "loc": [
+            35.54588,
+            -83.79363
+        ],
+        "label": "Mollies Ridge Shelter",
+        "miles": 178.0,
+        "eta": "2025-02-28"
+    },
+    {
+        "loc": [
+            35.56173,
+            -83.7666
+        ],
+        "label": "Russell Field Shelter",
+        "miles": 181.1,
+        "eta": "2025-03-01"
+    },
+    {
+        "loc": [
+            35.5618,
+            -83.7327
+        ],
+        "label": "Spence Field Shelter",
+        "miles": 184.0,
+        "eta": "2025-03-01"
+    },
+    {
+        "loc": [
+            35.56651,
+            -83.6419
+        ],
+        "label": "Derrick Knob Shelter",
+        "miles": 190.1,
+        "eta": "2025-03-01"
+    },
+    {
+        "loc": [
+            35.56428,
+            -83.56831
+        ],
+        "label": "Silers Bald Shelter",
+        "miles": 195.8,
+        "eta": "2025-03-02"
+    },
+    {
+        "loc": [
+            35.56525,
+            -83.54263
+        ],
+        "label": "Double Spring Gap Shelter",
+        "miles": 197.5,
+        "eta": "2025-03-02"
+    },
+    {
+        "loc": [
+            35.59408,
+            -83.47105
+        ],
+        "label": "Mt. Collins Shelter",
+        "miles": 203.1,
+        "eta": "2025-03-02"
+    },
+    {
+        "loc": [
+            35.62981,
+            -83.38631
+        ],
+        "label": "Icewater Spring Shelter",
+        "miles": 211.1,
+        "eta": "2025-03-03"
+    },
+    {
+        "loc": [
+            35.65081,
+            -83.30851
+        ],
+        "label": "Pecks Corner Shelter",
+        "miles": 218.5,
+        "eta": "2025-03-04"
+    },
+    {
+        "loc": [
+            35.69383,
+            -83.25665
+        ],
+        "label": "Tri-Corner Knob Shelter",
+        "miles": 223.7,
+        "eta": "2025-03-04"
+    },
+    {
+        "loc": [
+            35.72828,
+            -83.18206
+        ],
+        "label": "Cosby Knob Shelter",
+        "miles": 231.4,
+        "eta": "2025-03-05"
+    },
+    {
+        "loc": [
+            35.76921,
+            -83.1237
+        ],
+        "label": "Davenport Gap Shelter",
+        "miles": 238.3,
+        "eta": "2025-03-05"
+    },
+    {
+        "loc": [
+            35.78183,
+            -83.02621
+        ],
+        "label": "Groundhog Creek Shelter",
+        "miles": 249.0,
+        "eta": "2025-03-06"
+    },
+    {
+        "loc": [
+            35.80499,
+            -82.94978
+        ],
+        "label": "Roaring Fork Shelter",
+        "miles": 257.3,
+        "eta": "2025-03-07"
+    },
+    {
+        "loc": [
+            35.83655,
+            -82.93646
+        ],
+        "label": "Walnut Mountain Shelter",
+        "miles": 262.1,
+        "eta": "2025-03-07"
+    },
+    {
+        "loc": [
+            35.87583,
+            -82.8614
+        ],
+        "label": "Deer Park Mountain Shelter",
+        "miles": 272.0,
+        "eta": "2025-03-08"
+    },
+    {
+        "loc": [
+            35.95148,
+            -82.7902
+        ],
+        "label": "Spring Mountain Shelter",
+        "miles": 286.2,
+        "eta": "2025-03-09"
+    },
+    {
+        "loc": [
+            36.01498,
+            -82.7359
+        ],
+        "label": "Little Laurel Shelter",
+        "miles": 294.8,
+        "eta": "2025-03-10"
+    },
+    {
+        "loc": [
+            36.05653,
+            -82.65718
+        ],
+        "label": "Jerry Cabin Shelter",
+        "miles": 302.1,
+        "eta": "2025-03-11"
+    },
+    {
+        "loc": [
+            36.03478,
+            -82.5969
+        ],
+        "label": "Flint Mountain Shelter",
+        "miles": 308.8,
+        "eta": "2025-03-11"
+    },
+    {
+        "loc": [
+            36.00018,
+            -82.4782
+        ],
+        "label": "Bald Mountain Shelter",
+        "miles": 327.7,
+        "eta": "2025-03-13"
+    },
+    {
+        "loc": [
+            36.06676,
+            -82.4336
+        ],
+        "label": "No Business Knob Shelter",
+        "miles": 338.3,
+        "eta": "2025-03-14"
+    },
+    {
+        "loc": [
+            36.10436,
+            -82.39683
+        ],
+        "label": "Curley Maple Gap Shelter",
+        "miles": 348.8,
+        "eta": "2025-03-15"
+    },
+    {
+        "loc": [
+            36.12923,
+            -82.2642
+        ],
+        "label": "Cherry Gap Shelter",
+        "miles": 361.7,
+        "eta": "2025-03-16"
+    },
+    {
+        "loc": [
+            36.14843,
+            -82.1613
+        ],
+        "label": "Clyde Smith Shelter",
+        "miles": 370.8,
+        "eta": "2025-03-16"
+    },
+    {
+        "loc": [
+            36.10496,
+            -82.1227
+        ],
+        "label": "Roan High Knob Shelter",
+        "miles": 379.3,
+        "eta": "2025-03-17"
+    },
+    {
+        "loc": [
+            36.11226,
+            -82.0659
+        ],
+        "label": "Stan Murray Shelter",
+        "miles": 384.5,
+        "eta": "2025-03-18"
+    },
+    {
+        "loc": [
+            36.2202,
+            -81.98569
+        ],
+        "label": "Mountaineer Falls Shelter",
+        "miles": 404.4,
+        "eta": "2025-03-19"
+    },
+    {
+        "loc": [
+            36.22011,
+            -82.0885
+        ],
+        "label": "Moreland Gap Shelter",
+        "miles": 414.0,
+        "eta": "2025-03-20"
+    },
+    {
+        "loc": [
+            36.27856,
+            -82.1364
+        ],
+        "label": "Laurel Fork Shelter",
+        "miles": 422.2,
+        "eta": "2025-03-21"
+    },
+    {
+        "loc": [
+            36.3671,
+            -82.05875
+        ],
+        "label": "Vandeventer Shelter",
+        "miles": 438.0,
+        "eta": "2025-03-22"
+    },
+    {
+        "loc": [
+            36.43553,
+            -81.991
+        ],
+        "label": "Iron Mountain Shelter",
+        "miles": 444.8,
+        "eta": "2025-03-23"
+    },
+    {
+        "loc": [
+            36.50896,
+            -81.9862
+        ],
+        "label": "Double Springs Shelter",
+        "miles": 452.5,
+        "eta": "2025-03-23"
+    },
+    {
+        "loc": [
+            36.58101,
+            -81.9022
+        ],
+        "label": "Abingdon Gap Shelter",
+        "miles": 460.8,
+        "eta": "2025-03-24"
+    },
+    {
+        "loc": [
+            36.6377,
+            -81.7132
+        ],
+        "label": "Saunders Shelter",
+        "miles": 480.5,
+        "eta": "2025-03-26"
+    },
+    {
+        "loc": [
+            36.64406,
+            -81.6563
+        ],
+        "label": "Lost Mountain Shelter",
+        "miles": 487.0,
+        "eta": "2025-03-26"
+    },
+    {
+        "loc": [
+            36.6566,
+            -81.53523
+        ],
+        "label": "Thomas Knob Shelter",
+        "miles": 499.4,
+        "eta": "2025-03-27"
+    },
+    {
+        "loc": [
+            36.65403,
+            -81.49843
+        ],
+        "label": "Wise Shelter",
+        "miles": 504.5,
+        "eta": "2025-03-28"
+    },
+    {
+        "loc": [
+            36.68321,
+            -81.5112
+        ],
+        "label": "Old Orchard Shelter",
+        "miles": 510.5,
+        "eta": "2025-03-28"
+    },
+    {
+        "loc": [
+            36.71535,
+            -81.5095
+        ],
+        "label": "Hurricane Mountain Shelter",
+        "miles": 515.4,
+        "eta": "2025-03-28"
+    },
+    {
+        "loc": [
+            36.74925,
+            -81.4804
+        ],
+        "label": "Trimpi Shelter",
+        "miles": 524.6,
+        "eta": "2025-03-29"
+    },
+    {
+        "loc": [
+            36.8094,
+            -81.4226
+        ],
+        "label": "Partnership Shelter",
+        "miles": 534.4,
+        "eta": "2025-03-30"
+    },
+    {
+        "loc": [
+            36.84991,
+            -81.3633
+        ],
+        "label": "Chatfield Shelter",
+        "miles": 541.4,
+        "eta": "2025-03-31"
+    },
+    {
+        "loc": [
+            37.00066,
+            -81.4046
+        ],
+        "label": "Knot Maul Branch Shelter",
+        "miles": 560.7,
+        "eta": "2025-04-01"
+    },
+    {
+        "loc": [
+            37.0578,
+            -81.39948
+        ],
+        "label": "Chestnut Knob Shelter",
+        "miles": 570.1,
+        "eta": "2025-04-02"
+    },
+    {
+        "loc": [
+            37.09338,
+            -81.2478
+        ],
+        "label": "Jenkins Shelter",
+        "miles": 580.8,
+        "eta": "2025-04-03"
+    },
+    {
+        "loc": [
+            37.13261,
+            -81.1044
+        ],
+        "label": "Helveys Mill Shelter",
+        "miles": 594.3,
+        "eta": "2025-04-04"
+    },
+    {
+        "loc": [
+            37.15498,
+            -80.9803
+        ],
+        "label": "Jenny Knob Shelter",
+        "miles": 604.0,
+        "eta": "2025-04-05"
+    },
+    {
+        "loc": [
+            37.22393,
+            -80.8241
+        ],
+        "label": "Wapiti Shelter",
+        "miles": 618.5,
+        "eta": "2025-04-06"
+    },
+    {
+        "loc": [
+            37.27021,
+            -80.8364
+        ],
+        "label": "Docs Knob Shelter",
+        "miles": 628.0,
+        "eta": "2025-04-07"
+    },
+    {
+        "loc": [
+            37.37478,
+            -80.7586
+        ],
+        "label": "Rice Field Shelter",
+        "miles": 644.5,
+        "eta": "2025-04-08"
+    },
+    {
+        "loc": [
+            37.42208,
+            -80.6088
+        ],
+        "label": "Pine Swamp Branch Shelter",
+        "miles": 657.0,
+        "eta": "2025-04-09"
+    },
+    {
+        "loc": [
+            37.40086,
+            -80.5772
+        ],
+        "label": "Bailey Gap Shelter",
+        "miles": 660.9,
+        "eta": "2025-04-10"
+    },
+    {
+        "loc": [
+            37.39753,
+            -80.474
+        ],
+        "label": "War Spur Shelter",
+        "miles": 669.7,
+        "eta": "2025-04-10"
+    },
+    {
+        "loc": [
+            37.35891,
+            -80.4212
+        ],
+        "label": "Laurel Creek Shelter",
+        "miles": 675.5,
+        "eta": "2025-04-11"
+    },
+    {
+        "loc": [
+            37.35476,
+            -80.33741
+        ],
+        "label": "Sarver Hollow Shelter",
+        "miles": 682.1,
+        "eta": "2025-04-11"
+    },
+    {
+        "loc": [
+            37.38748,
+            -80.2644
+        ],
+        "label": "Niday Shelter",
+        "miles": 688.1,
+        "eta": "2025-04-12"
+    },
+    {
+        "loc": [
+            37.3881,
+            -80.1911
+        ],
+        "label": "Pickle Branch Shelter",
+        "miles": 698.2,
+        "eta": "2025-04-13"
+    },
+    {
+        "loc": [
+            37.38531,
+            -80.0741
+        ],
+        "label": "Johns Spring Shelter",
+        "miles": 711.8,
+        "eta": "2025-04-14"
+    },
+    {
+        "loc": [
+            37.3882,
+            -80.0574
+        ],
+        "label": "Catawba Mountain Shelter",
+        "miles": 712.8,
+        "eta": "2025-04-14"
+    },
+    {
+        "loc": [
+            37.39078,
+            -80.0295
+        ],
+        "label": "Campbell Shelter",
+        "miles": 715.2,
+        "eta": "2025-04-14"
+    },
+    {
+        "loc": [
+            37.43456,
+            -79.9878
+        ],
+        "label": "Lamberts Meadow Shelter",
+        "miles": 721.2,
+        "eta": "2025-04-15"
+    },
+    {
+        "loc": [
+            37.39846,
+            -79.8539
+        ],
+        "label": "Fullhardt Knob Shelter",
+        "miles": 735.6,
+        "eta": "2025-04-16"
+    },
+    {
+        "loc": [
+            37.41926,
+            -79.7857
+        ],
+        "label": "Wilson Creek Shelter",
+        "miles": 741.8,
+        "eta": "2025-04-16"
+    },
+    {
+        "loc": [
+            37.4672,
+            -79.7014
+        ],
+        "label": "Bobblets Gap Shelter",
+        "miles": 749.1,
+        "eta": "2025-04-17"
+    },
+    {
+        "loc": [
+            37.51171,
+            -79.6511
+        ],
+        "label": "Cove Mountain Shelter",
+        "miles": 755.6,
+        "eta": "2025-04-17"
+    },
+    {
+        "loc": [
+            37.53003,
+            -79.5856
+        ],
+        "label": "Bryant Ridge Shelter",
+        "miles": 762.6,
+        "eta": "2025-04-18"
+    },
+    {
+        "loc": [
+            37.49391,
+            -79.5472
+        ],
+        "label": "Cornelius Creek Shelter",
+        "miles": 767.5,
+        "eta": "2025-04-18"
+    },
+    {
+        "loc": [
+            37.52738,
+            -79.5042
+        ],
+        "label": "Thunder Hill Shelter",
+        "miles": 772.8,
+        "eta": "2025-04-19"
+    },
+    {
+        "loc": [
+            37.59945,
+            -79.4135
+        ],
+        "label": "Matts Creek Shelter",
+        "miles": 785.4,
+        "eta": "2025-04-20"
+    },
+    {
+        "loc": [
+            37.613,
+            -79.3921
+        ],
+        "label": "Johns Hollow Shelter",
+        "miles": 789.3,
+        "eta": "2025-04-20"
+    },
+    {
+        "loc": [
+            37.67775,
+            -79.3388
+        ],
+        "label": "Punchbowl Shelter",
+        "miles": 798.1,
+        "eta": "2025-04-21"
+    },
+    {
+        "loc": [
+            37.70944,
+            -79.2683
+        ],
+        "label": "Brown Mtn Creek Shelter",
+        "miles": 807.6,
+        "eta": "2025-04-22"
+    },
+    {
+        "loc": [
+            37.74661,
+            -79.2133
+        ],
+        "label": "Cow Camp Gap Shelter",
+        "miles": 813.2,
+        "eta": "2025-04-22"
+    },
+    {
+        "loc": [
+            37.81893,
+            -79.1551
+        ],
+        "label": "Seeley Woodworth Shelter",
+        "miles": 823.4,
+        "eta": "2025-04-23"
+    },
+    {
+        "loc": [
+            37.81775,
+            -79.0706
+        ],
+        "label": "The Priest Shelter",
+        "miles": 830.0,
+        "eta": "2025-04-24"
+    },
+    {
+        "loc": [
+            37.85641,
+            -79.0012
+        ],
+        "label": "Harpers Creek Shelter",
+        "miles": 837.6,
+        "eta": "2025-04-24"
+    },
+    {
+        "loc": [
+            37.88488,
+            -78.9939
+        ],
+        "label": "Maupin Field Shelter",
+        "miles": 843.8,
+        "eta": "2025-04-25"
+    },
+    {
+        "loc": [
+            37.98543,
+            -78.88367
+        ],
+        "label": "Paul C. Wolfe Shelter",
+        "miles": 859.8,
+        "eta": "2025-04-26"
+    },
+    {
+        "loc": [
+            38.08551,
+            -78.7868
+        ],
+        "label": "Calf Mountain Shelter",
+        "miles": 872.3,
+        "eta": "2025-04-27"
+    },
+    {
+        "loc": [
+            38.21408,
+            -78.7427
+        ],
+        "label": "Blackrock Hut",
+        "miles": 885.3,
+        "eta": "2025-04-28"
+    },
+    {
+        "loc": [
+            38.29055,
+            -78.646
+        ],
+        "label": "Pinefield Hut",
+        "miles": 898.5,
+        "eta": "2025-04-29"
+    },
+    {
+        "loc": [
+            38.33313,
+            -78.55835
+        ],
+        "label": "Hightop Hut",
+        "miles": 906.7,
+        "eta": "2025-04-30"
+    },
+    {
+        "loc": [
+            38.44408,
+            -78.4707
+        ],
+        "label": "Bearfence Mountain Hut",
+        "miles": 919.1,
+        "eta": "2025-05-01"
+    },
+    {
+        "loc": [
+            38.55351,
+            -78.4082
+        ],
+        "label": "Rock Spring Hut & Cabin",
+        "miles": 930.6,
+        "eta": "2025-05-02"
+    },
+    {
+        "loc": [
+            38.63443,
+            -78.32371
+        ],
+        "label": "Byrds Nest #3 Hut",
+        "miles": 941.5,
+        "eta": "2025-05-03"
+    },
+    {
+        "loc": [
+            38.67666,
+            -78.31895
+        ],
+        "label": "Pass Mountain Hut",
+        "miles": 945.9,
+        "eta": "2025-05-03"
+    },
+    {
+        "loc": [
+            38.7639,
+            -78.23363
+        ],
+        "label": "Gravel Springs Hut",
+        "miles": 959.0,
+        "eta": "2025-05-04"
+    },
+    {
+        "loc": [
+            38.85038,
+            -78.1639
+        ],
+        "label": "Tom Floyd Wayside",
+        "miles": 969.5,
+        "eta": "2025-05-05"
+    },
+    {
+        "loc": [
+            38.89008,
+            -78.08313
+        ],
+        "label": "Jim and Molly Denton Shelter",
+        "miles": 977.6,
+        "eta": "2025-05-06"
+    },
+    {
+        "loc": [
+            38.93073,
+            -78.0327
+        ],
+        "label": "Manassas Gap Shelter",
+        "miles": 983.1,
+        "eta": "2025-05-06"
+    },
+    {
+        "loc": [
+            38.96991,
+            -77.997
+        ],
+        "label": "Whiskey Hollow Shelter",
+        "miles": 987.6,
+        "eta": "2025-05-07"
+    },
+    {
+        "loc": [
+            39.04781,
+            -77.9444
+        ],
+        "label": "Rod Hollow Shelter",
+        "miles": 996.0,
+        "eta": "2025-05-08"
+    },
+    {
+        "loc": [
+            39.09063,
+            -77.8866
+        ],
+        "label": "Sam Moore Shelter",
+        "miles": 1002.9,
+        "eta": "2025-05-08"
+    },
+    {
+        "loc": [
+            39.1877,
+            -77.7978
+        ],
+        "label": "Blackburn Trail Center",
+        "miles": 1013.9,
+        "eta": "2025-05-09"
+    },
+    {
+        "loc": [
+            39.22725,
+            -77.7791
+        ],
+        "label": "David Lesser Memorial Shelter",
+        "miles": 1017.1,
+        "eta": "2025-05-09"
+    },
+    {
+        "loc": [
+            39.35985,
+            -77.66205
+        ],
+        "label": "Ed Garvey Shelter",
+        "miles": 1033.0,
+        "eta": "2025-05-11"
+    },
+    {
+        "loc": [
+            39.41253,
+            -77.6376
+        ],
+        "label": "Crampton Gap Shelter",
+        "miles": 1037.1,
+        "eta": "2025-05-11"
+    },
+    {
+        "loc": [
+            39.46209,
+            -77.63077
+        ],
+        "label": "Rocky Run Shelter",
+        "miles": 1042.1,
+        "eta": "2025-05-11"
+    },
+    {
+        "loc": [
+            39.5425,
+            -77.6024
+        ],
+        "label": "Pine Knob Shelter",
+        "miles": 1049.6,
+        "eta": "2025-05-12"
+    },
+    {
+        "loc": [
+            39.63093,
+            -77.55592
+        ],
+        "label": "Ensign Cowall Shelter",
+        "miles": 1057.8,
+        "eta": "2025-05-13"
+    },
+    {
+        "loc": [
+            39.67327,
+            -77.52949
+        ],
+        "label": "Raven Rock Shelter",
+        "miles": 1062.7,
+        "eta": "2025-05-13"
+    },
+    {
+        "loc": [
+            39.76618,
+            -77.4852
+        ],
+        "label": "Deer Lick Shelters",
+        "miles": 1072.3,
+        "eta": "2025-05-14"
+    },
+    {
+        "loc": [
+            39.805,
+            -77.4783
+        ],
+        "label": "Tumbling Run Shelters",
+        "miles": 1075.9,
+        "eta": "2025-05-14"
+    },
+    {
+        "loc": [
+            39.86856,
+            -77.5009
+        ],
+        "label": "Rocky Mountain Shelters",
+        "miles": 1082.5,
+        "eta": "2025-05-15"
+    },
+    {
+        "loc": [
+            39.93196,
+            -77.48646
+        ],
+        "label": "Quarry Gap Shelters",
+        "miles": 1088.1,
+        "eta": "2025-05-15"
+    },
+    {
+        "loc": [
+            39.9851,
+            -77.41948
+        ],
+        "label": "Birch Run Shelter",
+        "miles": 1095.5,
+        "eta": "2025-05-16"
+    },
+    {
+        "loc": [
+            40.03366,
+            -77.35678
+        ],
+        "label": "Toms Run Shelter",
+        "miles": 1101.7,
+        "eta": "2025-05-16"
+    },
+    {
+        "loc": [
+            40.06296,
+            -77.2064
+        ],
+        "label": "James Fry Shelter",
+        "miles": 1112.6,
+        "eta": "2025-05-17"
+    },
+    {
+        "loc": [
+            40.1118,
+            -77.10423
+        ],
+        "label": "Alec Kennedy Shelter",
+        "miles": 1120.7,
+        "eta": "2025-05-18"
+    },
+    {
+        "loc": [
+            40.30203,
+            -77.08686
+        ],
+        "label": "Darlington Shelter",
+        "miles": 1138.9,
+        "eta": "2025-05-19"
+    },
+    {
+        "loc": [
+            40.36365,
+            -77.06736
+        ],
+        "label": "Cove Mountain Shelter",
+        "miles": 1146.2,
+        "eta": "2025-05-20"
+    },
+    {
+        "loc": [
+            40.39226,
+            -76.99383
+        ],
+        "label": "Clarks Ferry Shelter",
+        "miles": 1154.5,
+        "eta": "2025-05-21"
+    },
+    {
+        "loc": [
+            40.42571,
+            -76.87941
+        ],
+        "label": "Peters Mountain Shelter",
+        "miles": 1161.2,
+        "eta": "2025-05-21"
+    },
+    {
+        "loc": [
+            40.49863,
+            -76.60016
+        ],
+        "label": "Rausch Gap Shelter",
+        "miles": 1179.2,
+        "eta": "2025-05-23"
+    },
+    {
+        "loc": [
+            40.4956,
+            -76.4144
+        ],
+        "label": "William Penn Shelter",
+        "miles": 1192.6,
+        "eta": "2025-05-24"
+    },
+    {
+        "loc": [
+            40.5132,
+            -76.3464
+        ],
+        "label": "501 Shelter",
+        "miles": 1196.7,
+        "eta": "2025-05-24"
+    },
+    {
+        "loc": [
+            40.54938,
+            -76.15243
+        ],
+        "label": "Eagles Nest Shelter",
+        "miles": 1211.6,
+        "eta": "2025-05-25"
+    },
+    {
+        "loc": [
+            40.59028,
+            -75.9423
+        ],
+        "label": "Windsor Furnace Shelter",
+        "miles": 1226.3,
+        "eta": "2025-05-27"
+    },
+    {
+        "loc": [
+            40.63366,
+            -75.95788
+        ],
+        "label": "Eckville Shelter",
+        "miles": 1235.4,
+        "eta": "2025-05-27"
+    },
+    {
+        "loc": [
+            40.68308,
+            -75.87388
+        ],
+        "label": "Allentown Hiking Club Shelter",
+        "miles": 1242.8,
+        "eta": "2025-05-28"
+    },
+    {
+        "loc": [
+            40.75411,
+            -75.7274
+        ],
+        "label": "Bake Oven Knob Shelter",
+        "miles": 1252.8,
+        "eta": "2025-05-29"
+    },
+    {
+        "loc": [
+            40.78251,
+            -75.61798
+        ],
+        "label": "George W. Outerbridge Shelter",
+        "miles": 1260.3,
+        "eta": "2025-05-30"
+    },
+    {
+        "loc": [
+            40.8394,
+            -75.3594
+        ],
+        "label": "Leroy A. Smith Shelter",
+        "miles": 1277.3,
+        "eta": "2025-05-31"
+    },
+    {
+        "loc": [
+            40.93675,
+            -75.18643
+        ],
+        "label": "Kirkridge Shelter",
+        "miles": 1291.0,
+        "eta": "2025-06-01"
+    },
+    {
+        "loc": [
+            41.1532,
+            -74.8382
+        ],
+        "label": "Brink Shelter",
+        "miles": 1322.3,
+        "eta": "2025-06-04"
+    },
+    {
+        "loc": [
+            41.19938,
+            -74.7531
+        ],
+        "label": "Gren Anderson Shelter",
+        "miles": 1329.0,
+        "eta": "2025-06-04"
+    },
+    {
+        "loc": [
+            41.25216,
+            -74.68638
+        ],
+        "label": "Mashipacong Shelter",
+        "miles": 1334.8,
+        "eta": "2025-06-05"
+    },
+    {
+        "loc": [
+            41.27751,
+            -74.67815
+        ],
+        "label": "Rutherford Shelter",
+        "miles": 1337.4,
+        "eta": "2025-06-05"
+    },
+    {
+        "loc": [
+            41.31573,
+            -74.65732
+        ],
+        "label": "High Point Shelter",
+        "miles": 1342.0,
+        "eta": "2025-06-05"
+    },
+    {
+        "loc": [
+            41.27124,
+            -74.51531
+        ],
+        "label": "Pochuck Mountain Shelter",
+        "miles": 1354.4,
+        "eta": "2025-06-06"
+    },
+    {
+        "loc": [
+            41.20226,
+            -74.39811
+        ],
+        "label": "Wawayanda Shelter",
+        "miles": 1365.9,
+        "eta": "2025-06-07"
+    },
+    {
+        "loc": [
+            41.26835,
+            -74.2683
+        ],
+        "label": "Wildcat Shelter",
+        "miles": 1378.1,
+        "eta": "2025-06-08"
+    },
+    {
+        "loc": [
+            41.26331,
+            -74.10405
+        ],
+        "label": "Fingerboard Shelter",
+        "miles": 1392.6,
+        "eta": "2025-06-10"
+    },
+    {
+        "loc": [
+            41.2797,
+            -74.0599
+        ],
+        "label": "William Brien Memorial Shelter",
+        "miles": 1397.9,
+        "eta": "2025-06-10"
+    },
+    {
+        "loc": [
+            41.28239,
+            -74.00921
+        ],
+        "label": "West Mountain Shelter",
+        "miles": 1403.2,
+        "eta": "2025-06-10"
+    },
+    {
+        "loc": [
+            41.47443,
+            -73.82188
+        ],
+        "label": "Raymond Torrey Memorial Shelter",
+        "miles": 1429.5,
+        "eta": "2025-06-13"
+    },
+    {
+        "loc": [
+            41.51448,
+            -73.79246
+        ],
+        "label": "RPH Shelter",
+        "miles": 1434.5,
+        "eta": "2025-06-13"
+    },
+    {
+        "loc": [
+            41.56458,
+            -73.69177
+        ],
+        "label": "Morgan Stewart Shelter",
+        "miles": 1443.5,
+        "eta": "2025-06-14"
+    },
+    {
+        "loc": [
+            41.60426,
+            -73.6193
+        ],
+        "label": "Telephone Pioneers Shelter",
+        "miles": 1451.3,
+        "eta": "2025-06-14"
+    },
+    {
+        "loc": [
+            41.63786,
+            -73.5324
+        ],
+        "label": "Wiley Shelter",
+        "miles": 1460.1,
+        "eta": "2025-06-15"
+    },
+    {
+        "loc": [
+            41.66519,
+            -73.50971
+        ],
+        "label": "Ten Mile River Shelter",
+        "miles": 1464.1,
+        "eta": "2025-06-16"
+    },
+    {
+        "loc": [
+            41.73165,
+            -73.4967
+        ],
+        "label": "Mt. Algo Shelter",
+        "miles": 1472.9,
+        "eta": "2025-06-16"
+    },
+    {
+        "loc": [
+            41.7793,
+            -73.41856
+        ],
+        "label": "Stewart Hollow Brook Shelter",
+        "miles": 1480.4,
+        "eta": "2025-06-17"
+    },
+    {
+        "loc": [
+            41.88163,
+            -73.3921
+        ],
+        "label": "Pine Swamp Brook Shelter",
+        "miles": 1490.4,
+        "eta": "2025-06-18"
+    },
+    {
+        "loc": [
+            41.97513,
+            -73.3923
+        ],
+        "label": "Limestone Spring Shelter",
+        "miles": 1503.1,
+        "eta": "2025-06-19"
+    },
+    {
+        "loc": [
+            42.01561,
+            -73.4519
+        ],
+        "label": "Riga Shelter and Camping Area",
+        "miles": 1510.5,
+        "eta": "2025-06-19"
+    },
+    {
+        "loc": [
+            42.02838,
+            -73.4533
+        ],
+        "label": "Brassie Brook Shelter and Camping",
+        "miles": 1511.7,
+        "eta": "2025-06-19"
+    },
+    {
+        "loc": [
+            42.1099,
+            -73.429
+        ],
+        "label": "The Hemlocks Shelter",
+        "miles": 1520.0,
+        "eta": "2025-06-20"
+    },
+    {
+        "loc": [
+            42.11113,
+            -73.4283
+        ],
+        "label": "Glen Brook Shelter",
+        "miles": 1520.1,
+        "eta": "2025-06-20"
+    },
+    {
+        "loc": [
+            42.16488,
+            -73.30585
+        ],
+        "label": "Tom Leonard Shelter",
+        "miles": 1534.4,
+        "eta": "2025-06-21"
+    },
+    {
+        "loc": [
+            42.20723,
+            -73.26731
+        ],
+        "label": "Mt. Wilcox South Shelter",
+        "miles": 1539.8,
+        "eta": "2025-06-22"
+    },
+    {
+        "loc": [
+            42.2211,
+            -73.2502
+        ],
+        "label": "Mt. Wilcox North Shelter",
+        "miles": 1541.5,
+        "eta": "2025-06-22"
+    },
+    {
+        "loc": [
+            42.28865,
+            -73.1813
+        ],
+        "label": "Upper Goose Pond Cabin",
+        "miles": 1555.5,
+        "eta": "2025-06-23"
+    },
+    {
+        "loc": [
+            42.35486,
+            -73.1545
+        ],
+        "label": "October Mountain Shelter",
+        "miles": 1564.5,
+        "eta": "2025-06-24"
+    },
+    {
+        "loc": [
+            42.45213,
+            -73.16163
+        ],
+        "label": "Kay Wood Shelter",
+        "miles": 1573.3,
+        "eta": "2025-06-25"
+    },
+    {
+        "loc": [
+            42.60863,
+            -73.1842
+        ],
+        "label": "Mark Noepel Shelter",
+        "miles": 1590.0,
+        "eta": "2025-06-26"
+    },
+    {
+        "loc": [
+            42.66781,
+            -73.17013
+        ],
+        "label": "Wilbur Clearing Shelter",
+        "miles": 1596.6,
+        "eta": "2025-06-27"
+    },
+    {
+        "loc": [
+            42.79977,
+            -73.11994
+        ],
+        "label": "Seth Warner Shelter",
+        "miles": 1609.0,
+        "eta": "2025-06-28"
+    },
+    {
+        "loc": [
+            42.84807,
+            -73.10993
+        ],
+        "label": "Congdon Shelter",
+        "miles": 1613.7,
+        "eta": "2025-06-28"
+    },
+    {
+        "loc": [
+            42.88782,
+            -73.09507
+        ],
+        "label": "Melville Nauheim Shelter",
+        "miles": 1619.6,
+        "eta": "2025-06-28"
+    },
+    {
+        "loc": [
+            42.97413,
+            -73.0726
+        ],
+        "label": "Goddard Shelter",
+        "miles": 1628.1,
+        "eta": "2025-06-29"
+    },
+    {
+        "loc": [
+            43.01303,
+            -73.0416
+        ],
+        "label": "Kid Gore Shelter and Tent sites",
+        "miles": 1632.4,
+        "eta": "2025-06-30"
+    },
+    {
+        "loc": [
+            43.05053,
+            -73.013
+        ],
+        "label": "Story Spring Shelter",
+        "miles": 1637.0,
+        "eta": "2025-06-30"
+    },
+    {
+        "loc": [
+            43.10049,
+            -72.96411
+        ],
+        "label": "Stratton Pond Shelter",
+        "miles": 1647.4,
+        "eta": "2025-07-01"
+    },
+    {
+        "loc": [
+            43.1445,
+            -72.9914
+        ],
+        "label": "William B. Douglas Shelter",
+        "miles": 1652.3,
+        "eta": "2025-07-01"
+    },
+    {
+        "loc": [
+            43.1786,
+            -72.9957
+        ],
+        "label": "Spruce Peak Shelter",
+        "miles": 1655.3,
+        "eta": "2025-07-01"
+    },
+    {
+        "loc": [
+            43.22237,
+            -72.95047
+        ],
+        "label": "Bromley Shelter",
+        "miles": 1660.1,
+        "eta": "2025-07-02"
+    },
+    {
+        "loc": [
+            43.30131,
+            -72.9529
+        ],
+        "label": "Peru Peak Shelter",
+        "miles": 1668.2,
+        "eta": "2025-07-03"
+    },
+    {
+        "loc": [
+            43.34768,
+            -72.953
+        ],
+        "label": "Lost Pond Shelter",
+        "miles": 1672.9,
+        "eta": "2025-07-03"
+    },
+    {
+        "loc": [
+            43.35425,
+            -72.92855
+        ],
+        "label": "Old Job Shelter",
+        "miles": 1674.4,
+        "eta": "2025-07-03"
+    },
+    {
+        "loc": [
+            43.36413,
+            -72.9464
+        ],
+        "label": "Big Branch Shelter",
+        "miles": 1674.6,
+        "eta": "2025-07-03"
+    },
+    {
+        "loc": [
+            43.3988,
+            -72.9548
+        ],
+        "label": "Little Rock Pond Shelter & Tenting",
+        "miles": 1677.9,
+        "eta": "2025-07-03"
+    },
+    {
+        "loc": [
+            43.44041,
+            -72.9291
+        ],
+        "label": "Greenwall Shelter",
+        "miles": 1682.7,
+        "eta": "2025-07-04"
+    },
+    {
+        "loc": [
+            43.48778,
+            -72.925
+        ],
+        "label": "Minerva Hinchey Shelter",
+        "miles": 1687.8,
+        "eta": "2025-07-04"
+    },
+    {
+        "loc": [
+            43.52367,
+            -72.91263
+        ],
+        "label": "Clarendon Shelter",
+        "miles": 1691.5,
+        "eta": "2025-07-04"
+    },
+    {
+        "loc": [
+            43.56456,
+            -72.8488
+        ],
+        "label": "Governor Clement Shelter",
+        "miles": 1697.6,
+        "eta": "2025-07-05"
+    },
+    {
+        "loc": [
+            43.60605,
+            -72.82245
+        ],
+        "label": "Cooper Lodge",
+        "miles": 1701.9,
+        "eta": "2025-07-05"
+    },
+    {
+        "loc": [
+            43.63911,
+            -72.83053
+        ],
+        "label": "Pico Camp",
+        "miles": 1704.4,
+        "eta": "2025-07-06"
+    },
+    {
+        "loc": [
+            43.64488,
+            -72.85338
+        ],
+        "label": "Churchill Scott Shelter",
+        "miles": 1706.3,
+        "eta": "2025-07-06"
+    },
+    {
+        "loc": [
+            43.67943,
+            -72.84295
+        ],
+        "label": "Tucker-Johnson Shelter",
+        "miles": 1709.2,
+        "eta": "2025-07-06"
+    },
+    {
+        "loc": [
+            43.69178,
+            -72.7306
+        ],
+        "label": "Stony Brook Shelter",
+        "miles": 1718.2,
+        "eta": "2025-07-07"
+    },
+    {
+        "loc": [
+            43.66218,
+            -72.6226
+        ],
+        "label": "Winturri Shelter",
+        "miles": 1728.1,
+        "eta": "2025-07-08"
+    },
+    {
+        "loc": [
+            43.69516,
+            -72.4758
+        ],
+        "label": "Thistle Hill Shelter",
+        "miles": 1740.4,
+        "eta": "2025-07-09"
+    },
+    {
+        "loc": [
+            43.72386,
+            -72.3657
+        ],
+        "label": "Happy Hill Shelter",
+        "miles": 1749.2,
+        "eta": "2025-07-09"
+    },
+    {
+        "loc": [
+            43.70256,
+            -72.26468
+        ],
+        "label": "Velvet Rocks Shelter",
+        "miles": 1756.5,
+        "eta": "2025-07-10"
+    },
+    {
+        "loc": [
+            43.72717,
+            -72.14927
+        ],
+        "label": "Moose Mountain Shelter",
+        "miles": 1766.0,
+        "eta": "2025-07-11"
+    },
+    {
+        "loc": [
+            43.78303,
+            -72.112
+        ],
+        "label": "Trapper John Shelter",
+        "miles": 1771.7,
+        "eta": "2025-07-11"
+    },
+    {
+        "loc": [
+            43.82535,
+            -72.03737
+        ],
+        "label": "Smarts Mtn Fire Wardens Cabin",
+        "miles": 1778.4,
+        "eta": "2025-07-12"
+    },
+    {
+        "loc": [
+            43.87623,
+            -72.02686
+        ],
+        "label": "Hexacuba Shelter",
+        "miles": 1783.7,
+        "eta": "2025-07-12"
+    },
+    {
+        "loc": [
+            43.99655,
+            -71.8894
+        ],
+        "label": "Jeffers Brook Shelter",
+        "miles": 1799.2,
+        "eta": "2025-07-13"
+    },
+    {
+        "loc": [
+            44.03303,
+            -71.81132
+        ],
+        "label": "Beaver Brook Shelter & Campsite",
+        "miles": 1806.3,
+        "eta": "2025-07-14"
+    },
+    {
+        "loc": [
+            44.10078,
+            -71.7424
+        ],
+        "label": "Eliza Brook Shelter & Campsite",
+        "miles": 1815.3,
+        "eta": "2025-07-15"
+    },
+    {
+        "loc": [
+            44.13691,
+            -71.7324
+        ],
+        "label": "Kinsman Pond Shelter & Campsite",
+        "miles": 1819.3,
+        "eta": "2025-07-15"
+    },
+    {
+        "loc": [
+            44.19068,
+            -71.60836
+        ],
+        "label": "AMC Garfield Ridge Shelter & Campsite",
+        "miles": 1834.4,
+        "eta": "2025-07-16"
+    },
+    {
+        "loc": [
+            44.16096,
+            -71.5356
+        ],
+        "label": "AMC Guyot Shelter & Campsite",
+        "miles": 1839.9,
+        "eta": "2025-07-17"
+    },
+    {
+        "loc": [
+            44.17718,
+            -71.42678
+        ],
+        "label": "AMC Ethan Pond Shelter & Campsite",
+        "miles": 1848.9,
+        "eta": "2025-07-18"
+    },
+    {
+        "loc": [
+            44.32898,
+            -71.15011
+        ],
+        "label": "AMC Imp Shelter & Campsite",
+        "miles": 1890.9,
+        "eta": "2025-07-21"
+    },
+    {
+        "loc": [
+            44.38003,
+            -71.10748
+        ],
+        "label": "Rattle River Shelter & Campsite",
+        "miles": 1897.0,
+        "eta": "2025-07-22"
+    },
+    {
+        "loc": [
+            44.45183,
+            -71.06938
+        ],
+        "label": "Gentian Pond Shelter & Campsite",
+        "miles": 1910.7,
+        "eta": "2025-07-23"
+    },
+    {
+        "loc": [
+            44.48868,
+            -71.01616
+        ],
+        "label": "Carlo Col Shelter & Campsite",
+        "miles": 1916.0,
+        "eta": "2025-07-23"
+    },
+    {
+        "loc": [
+            44.52527,
+            -70.98077
+        ],
+        "label": "Full Goose Shelter & Camps",
+        "miles": 1920.3,
+        "eta": "2025-07-24"
+    },
+    {
+        "loc": [
+            44.56465,
+            -70.9736
+        ],
+        "label": "Speck Pond Shelter & Campsite",
+        "miles": 1925.4,
+        "eta": "2025-07-24"
+    },
+    {
+        "loc": [
+            44.59845,
+            -70.91161
+        ],
+        "label": "Baldpate Lean-to",
+        "miles": 1932.3,
+        "eta": "2025-07-25"
+    },
+    {
+        "loc": [
+            44.62771,
+            -70.9008
+        ],
+        "label": "Frye Notch Lean-to",
+        "miles": 1935.8,
+        "eta": "2025-07-25"
+    },
+    {
+        "loc": [
+            44.70083,
+            -70.8251
+        ],
+        "label": "Hall Mountain Lean-to",
+        "miles": 1946.3,
+        "eta": "2025-07-26"
+    },
+    {
+        "loc": [
+            44.81025,
+            -70.7559
+        ],
+        "label": "Bemis Mountain Lean-to",
+        "miles": 1959.1,
+        "eta": "2025-07-27"
+    },
+    {
+        "loc": [
+            44.84095,
+            -70.66205
+        ],
+        "label": "Sabbath Day Pond Lean-to",
+        "miles": 1967.4,
+        "eta": "2025-07-27"
+    },
+    {
+        "loc": [
+            44.90421,
+            -70.52996
+        ],
+        "label": "Piazza Rock Lean-to",
+        "miles": 1978.6,
+        "eta": "2025-07-28"
+    },
+    {
+        "loc": [
+            44.97006,
+            -70.44595
+        ],
+        "label": "Poplar Ridge Lean-to",
+        "miles": 1987.5,
+        "eta": "2025-07-29"
+    },
+    {
+        "loc": [
+            44.99576,
+            -70.3414
+        ],
+        "label": "Spaulding Mountain Lean-to",
+        "miles": 1995.5,
+        "eta": "2025-07-30"
+    },
+    {
+        "loc": [
+            45.14388,
+            -70.32971
+        ],
+        "label": "Horns Pond Lean-tos",
+        "miles": 2014.1,
+        "eta": "2025-07-31"
+    },
+    {
+        "loc": [
+            45.13911,
+            -70.1916
+        ],
+        "label": "Little Bigelow Lean-to",
+        "miles": 2024.3,
+        "eta": "2025-08-01"
+    },
+    {
+        "loc": [
+            45.15796,
+            -70.09973
+        ],
+        "label": "West Carry Pond Lean-to",
+        "miles": 2032.0,
+        "eta": "2025-08-02"
+    },
+    {
+        "loc": [
+            45.24025,
+            -70.05548
+        ],
+        "label": "Pierce Pond Lean-to",
+        "miles": 2042.0,
+        "eta": "2025-08-03"
+    },
+    {
+        "loc": [
+            45.27123,
+            -69.91673
+        ],
+        "label": "Pleasant Pond Lean-to",
+        "miles": 2051.7,
+        "eta": "2025-08-03"
+    },
+    {
+        "loc": [
+            45.2586,
+            -69.79945
+        ],
+        "label": "Bald Mountain Brook Lean-to",
+        "miles": 2060.7,
+        "eta": "2025-08-04"
+    },
+    {
+        "loc": [
+            45.27068,
+            -69.74538
+        ],
+        "label": "Moxie Bald Lean-to",
+        "miles": 2064.8,
+        "eta": "2025-08-05"
+    },
+    {
+        "loc": [
+            45.2828,
+            -69.62761
+        ],
+        "label": "Horseshoe Canyon Lean-to",
+        "miles": 2073.7,
+        "eta": "2025-08-05"
+    },
+    {
+        "loc": [
+            45.3516,
+            -69.49868
+        ],
+        "label": "Leeman Brook Lean-to",
+        "miles": 2085.7,
+        "eta": "2025-08-06"
+    },
+    {
+        "loc": [
+            45.39796,
+            -69.4601
+        ],
+        "label": "Wilson Valley Lean-to",
+        "miles": 2093.1,
+        "eta": "2025-08-07"
+    },
+    {
+        "loc": [
+            45.42115,
+            -69.4102
+        ],
+        "label": "Long Pond Stream Lean-to",
+        "miles": 2097.8,
+        "eta": "2025-08-07"
+    },
+    {
+        "loc": [
+            45.41813,
+            -69.35381
+        ],
+        "label": "Cloud Pond Lean-to",
+        "miles": 2101.8,
+        "eta": "2025-08-08"
+    },
+    {
+        "loc": [
+            45.45315,
+            -69.26238
+        ],
+        "label": "Chairback Gap Lean-to",
+        "miles": 2108.9,
+        "eta": "2025-08-08"
+    },
+    {
+        "loc": [
+            45.5311,
+            -69.31511
+        ],
+        "label": "Carl A. Newhall Lean-to",
+        "miles": 2118.8,
+        "eta": "2025-08-09"
+    },
+    {
+        "loc": [
+            45.56113,
+            -69.2354
+        ],
+        "label": "Logan Brook Lean-to",
+        "miles": 2126.0,
+        "eta": "2025-08-10"
+    },
+    {
+        "loc": [
+            45.59675,
+            -69.19823
+        ],
+        "label": "East Branch Lean-to",
+        "miles": 2129.6,
+        "eta": "2025-08-10"
+    },
+    {
+        "loc": [
+            45.64045,
+            -69.08743
+        ],
+        "label": "Cooper Brook Falls Lean-to",
+        "miles": 2137.7,
+        "eta": "2025-08-11"
+    },
+    {
+        "loc": [
+            45.7065,
+            -69.0075
+        ],
+        "label": "Potaywadjo Spring Lean-to",
+        "miles": 2149.1,
+        "eta": "2025-08-12"
+    },
+    {
+        "loc": [
+            45.73467,
+            -69.0546
+        ],
+        "label": "Nahmakanta Stream Lean-to",
+        "miles": 2153.4,
+        "eta": "2025-08-12"
+    },
+    {
+        "loc": [
+            45.74733,
+            -69.1452
+        ],
+        "label": "Wadleigh Stream Lean-to",
+        "miles": 2159.2,
+        "eta": "2025-08-12"
+    },
+    {
+        "loc": [
+            45.79908,
+            -69.171
+        ],
+        "label": "Rainbow Stream Lean-to",
+        "miles": 2167.3,
+        "eta": "2025-08-13"
+    },
+    {
+        "loc": [
+            45.81853,
+            -69.019
+        ],
+        "label": "Hurd Brook Lean-to",
+        "miles": 2178.8,
+        "eta": "2025-08-14"
+    },
+    {
+        "loc": [
+            45.88718,
+            -68.99985
+        ],
+        "label": "The Birches campsite",
+        "miles": 2192.2,
+        "eta": "2025-08-15"
+    }
+]
+}

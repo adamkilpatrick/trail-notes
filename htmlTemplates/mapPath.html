@@ -15,6 +15,8 @@
             const pathParam = urlParams.get("path");
             const endDate = urlParams.get("endDate");
 
+            const shelterPath = pathParam == "shelterPath";
+
             function filterPath(path, endDate) {
                 if (!endDate || (!new Date(endDate))) {
                     return path;
@@ -43,7 +45,11 @@
                         path.forEach(point => {
                             const opacity = point.loc == latestPoint ? 1.0 : 0.8;
                             const marker = L.marker(point.loc, {opacity:opacity}).addTo(map);
-                            marker.bindPopup(`<a href="/${point.label.substring(0,10)}">${point.label}</a>`);
+                            if (shelterPath) {
+                                marker.bindPopup(`<b>${point.label}</b><br/>ETA:${point.eta}, Mile:${point.miles}`);
+                            } else {
+                                marker.bindPopup(`<a href="/${point.label.substring(0,10)}">${point.label}</a>`);
+                            }
                         });
                     })
                     .catch(error => {

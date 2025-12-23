@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "PrepAndPlanning/TestRuns/SanMarin/2025-12-13.md",
+                "file": "index.md",
                 "mode": "source",
                 "source": true,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "2025-12-13"
+              "title": "index"
             }
           }
         ]
@@ -194,6 +194,7 @@
   },
   "active": "d52e7bb7e28989dd",
   "lastOpenFiles": [
+    "PrepAndPlanning/TestRuns/SanMarin/2025-12-13.md",
     "paths/test.json",
     "paths/test",
     "paths",
@@ -203,10 +204,8 @@
     "templates/geoplop.js",
     "templates",
     "New folder",
-    "PrepAndPlanning/TestRuns/SanMarin/2025-12-13.md",
     "attachments/2024-resupply-options.pdf",
     "PrepAndPlanning/TestRuns/SanMarin/init.md",
-    "PrepAndPlanning/TestRuns/SanMarin",
     "PrepAndPlanning/To-do.md",
     "PrepAndPlanning/To buy.md",
     "PrepAndPlanning/Schedule.md",

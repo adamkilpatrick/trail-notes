@@ -2,10 +2,10 @@
 - [ ] 2026-02-14: Start
 
 
-### Path
+# Path
 I took some data from https://www.whiteblaze.net/ (specifically https://www.whiteblaze.net/forum/articles/2024-shelters.pdf) and parsed it out to get a rough set of likely stop locations along this and calculated an ETA based on hitting around 12 miles per day. Obviously this is a real rough estimate but it gives me a baseline to work off of. With that I have the table below I can use to update estimated and actual arrival times, as well as a map in the lower section that shows the overall path.
 
-#### Table
+## Table
 | loc                | name                                  | miles  | eta        | actual |
 |--------------------|---------------------------------------|--------|------------|--------|
 | 34.62933,-84.19275 | Springer Mountain Shelter             | 0.2    | 2025-02-14 |        |
@@ -270,6 +270,7 @@ I took some data from https://www.whiteblaze.net/ (specifically https://www.whit
 | 45.88718,-68.99985 | The Birches campsite                  | 2192.2 | 2025-08-15 |        |
 
 
-#### Map
+## Map
 
 <iframe src="https://trail.snakeha.us/htmlTemplates/mapPath?path=shelterPath" width="100%" height="100%" style="height:500px"></iframe>
+[FullMap](https://trail.snakeha.us/htmlTemplates/mapPath?path=shelterPath)

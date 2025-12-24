@@ -44,4 +44,4 @@ Overall this setup seems to be working pretty well and hasn't fallen apart after
 ## ToDo
 - [ ] Wire in dead man switch
 	- [ ] Expose last check in time
-- [ ] Add location tracking
+- [x] Add location tracking

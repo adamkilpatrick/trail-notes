@@ -1,0 +1,8 @@
+views:
+  - type: map
+    name: Table
+  - type: table
+    name: View
+    order:
+      - file.name
+      - loc

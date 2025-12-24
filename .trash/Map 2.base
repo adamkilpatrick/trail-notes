@@ -1,0 +1,4 @@
+views:
+  - type: map
+    name: Map
+    coordinates: note.coordinates

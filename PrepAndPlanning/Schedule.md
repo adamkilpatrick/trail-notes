@@ -273,4 +273,6 @@ I took some data from https://www.whiteblaze.net/ (specifically https://www.whit
 ## Map
 
 <iframe src="https://trail.snakeha.us/htmlTemplates/mapPath?path=shelterPath" width="100%" height="100%" style="height:500px"></iframe>
+
+
 [FullMap](https://trail.snakeha.us/htmlTemplates/mapPath?path=shelterPath)

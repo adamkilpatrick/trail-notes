@@ -13,9 +13,9 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "PrepAndPlanning/TestRuns/SanMarin/2015-12-22.md",
+                "file": "index.md",
                 "mode": "source",
-                "source": false,
+                "source": true,
                 "backlinks": true,
                 "backlinkOpts": {
                   "collapseAll": false,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "2015-12-22"
+              "title": "index"
             }
           }
         ]
@@ -168,17 +168,20 @@
   },
   "active": "7c3114f9ac5c68c2",
   "lastOpenFiles": [
-    "attachments/PXL_20251222_174027923.jpg",
+    "PrepAndPlanning/Schedule.md",
+    "index.md",
     "PrepAndPlanning/TestRuns/SanMarin/2015-12-22.md",
+    "paths/shelterPath.json",
+    "attachments/shelterPaths.json",
+    "attachments/shelterPathParser.py",
+    "attachments/PXL_20251222_174027923.jpg",
     "attachments/PXL_20240907_223023809.jpg",
     "PrepAndPlanning/TestRuns/SanMarin/init.md",
     "Test.md",
     "Misc/Tech.md",
     "PrepAndPlanning/To-do.md",
-    "index.md",
     "PrepAndPlanning/TestRuns/SanMarin",
     "PrepAndPlanning/TestRuns",
-    "PrepAndPlanning/Schedule.md",
     "PrepAndPlanning/To buy.md",
     "PrepAndPlanning"
   ]

@@ -162,14 +162,15 @@
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
-      "bases:Create new base": false,
-      "obsidian-git:Open Git source control": false
+      "bases:Create new base": false
     }
   },
   "active": "7c3114f9ac5c68c2",
   "lastOpenFiles": [
-    "PrepAndPlanning/Schedule.md",
+    "PrepAndPlanning/TestRuns/SanMarin/2025-12-24.md",
+    "Misc/Contact.md",
     "index.md",
+    "PrepAndPlanning/Schedule.md",
     "PrepAndPlanning/TestRuns/SanMarin/2015-12-22.md",
     "paths/shelterPath.json",
     "attachments/shelterPaths.json",

@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "index.md",
+                "file": "PrepAndPlanning/TestRuns/SanMarin/2025-12-29.md",
                 "mode": "source",
                 "source": true,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "index"
+              "title": "2025-12-29"
             }
           }
         ]
@@ -168,8 +168,10 @@
   "active": "7c3114f9ac5c68c2",
   "lastOpenFiles": [
     "PrepAndPlanning/TestRuns/SanMarin/2025-12-24.md",
-    "Misc/Contact.md",
+    "PrepAndPlanning/TestRuns/SanMarin/2025-12-26.md",
+    "PrepAndPlanning/TestRuns/SanMarin/2025-12-29.md",
     "index.md",
+    "Misc/Contact.md",
     "PrepAndPlanning/Schedule.md",
     "PrepAndPlanning/TestRuns/SanMarin/2015-12-22.md",
     "paths/shelterPath.json",

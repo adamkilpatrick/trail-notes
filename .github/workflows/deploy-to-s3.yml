@@ -29,7 +29,7 @@
             run: npm install
             working-directory: ./quartz
           - name: Copy Quartz config
-            run: cp ./vault/.quartz/* ./quartz/*
+            run: cp ./vault/.quartz/* ./quartz/
           - name: Build from quartz
             run: npx quartz build -d ../vault -o ../output
             working-directory: ./quartz

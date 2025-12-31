@@ -42,7 +42,7 @@
                         const cameraIcon = L.icon({iconUrl: '/attachments/camera_icon.png', iconSize: [30, 30]});
                         const point = [imageMap[key].Latitude, imageMap[key].Longitude];
                         const marker = L.marker(point, {icon: cameraIcon}).addTo(map);
-                        marker.bindPopup(`<a href="/${key}"><img src="/${key}" style="max-width:100px" /></a>`, {minWidth:100});
+                        marker.bindPopup(`<a href="/${key}" target="_blank" rel="noopener noreferrer"><img src="/${key}" style="max-width:100px" /></a>`, {minWidth:100});
                     });
                 }
             }

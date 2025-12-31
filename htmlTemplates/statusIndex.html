@@ -16,7 +16,11 @@
                 const payload = await fetch("/paths/shelterPath.json");
                 return payload.json();
             }
-            async function drawMap(centerPoint, shelterPath) {
+            async function getImageMap() {
+                const payload = await fetch("/image_locations.json");
+                return payload.json();
+            }
+            async function drawMap(centerPoint, shelterPath, imageMap) {
                 const map = L.map('map').setView(centerPoint, 15);
                 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                     maxZoom: 19,
@@ -32,16 +36,27 @@
                         marker.bindPopup(`<b>${point.label}</b><br/>ETA:${point.eta}, Mile:${point.miles}`);
                     });
                 }
+
+                if (imageMap) {
+                    Object.keys(imageMap).forEach(key => {
+                        const cameraIcon = L.icon({iconUrl: '/attachments/camera_icon.png', iconSize: [30, 30]});
+                        const point = [imageMap[key].Latitude, imageMap[key].Longitude];
+                        const marker = L.marker(point, {icon: cameraIcon}).addTo(map);
+                        marker.bindPopup(`<a href="/attachments/${key}"><img src="/attachments/${key}" style="max-width:100px" /></a>`, {minWidth:100});
+                    });
+                }
             }
             async function updateStatus() {
                 const statusPromise = getLatestStatus();
                 const shelterPathPromise = getShelterPath();
+                const imageMapPromise = getImageMap();
 
                 const status = await statusPromise;
                 const shelterPath = await shelterPathPromise;
+                const imageMap = await imageMapPromise;
 
                 $('#status').html(`<b>LastUpdate</b>:${status.date}<br/><b>Loc</b>:${status.loc}<br/><b>Weather</b>:${JSON.stringify(status.weather)}`)
-                await drawMap(status.loc, shelterPath.path);
+                await drawMap(status.loc, shelterPath.path, imageMap);
             }
             updateStatus()
             .catch(error => {

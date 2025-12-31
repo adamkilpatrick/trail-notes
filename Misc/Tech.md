@@ -17,6 +17,7 @@ I was hoping that there would be a real simple out of the box solution to publis
 	E[CloudFront]
 	F[You right now]
 	G[StatusChecker]
+    H[ImageLocationExtractor]
 	
 	A -->|Just Obsidian markdown| B
 	A -->|"Larger files (e.g. images)"|C
@@ -24,6 +25,10 @@ I was hoping that there would be a real simple out of the box solution to publis
 	D --> C
 	E --> C
 	F --> E
+    G --> C
+    C --> G
+    H --> C
+    C --> H
 
 ```
 
@@ -41,7 +46,7 @@ Going from the Obsidian assets to a static site was more of a pain than I expect
 
 Hosting is real straightforward. Static site lives in an S3 bucket and I point a CloudFront distribution at it so I can get some caching and ability to do some route tweaking. The infra code for that all lives at [adamkilpatrick/trail-notes-infra](https://github.com/adamkilpatrick/trail-notes-infra). This probably costs me 60 cents a month or something, as opposed to the 0 it would cost living in my VPS or in GitHub pages, or in Vercel, whatever, money isn't real.
 
-There are a couple moving parts in the hosted infra. The main one right now is a scheduled lambda that checks for latest checkin time, latest location, and nabs some weather info, and then writes a daily status, which gets read from the index page.
+There are a couple moving parts in the hosted infra. The main one right now is a [scheduled lambda](https://github.com/adamkilpatrick/trail-notes-infra/blob/main/src/TrailNotesInfra/scripts/statusChecker.py) that checks for latest checkin time, latest location, and nabs some weather info, and then writes a daily status, which gets read from the index page. There is also a [lambda](https://github.com/adamkilpatrick/trail-notes-infra/blob/main/src/ImageLocationExtractor/Function.fs) that will listen for new images being uploaded, extract GPS data from the exif data (yes, I'm not stripping any of this as I upload, intentionally), and then dump that data back into the bucket so it can be used for map overlays and whatnot.
 
 Overall this setup seems to be working pretty well and hasn't fallen apart after 48 hours which, for any kind of software project, is pretty satisfying and unexpected.
 

@@ -1,4 +1,7 @@
 - [ ] Black out at whole foods bar
-- [ ] automate location flow
+- [x] automate location flow
 - [ ] catalog initial gear
-- [ ] test some more image stuff
+- [x] test some more image stuff
+- [ ] setup Garmin account
+- [ ] book ATL hotel
+- [ ] book ATL shuttle 

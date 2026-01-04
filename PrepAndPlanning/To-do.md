@@ -5,3 +5,5 @@
 - [ ] setup Garmin account
 - [ ] book ATL hotel
 - [ ] book ATL shuttle 
+- [ ] blade for hole
+- [ ] if I could only remember my name 

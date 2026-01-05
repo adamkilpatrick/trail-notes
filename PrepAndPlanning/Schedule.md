@@ -1,3 +1,7 @@
+---
+created: 2025-12-31
+modified: 2026-01-05
+---
 - [ ] 2026-01-12: LSHT
 - [ ] 2026-01-31: sendoff 
 - [ ] 2026-02-10: Arrive in ATL
@@ -277,4 +281,4 @@ I took some data from https://www.whiteblaze.net/ (specifically https://www.whit
 <iframe src="https://trail.snakeha.us/htmlTemplates/mapPath?path=shelterPath" width="100%" height="100%" style="height:500px"></iframe>
 
 
-[FullMap](https://trail.snakeha.us/htmlTemplates/mapPath?path=shelterPath)
+<a href="https://trail.snakeha.us/htmlTemplates/mapPath?path=shelterPath" target="_blank" rel="noopener noreferrer">Full Map</a>

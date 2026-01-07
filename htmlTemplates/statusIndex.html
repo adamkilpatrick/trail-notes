@@ -12,8 +12,8 @@
                 const payload = await fetch("/status/latest.json");
                 return payload.json();
             }
-            async function getShelterPath() {
-                const payload = await fetch("/paths/shelterPath.json");
+            async function getShelterPath(trailPath) {
+                const payload = await fetch();
                 return payload.json();
             }
             async function getImageMap() {
@@ -29,6 +29,7 @@
                 var snowIcon = L.icon({iconUrl: '/attachments/icon_map.png', iconSize: [50, 50]});
                 const marker = L.marker(centerPoint, {icon: snowIcon}).addTo(map);
                 marker.bindPopup(`Lat: ${centerPoint[0]}<br/> Long: ${centerPoint[1]}`);
+
                 if (shelterPath) {
                     L.polyline(shelterPath.map(x=>x.loc)).addTo(map);
                     shelterPath.forEach(point => {
@@ -46,7 +47,7 @@
                     });
                 }
             }
-            async function updateStatus() {
+            async function updateStatus(trailPath) {
                 const statusPromise = getLatestStatus();
                 const shelterPathPromise = getShelterPath();
                 const imageMapPromise = getImageMap();
@@ -58,7 +59,12 @@
                 $('#status').html(`<b>LastUpdate</b>:${status.date}<br/><b>Loc</b>:${status.loc}<br/><b>Weather</b>:${JSON.stringify(status.weather)}`)
                 await drawMap(status.loc, shelterPath.path, imageMap);
             }
-            updateStatus()
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const trailPathParam = (urlParams.get("trailPath") || "shelterPath");
+            const trailPath = `/paths/${trailPathParam}.json`
+
+            updateStatus(trailPath)
             .catch(error => {
                         document.body.innerHTML = `<p>Error loading path data: ${error}</p>`;
                     });

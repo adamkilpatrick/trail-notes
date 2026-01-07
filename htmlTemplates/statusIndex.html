@@ -49,7 +49,7 @@
             }
             async function updateStatus(trailPath) {
                 const statusPromise = getLatestStatus();
-                const shelterPathPromise = getShelterPath();
+                const shelterPathPromise = getShelterPath(trailPath);
                 const imageMapPromise = getImageMap();
 
                 const status = await statusPromise;

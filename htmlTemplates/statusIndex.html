@@ -61,7 +61,7 @@
                 const statusPromise = getLatestStatus();
                 const shelterPathPromise = getPath(trailPath);
                 const imageMapPromise = getImageMap();
-                const activePath = activePath ? (await getPath(activePathLocation)) : undefined;
+                const activePath = activePathLocation ? (await getPath(activePathLocation)) : undefined;
 
                 const status = await statusPromise;
                 const shelterPath = await shelterPathPromise;

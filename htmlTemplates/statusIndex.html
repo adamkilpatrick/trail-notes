@@ -12,7 +12,7 @@
                 const payload = await fetch("/status/latest.json");
                 return payload.json();
             }
-            async function getShelterPath(trailPath) {
+            async function getPath(trailPath) {
                 const payload = await fetch(trailPath);
                 return payload.json();
             }
@@ -20,15 +20,14 @@
                 const payload = await fetch("/image_locations.json");
                 return payload.json();
             }
-            async function drawMap(centerPoint, shelterPath, imageMap) {
+            async function drawMap(centerPoint, shelterPath, imageMap, activePath) {
                 const map = L.map('map').setView(centerPoint, 15);
                 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                     maxZoom: 19,
                     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
                 }).addTo(map);
                 var snowIcon = L.icon({iconUrl: '/attachments/icon_map.png', iconSize: [50, 50]});
-                const marker = L.marker(centerPoint, {icon: snowIcon}).addTo(map);
-                marker.bindPopup(`Lat: ${centerPoint[0]}<br/> Long: ${centerPoint[1]}`);
+
 
                 if (shelterPath) {
                     L.polyline(shelterPath.map(x=>x.loc)).addTo(map);
@@ -36,6 +35,17 @@
                         const marker = L.marker(point.loc, {opacity:0.8}).addTo(map);
                         marker.bindPopup(`<b>${point.label}</b><br/>ETA:${point.eta}, Mile:${point.miles}`);
                     });
+                }
+
+                if (activePath) {
+                    L.polyline(activePath.map(x=>x.loc), {color: 'yellow'}).addTo(map);
+                    activePath.forEach(point => {
+                        const marker = L.marker(point.loc, {icon: snowIcon}).addTo(map);
+                        marker.bindPopup(`<b>${point.label}</b><br/>:${point.note}`);
+                    });
+                } else {
+                    const marker = L.marker(centerPoint, {icon: snowIcon}).addTo(map);
+                    marker.bindPopup(`Lat: ${centerPoint[0]}<br/> Long: ${centerPoint[1]}`);
                 }
 
                 if (imageMap) {
@@ -47,24 +57,28 @@
                     });
                 }
             }
-            async function updateStatus(trailPath) {
+            async function updateStatus(trailPath, activePathLocation) {
                 const statusPromise = getLatestStatus();
-                const shelterPathPromise = getShelterPath(trailPath);
+                const shelterPathPromise = getPath(trailPath);
                 const imageMapPromise = getImageMap();
+                const activePath = activePath ? (await getPath(activePathLocation)) : undefined;
 
                 const status = await statusPromise;
                 const shelterPath = await shelterPathPromise;
                 const imageMap = await imageMapPromise;
 
                 $('#status').html(`<b>LastUpdate</b>:${status.date}<br/><b>Loc</b>:${status.loc}<br/><b>Weather</b>:${JSON.stringify(status.weather)}`)
-                await drawMap(status.loc, shelterPath.path, imageMap);
+                await drawMap(status.loc, shelterPath.path, imageMap, activePath);
             }
 
             const urlParams = new URLSearchParams(window.location.search);
             const trailPathParam = (urlParams.get("trailPath") || "shelterPath");
-            const trailPath = `/paths/${trailPathParam}.json`
+            const trailPath = `/paths/${trailPathParam}.json`;
+            const activePathParam = urlParams.get("activePath");
+            const activePath = activePathParam ? `/paths/${activePathParam}.json` : undefined;
+            const endDate = urlParams.get("endDate");
 
-            updateStatus(trailPath)
+            updateStatus(trailPath, activePath)
             .catch(error => {
                         document.body.innerHTML = `<p>Error loading path data: ${error}</p>`;
                     });

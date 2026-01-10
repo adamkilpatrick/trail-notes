@@ -1,0 +1,20 @@
+{
+    "root":"PrepAndPlanning/TestRuns/LSHT/",
+    "path":[
+        {
+            "loc": [
+                30.53106300,
+                -95.7749935
+            ],
+            "label": "Foo",
+            "note": "noteFoo"
+        },
+        {
+            "loc": [
+                30.52306409,
+                -95.76483377
+            ],
+            "label": "Bar"
+        }
+    ]
+}

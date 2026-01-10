@@ -68,7 +68,7 @@
                 const imageMap = await imageMapPromise;
 
                 $('#status').html(`<b>LastUpdate</b>:${status.date}<br/><b>Loc</b>:${status.loc}<br/><b>Weather</b>:${JSON.stringify(status.weather)}`)
-                await drawMap(status.loc, shelterPath.path, imageMap, activePath);
+                await drawMap(status.loc, shelterPath.path, imageMap, activePath ? activePath.path : undefined);
             }
 
             const urlParams = new URLSearchParams(window.location.search);

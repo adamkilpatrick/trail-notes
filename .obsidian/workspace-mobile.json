@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "PrepAndPlanning/TestRuns/LSHT/2026-01-14.md",
+                "file": "Gear/2026-01-19.md",
                 "mode": "source",
                 "source": true,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "2026-01-14"
+              "title": "2026-01-19"
             }
           }
         ]
@@ -167,6 +167,8 @@
   },
   "active": "7c3114f9ac5c68c2",
   "lastOpenFiles": [
+    "PrepAndPlanning/TestRuns/LSHT/2026-01-14.md",
+    "Gear/2026-01-19.md",
     "attachments/PXL_20260112_184023849.jpg",
     "attachments/PXL_20260112_192622653.jpg",
     "attachments/PXL_20260112_222433359.jpg",
@@ -174,7 +176,6 @@
     "attachments/PXL_20260113_193508816.jpg",
     "attachments/PXL_20260114_142045877.jpg",
     "Gear/2025-12-30.md",
-    "PrepAndPlanning/TestRuns/LSHT/2026-01-14.md",
     "PrepAndPlanning/TestRuns/LSHT/2026-01-13.md",
     "PrepAndPlanning/TestRuns/LSHT/2026-01-12.md",
     "Misc/SnakeList.md",

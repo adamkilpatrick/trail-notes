@@ -20,8 +20,17 @@
                 const payload = await fetch("/image_locations.json");
                 return payload.json();
             }
+            function resolveCenterPoint(statusCenterPoint, activePath) {
+                if (activePath) {
+                    return activePath[activePath.length - 1].loc;
+                } else {
+                    return statusCenterPoint;
+                }
+            }
             async function drawMap(centerPoint, shelterPath, imageMap, activePath) {
-                const map = L.map('map').setView(centerPoint, 15);
+                const resolvedCenterPoint = resolveCenterPoint(centerPoint, activePath);
+                const map = L.map('map').setView(resolvedCenterPoint, 15);
+
                 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                     maxZoom: 19,
                     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -44,8 +53,8 @@
                         marker.bindPopup(`<b>${point.label}</b><br/>:${point.note}`);
                     });
                 } else {
-                    const marker = L.marker(centerPoint, {icon: snowIcon}).addTo(map);
-                    marker.bindPopup(`Lat: ${centerPoint[0]}<br/> Long: ${centerPoint[1]}`);
+                    const marker = L.marker(resolvedCenterPoint, {icon: snowIcon}).addTo(map);
+                    marker.bindPopup(`Lat: ${resolvedCenterPoint[0]}<br/> Long: ${resolvedCenterPoint[1]}`);
                 }
 
                 if (imageMap) {

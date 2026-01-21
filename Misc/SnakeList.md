@@ -10,4 +10,5 @@ modified: 2026-01-10
 - [ ] trying to marry bigfoot
 - [ ] watched the long walk and bing searched "longer walk"
 - [ ] want to get on survivor and fight Boston rob
+- [ ] need to break in 20 pairs of shoes
 - [ ] 

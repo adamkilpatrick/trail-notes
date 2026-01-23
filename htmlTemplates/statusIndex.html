@@ -66,18 +66,19 @@
                     });
                 }
             }
-            async function updateStatus(trailPath, activePathLocation) {
+            async function updateStatus(trailPath, activePathLocation, endDate) {
                 const statusPromise = getLatestStatus();
                 const shelterPathPromise = getPath(trailPath);
                 const imageMapPromise = getImageMap();
                 const activePath = activePathLocation ? (await getPath(activePathLocation)) : undefined;
+                const filteredPath = activePath ? activePath.path.filter(point => endDate == undefined || point.label < endDate) : undefined;
 
                 const status = await statusPromise;
                 const shelterPath = await shelterPathPromise;
                 const imageMap = await imageMapPromise;
 
-                $('#status').html(`<b>LastUpdate</b>:${status.date}<br/><b>Loc</b>:${status.loc}<br/><b>Weather</b>:${JSON.stringify(status.weather)}`)
-                await drawMap(status.loc, shelterPath.path, imageMap, activePath ? activePath.path : undefined);
+                $('#status').html(`<b>Last Update</b> : ${status.date}<br/><b>Location</b> : ${status.loc}<br/><b>Weather</b> : ${JSON.stringify(status.weather)}`)
+                await drawMap(status.loc, shelterPath.path, imageMap, filteredPath, endDate);
             }
 
             const urlParams = new URLSearchParams(window.location.search);
@@ -87,7 +88,7 @@
             const activePath = activePathParam ? `/paths/${activePathParam}.json` : undefined;
             const endDate = urlParams.get("endDate");
 
-            updateStatus(trailPath, activePath)
+            updateStatus(trailPath, activePath, endDate)
             .catch(error => {
                         document.body.innerHTML = `<p>Error loading path data: ${error}</p>`;
                     });

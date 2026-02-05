@@ -50,7 +50,7 @@
                     L.polyline(activePath.map(x=>x.loc), {color: 'yellow'}).addTo(map);
                     activePath.forEach(point => {
                         const marker = L.marker(point.loc, {icon: snowIcon}).addTo(map);
-                        marker.bindPopup(`<b>${point.label}</b><br/>:${point.note}`);
+                        marker.bindPopup(`<b>${point.label}</b><br/>${point.note || ""}`);
                     });
                 } else {
                     const marker = L.marker(resolvedCenterPoint, {icon: snowIcon}).addTo(map);

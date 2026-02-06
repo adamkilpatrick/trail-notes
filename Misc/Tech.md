@@ -1,3 +1,7 @@
+---
+created: 2025-12-31
+modified: 2025-12-31
+---
 ## Summary
 This page has some details about how this whole note system works under the hood, and possibly a bit about why I made some of these terrible tech decisions (mostly so I can remember them later).
 

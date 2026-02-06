@@ -1,9 +1,9 @@
 ---
 created: 2025-12-31
-modified: 2026-01-05
+modified: 2026-02-05
 ---
-- [ ] 2026-01-12: LSHT
-- [ ] 2026-01-31: sendoff 
+- [x] 2026-01-12: LSHT
+- [x] 2026-01-31: sendoff 
 - [ ] 2026-02-10: Arrive in ATL
 - [ ] 2026-02-14: Start
 

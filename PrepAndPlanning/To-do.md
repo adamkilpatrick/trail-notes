@@ -1,9 +1,11 @@
+---
+created: 2025-12-31
+modified: 2025-12-31
+---
 - [ ] Black out at whole foods bar
 - [x] automate location flow
-- [ ] catalog initial gear
+- [x] catalog initial gear
 - [x] test some more image stuff
-- [ ] setup Garmin account
-- [ ] book ATL hotel
-- [ ] book ATL shuttle 
-- [ ] blade for hole
-- [ ] if I could only remember my name 
+- [x] setup Garmin account
+- [x] book ATL hotel
+- [x] book ATL shuttle 

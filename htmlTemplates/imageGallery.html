@@ -57,7 +57,7 @@
                     const imageData = await response.json();
                     const gallery = document.getElementById('gallery');
                     
-                    Object.entries(imageData).forEach(([filename, metadata]) => {
+                    Object.entries(imageData).reverse().filter(([filename, metadata]) => !filename.startsWith("attachments/")).forEach(([filename, metadata]) => {
                         const item = document.createElement('div');
                         item.className = 'pswp-gallery__item';
                         

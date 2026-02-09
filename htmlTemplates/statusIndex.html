@@ -8,6 +8,10 @@
          <div id="status"></div>
          <div id="map" style="height: 100%; width: 100%;"></div>
          <script>
+            function getDateString(dateTimeString) {
+                const date = new Date(dateTimeString);
+                return `${date.getFullYear}-${date.getMonth}-${date.getDate}`;
+            }
             async function getLatestStatus() {
                 const payload = await fetch("/status/latest.json");
                 return payload.json();
@@ -71,7 +75,7 @@
                 const shelterPathPromise = getPath(trailPath);
                 const imageMapPromise = getImageMap();
                 const activePath = activePathLocation ? (await getPath(activePathLocation)) : undefined;
-                const filteredPath = activePath ? activePath.path.filter(point => endDate == undefined || point.label < endDate) : undefined;
+                const filteredPath = activePath ? activePath.path.filter(point => endDate == undefined || getDateString(point.label) < endDate) : undefined;
 
                 const status = await statusPromise;
                 const shelterPath = await shelterPathPromise;

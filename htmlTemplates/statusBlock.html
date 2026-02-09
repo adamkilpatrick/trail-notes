@@ -1,0 +1,16 @@
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div id="status"></div>
+        <script>
+            async function getLatestStatus() {
+                const payload = await fetch("/status/latest.json");
+                return payload.json();
+            }
+            const status = await getLatestStatus();
+            $('#status').html(`<b>Last Update</b> : ${status.date}<br/><b>Location</b> : ${status.loc}<br/><b>Weather</b> : ${JSON.stringify(status.weather)}`)
+        </script>
+    </body>
+</html>

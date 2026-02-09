@@ -1,4 +1,4 @@
 ---
-createdDate: 2025-12-31
-modifiedDate: 2025-12-31
+created: 2025-12-31
+modified: 2025-12-31
 ---

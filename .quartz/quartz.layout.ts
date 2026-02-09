@@ -54,13 +54,13 @@ export const defaultContentPageLayout: PageLayout = {
             }
         },
     }),
-    Component.RecentNotes({ limit: 5 }),
   ],
   right: [
     Component.Graph(),
     Component.DesktopOnly(Component.TableOfContents()),
     Component.Backlinks(),
   ],
+  afterBody: [Component.RecentNotes({ limit: 5 }),],
 }
 
 // components for pages that display lists of pages  (e.g. tags or folders)

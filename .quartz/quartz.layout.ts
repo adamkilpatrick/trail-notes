@@ -54,6 +54,7 @@ export const defaultContentPageLayout: PageLayout = {
             }
         },
     }),
+    Component.RecentNotes({ limit: 5 }),
   ],
   right: [
     Component.Graph(),

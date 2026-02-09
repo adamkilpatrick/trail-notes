@@ -66,7 +66,7 @@
                     });
                 }
             }
-            async function updateStatus(trailPath, activePathLocation, endDate) {
+            async function updateStatus(trailPath, activePathLocation, endDate, centerPointParam) {
                 const statusPromise = getLatestStatus();
                 const shelterPathPromise = getPath(trailPath);
                 const imageMapPromise = getImageMap();
@@ -77,8 +77,10 @@
                 const shelterPath = await shelterPathPromise;
                 const imageMap = await imageMapPromise;
 
+                const centerPoint = centerPointParam ? centerPointParam.split("_") : status.loc;
+
                 $('#status').html(`<b>Last Update</b> : ${status.date}<br/><b>Location</b> : ${status.loc}<br/><b>Weather</b> : ${JSON.stringify(status.weather)}`)
-                await drawMap(status.loc, shelterPath.path, imageMap, filteredPath, endDate);
+                await drawMap(centerPoint, shelterPath.path, imageMap, filteredPath, endDate);
             }
 
             const urlParams = new URLSearchParams(window.location.search);
@@ -87,8 +89,9 @@
             const activePathParam = urlParams.get("activePath");
             const activePath = activePathParam ? `/paths/${activePathParam}.json` : undefined;
             const endDate = urlParams.get("endDate");
+            const centerPoint = urlParams.get("centerPoint");
 
-            updateStatus(trailPath, activePath, endDate)
+            updateStatus(trailPath, activePath, endDate, centerPoint)
             .catch(error => {
                         document.body.innerHTML = `<p>Error loading path data: ${error}</p>`;
                     });

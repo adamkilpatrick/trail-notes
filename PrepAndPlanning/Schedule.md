@@ -1,13 +1,13 @@
 ---
 created: 2025-12-31
-modified: 2026-02-05
+modified: 2026-02-08
 ---
 - [x] 2026-01-12: LSHT
 - [x] 2026-01-31: sendoff 
-- [ ] 2026-02-10: Arrive in ATL
+- [ ] ~~2026-02-10~~ 2026-02-12: Arrive in ATL
 - [ ] 2026-02-14: Start
 
-
+For the first couple of weeks I plan on following the schedule outlined at https://www.theatguide.com/12-milesday/ and then potentially ramping up slightly depending on how that goes.
 # Path
 I took some data from https://www.whiteblaze.net/ (specifically https://www.whiteblaze.net/forum/articles/2024-shelters.pdf) and parsed it out to get a rough set of likely stop locations along this and calculated an ETA based on hitting around 12 miles per day. Obviously this is a real rough estimate but it gives me a baseline to work off of. With that I have the table below I can use to update estimated and actual arrival times, as well as a map in the lower section that shows the overall path.
 

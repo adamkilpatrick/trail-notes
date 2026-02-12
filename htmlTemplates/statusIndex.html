@@ -51,6 +51,7 @@
                 }
 
                 if (activePath) {
+                    console.log(activePath);
                     L.polyline(activePath.map(x=>x.loc), {color: 'yellow'}).addTo(map);
                     activePath.forEach(point => {
                         const marker = L.marker(point.loc, {icon: snowIcon}).addTo(map);

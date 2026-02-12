@@ -11,7 +11,6 @@
     </head>
     <body>
         <div class="status-container">
-            <h2>Trail Status</h2>
             <div id="status"></div>
         </div>
         <script>
@@ -19,28 +18,31 @@
                 const payload = await fetch("/status/latest.json");
                 return payload.json();
             }
-            const status = await getLatestStatus();
-            const html = `
-                <div class="section">
-                    <span class="label">Date:</span><span class="value">${new Date(status.date).toLocaleString()}</span>
-                </div>
-                <div class="section">
-                    <span class="label">Location:</span><span class="value">Lat: ${status.loc[0].toFixed(6)}, Lon: ${status.loc[1].toFixed(6)}, Alt: ${status.loc[2].toFixed(2)}m</span>
-                </div>
-                <div class="section">
-                    <span class="label">Weather:</span><span class="value">High: ${status.weather.highTemp[0]}°F, Low: ${status.weather.lowTemp[0]}°F</span>
-                </div>
-                <div class="section">
-                    <span class="label">Current Mile:</span><span class="value">${status.currentMile.toFixed(1)}</span>
-                </div>
-                <div class="section">
-                    <span class="label">Miles Per Day:</span><span class="value">${status.milesPerDay.toFixed(1)}</span>
-                </div>
-                <div class="section">
-                    <span class="label">Progress:</span><span class="value">${(status.percentComplete * 100).toFixed(1)}%</span>
-                </div>
-            `;
-            $('#status').html(html);
+            async function updateStatus() {
+                const status = await getLatestStatus();
+                const html = `
+                    <div class="section">
+                        <span class="label">Date:</span><span class="value">${new Date(status.date).toLocaleString()}</span>
+                    </div>
+                    <div class="section">
+                        <span class="label">Location:</span><span class="value">Lat: ${status.loc[0].toFixed(6)}, Lon: ${status.loc[1].toFixed(6)}, Alt: ${status.loc[2].toFixed(2)}m</span>
+                    </div>
+                    <div class="section">
+                        <span class="label">Weather:</span><span class="value">High: ${status.weather.highTemp[0]}°F, Low: ${status.weather.lowTemp[0]}°F</span>
+                    </div>
+                    <div class="section">
+                        <span class="label">Current Mile:</span><span class="value">${status.currentMile.toFixed(1)}</span>
+                    </div>
+                    <div class="section">
+                        <span class="label">Miles Per Day:</span><span class="value">${status.milesPerDay.toFixed(1)}</span>
+                    </div>
+                    <div class="section">
+                        <span class="label">Progress:</span><span class="value">${(status.percentComplete * 100).toFixed(1)}%</span>
+                    </div>
+                `;
+                $('#status').html(html);
+            }
+            updateStatus();
         </script>
     </body>
 </html>

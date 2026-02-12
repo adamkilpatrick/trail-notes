@@ -10,7 +10,9 @@
          <script>
             function getDateString(dateTimeString) {
                 const date = new Date(dateTimeString);
-                return `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
+                const month = (date.getMonth()+1).toString().padStart(2, '0');
+                const day = date.getDate().toString().padStart(2, '0');
+                return `${date.getFullYear()}-${month}-${day}`;
             }
             async function getLatestStatus() {
                 const payload = await fetch("/status/latest.json");

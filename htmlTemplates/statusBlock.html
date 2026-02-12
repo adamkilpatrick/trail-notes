@@ -22,7 +22,7 @@
                 const status = await getLatestStatus();
                 const html = `
                     <div class="section">
-                        <span class="label">Date:</span><span class="value">${new Date(status.date).toLocaleString()}</span>
+                        <span class="label">Last Checkin Date:</span><span class="value">${new Date(status.date).toLocaleString()}</span>
                     </div>
                     <div class="section">
                         <span class="label">Location:</span><span class="value">Lat: ${status.loc[0].toFixed(6)}, Lon: ${status.loc[1].toFixed(6)}, Alt: ${status.loc[2].toFixed(2)}m</span>

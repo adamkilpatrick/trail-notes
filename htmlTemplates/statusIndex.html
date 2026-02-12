@@ -32,6 +32,7 @@
                 }
             }
             async function drawMap(centerPoint, shelterPath, imageMap, activePath) {
+                console.log(activePath);
                 const resolvedCenterPoint = resolveCenterPoint(centerPoint, activePath);
                 const map = L.map('map').setView(resolvedCenterPoint, 15);
 
@@ -98,6 +99,7 @@
             updateStatus(trailPath, activePath, endDate, centerPoint)
             .catch(error => {
                         document.body.innerHTML = `<p>Error loading path data: ${error}</p>`;
+                        throw error;
                     });
          </script>
     </body>

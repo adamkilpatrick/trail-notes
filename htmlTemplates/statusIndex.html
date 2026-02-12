@@ -10,7 +10,7 @@
          <script>
             function getDateString(dateTimeString) {
                 const date = new Date(dateTimeString);
-                return `${date.getFullYear}-${date.getMonth}-${date.getDate}`;
+                return `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
             }
             async function getLatestStatus() {
                 const payload = await fetch("/status/latest.json");
@@ -25,7 +25,7 @@
                 return payload.json();
             }
             function resolveCenterPoint(statusCenterPoint, activePath) {
-                if (activePath) {
+                if (activePath && activePath.length > 0) {
                     return activePath[activePath.length - 1].loc;
                 } else {
                     return statusCenterPoint;

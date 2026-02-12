@@ -17,6 +17,10 @@
     {
       "folder": "PrepAndPlanning/TestRuns/SanMarin",
       "template": "templates/sanMarinTemplate.md"
+    },
+    {
+      "folder": "Updates",
+      "template": "templates/atTemplate.md"
     }
   ],
   "enable_file_templates": false,

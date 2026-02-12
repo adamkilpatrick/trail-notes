@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Gear/2026-01-19.md",
+                "file": "Updates/2026-02-12.md",
                 "mode": "source",
                 "source": true,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "2026-01-19"
+              "title": "2026-02-12"
             }
           }
         ]
@@ -167,9 +167,11 @@
   },
   "active": "7c3114f9ac5c68c2",
   "lastOpenFiles": [
+    "templates/atTemplate.md",
+    "Updates/2026-02-12.md",
+    "Gear/2026-01-19.md",
     "attachments/PXL_20260119_174914055.jpg",
     "Misc/SnakeList.md",
-    "Gear/2026-01-19.md",
     "PrepAndPlanning/TestRuns/LSHT/2026-01-14.md",
     "attachments/PXL_20260112_184023849.jpg",
     "attachments/PXL_20260112_192622653.jpg",

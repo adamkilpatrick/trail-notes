@@ -83,7 +83,6 @@
 
                 const centerPoint = centerPointParam ? centerPointParam.split("_") : status.loc;
 
-                $('#status').html(`<b>Last Update</b> : ${status.date}<br/><b>Location</b> : ${status.loc}<br/><b>Weather</b> : ${JSON.stringify(status.weather)}`)
                 await drawMap(centerPoint, shelterPath.path, imageMap, filteredPath, endDate);
             }
 

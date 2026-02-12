@@ -8,6 +8,7 @@ This updates periodically and when I manually push to it, but I will also have a
 
 ## Current Status
 
+<iframe src="https://trail.snakeha.us/htmlTemplates/statusBlock" width="100%" height="100%" style="height:300px"></iframe>
 <iframe src="https://trail.snakeha.us/htmlTemplates/statusIndex" width="100%" height="100%" style="height:500px"></iframe>
 
 

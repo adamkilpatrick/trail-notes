@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Updates/2026-02-12.md",
+                "file": "PrepAndPlanning/Schedule.md",
                 "mode": "source",
                 "source": true,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "2026-02-12"
+              "title": "Schedule"
             }
           }
         ]
@@ -167,9 +167,9 @@
   },
   "active": "7c3114f9ac5c68c2",
   "lastOpenFiles": [
+    "Updates/2026-02-12.md",
     "attachments/PXL_20260212_235925378.jpg",
     "templates/atTemplate.md",
-    "Updates/2026-02-12.md",
     "Gear/2026-01-19.md",
     "attachments/PXL_20260119_174914055.jpg",
     "Misc/SnakeList.md",

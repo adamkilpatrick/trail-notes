@@ -4,7 +4,7 @@ modified: 2026-02-08
 ---
 - [x] 2026-01-12: LSHT
 - [x] 2026-01-31: sendoff 
-- [ ] ~~2026-02-10~~ 2026-02-12: Arrive in ATL
+- [x] ~~2026-02-10~~ 2026-02-12: Arrive in ATL
 - [ ] 2026-02-14: Start
 
 For the first couple of weeks I plan on following the schedule outlined at https://www.theatguide.com/12-milesday/ and then potentially ramping up slightly depending on how that goes.

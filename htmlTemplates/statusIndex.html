@@ -80,7 +80,7 @@
                 const shelterPathPromise = getPath(trailPath);
                 const imageMapPromise = getImageMap();
                 const activePath = activePathLocation ? (await getPath(activePathLocation)) : undefined;
-                const filteredPath = activePath ? activePath.path.filter(point => endDate == undefined || getDateString(point.label) < endDate) : undefined;
+                const filteredPath = activePath ? activePath.path.filter(point => endDate == undefined || getDateString(point.label) <= endDate) : undefined;
 
                 const status = await statusPromise;
                 const shelterPath = await shelterPathPromise;

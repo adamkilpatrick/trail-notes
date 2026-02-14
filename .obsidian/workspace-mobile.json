@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "PrepAndPlanning/Schedule.md",
+                "file": "Updates/2026-02-13.md",
                 "mode": "source",
                 "source": true,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Schedule"
+              "title": "2026-02-13"
             }
           }
         ]
@@ -167,6 +167,12 @@
   },
   "active": "7c3114f9ac5c68c2",
   "lastOpenFiles": [
+    "attachments/PXL_20260213_231906754.jpg",
+    "attachments/PXL_20260213_200205466.jpg",
+    "attachments/PXL_20260213_194939410.jpg",
+    "attachments/PXL_20260105_224745221 1.jpg",
+    "PrepAndPlanning/Schedule.md",
+    "Updates/2026-02-13.md",
     "Updates/2026-02-12.md",
     "attachments/PXL_20260212_235925378.jpg",
     "templates/atTemplate.md",
@@ -179,7 +185,6 @@
     "attachments/PXL_20260112_222433359.jpg",
     "attachments/PXL_20260113_163352239.jpg",
     "attachments/PXL_20260113_193508816.jpg",
-    "attachments/PXL_20260114_142045877.jpg",
     "Gear/2025-12-30.md",
     "PrepAndPlanning/TestRuns/LSHT/2026-01-13.md",
     "PrepAndPlanning/TestRuns/LSHT/2026-01-12.md",
@@ -188,13 +193,10 @@
     "PrepAndPlanning/TestRuns/SanMarin/2025-12-26.md",
     "index.md",
     "Misc/Contact.md",
-    "PrepAndPlanning/Schedule.md",
     "PrepAndPlanning/TestRuns/SanMarin/2015-12-22.md",
     "paths/shelterPath.json",
     "attachments/shelterPaths.json",
     "attachments/shelterPathParser.py",
-    "attachments/PXL_20251222_174027923.jpg",
-    "attachments/PXL_20240907_223023809.jpg",
     "PrepAndPlanning/TestRuns/SanMarin/init.md",
     "Test.md",
     "Misc/Tech.md",

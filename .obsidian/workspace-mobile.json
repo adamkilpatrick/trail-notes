@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Updates/2026-02-14.md",
+                "file": "Updates/2026-02-15.md",
                 "mode": "source",
                 "source": true,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "2026-02-14"
+              "title": "2026-02-15"
             }
           }
         ]
@@ -167,8 +167,13 @@
   },
   "active": "7c3114f9ac5c68c2",
   "lastOpenFiles": [
-    "Updates/2026-02-13.md",
+    "attachments/PXL_20260215_180106406.jpg",
+    "attachments/PXL_20260215_180056222.jpg",
+    "attachments/PXL_20260215_165305754.jpg",
+    "attachments/PXL_20260215_142232576.jpg",
     "Updates/2026-02-14.md",
+    "Updates/2026-02-15.md",
+    "Updates/2026-02-13.md",
     "attachments/PXL_20260214_225726627.jpg",
     "attachments/PXL_20260214_201706849.jpg",
     "attachments/PXL_20260214_201506612.jpg",
@@ -177,10 +182,7 @@
     "Updates/2026-02-12.md",
     "attachments/PXL_20260213_231906754.jpg",
     "attachments/PXL_20260213_200205466.jpg",
-    "attachments/PXL_20260213_194939410.jpg",
-    "attachments/PXL_20260105_224745221 1.jpg",
     "PrepAndPlanning/Schedule.md",
-    "attachments/PXL_20260212_235925378.jpg",
     "templates/atTemplate.md",
     "Gear/2026-01-19.md",
     "Misc/SnakeList.md",

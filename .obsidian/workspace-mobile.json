@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Updates/2026-02-15.md",
+                "file": "Updates/2026-02-17.md",
                 "mode": "source",
                 "source": true,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "2026-02-15"
+              "title": "2026-02-17"
             }
           }
         ]
@@ -167,21 +167,24 @@
   },
   "active": "7c3114f9ac5c68c2",
   "lastOpenFiles": [
+    "attachments/PXL_20260217_154737053.MP.jpg",
+    "attachments/PXL_20260217_164021603.jpg",
+    "attachments/PXL_20260217_141422239.jpg",
+    "Updates/Init.md",
+    "Updates/2026-02-16.md",
+    "Updates/2026-02-17.md",
+    "attachments/PXL_20260216_221134916.jpg",
+    "attachments/PXL_20260216_161510538.jpg",
+    "attachments/PXL_20260216_171257729.MP.jpg",
+    "Updates/2026-02-15.md",
     "attachments/PXL_20260215_180106406.jpg",
     "attachments/PXL_20260215_180056222.jpg",
     "attachments/PXL_20260215_165305754.jpg",
     "attachments/PXL_20260215_142232576.jpg",
     "Updates/2026-02-14.md",
-    "Updates/2026-02-15.md",
     "Updates/2026-02-13.md",
     "attachments/PXL_20260214_225726627.jpg",
-    "attachments/PXL_20260214_201706849.jpg",
-    "attachments/PXL_20260214_201506612.jpg",
-    "attachments/PXL_20260214_140715701.jpg",
-    "attachments/PXL_20260214_134921207.jpg",
     "Updates/2026-02-12.md",
-    "attachments/PXL_20260213_231906754.jpg",
-    "attachments/PXL_20260213_200205466.jpg",
     "PrepAndPlanning/Schedule.md",
     "templates/atTemplate.md",
     "Gear/2026-01-19.md",
@@ -205,7 +208,6 @@
     "PrepAndPlanning/To-do.md",
     "PrepAndPlanning/TestRuns/SanMarin",
     "PrepAndPlanning/TestRuns",
-    "PrepAndPlanning/To buy.md",
     "PrepAndPlanning"
   ]
 }

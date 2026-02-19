@@ -25,7 +25,7 @@
                         <span class="label">Last Checkin Date:</span><span class="value">${new Date(status.date).toLocaleString()}</span>
                     </div>
                     <div class="section">
-                        <span class="label">Location:</span><span class="value">Lat: ${status.loc[0].toFixed(6)}, Lon: ${status.loc[1].toFixed(6)}, Alt: ${status.loc[2].toFixed(2)}m</span>
+                        <span class="label">Location:</span><span class="value">Lat: ${status.loc[0].toFixed(6)}, Lon: ${status.loc[1].toFixed(6)}, Alt: ${status.loc ? status.loc[2].toFixed(2) : "??"}m</span>
                     </div>
                     <div class="section">
                         <span class="label">Weather:</span><span class="value">High: ${status.weather.highTemp[0]}°F, Low: ${status.weather.lowTemp[0]}°F</span>

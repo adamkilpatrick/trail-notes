@@ -7,9 +7,16 @@ tags:
   - georgia
 ---
 
-| Mile |     |
-| --- | --- |
-| MilesSinceLastUpdate |     |
+<table>
+  <tr>
+    <td><b>Mile</b></td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td><b>Miles Since Last Update</b></td>
+    <td>0</td>
+  </tr>
+</table>
 
 
 

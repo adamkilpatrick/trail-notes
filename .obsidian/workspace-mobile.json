@@ -13,8 +13,8 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Updates/2026-02-23.md",
-                "mode": "source",
+                "file": "Updates/2026-02-24.md",
+                "mode": "preview",
                 "source": true,
                 "backlinks": true,
                 "backlinkOpts": {
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "2026-02-23"
+              "title": "2026-02-24"
             }
           }
         ]
@@ -167,27 +167,29 @@
   },
   "active": "7c3114f9ac5c68c2",
   "lastOpenFiles": [
+    "attachments/PXL_20260224_230325812.jpg",
+    "attachments/PXL_20260224_205134315.jpg",
+    "attachments/PXL_20260224_204618723.jpg",
+    "attachments/PXL_20260224_203538074.jpg",
+    "attachments/PXL_20260224_175331901.jpg",
+    "attachments/PXL_20260224_173844393.jpg",
+    "attachments/PXL_20260224_172946592.jpg",
+    "Updates/Init.md",
+    "Updates/2026-02-23.md",
+    "Updates/2026-02-24.md",
+    "Updates/People.md",
     "attachments/PXL_20260223_144828616.jpg",
     "attachments/PXL_20260223_195544509.jpg",
     "attachments/PXL_20260223_162045541.jpg",
     "templates/atTemplate.md",
-    "Updates/2026-02-23.md",
     "PrepAndPlanning/To buy.md",
     "Updates/2026-02-22.md",
     "PrepAndPlanning/To-do.md",
     "attachments/PXL_20260222_140215666.jpg",
     "Updates/2026-02-21.md",
-    "attachments/PXL_20260219_223102989.jpg",
-    "attachments/PXL_20260221_211301763.jpg",
-    "attachments/PXL_20260221_193041449.jpg",
-    "attachments/PXL_20260221_142946763.jpg",
-    "attachments/PXL_20260221_140005894.jpg",
-    "attachments/PXL_20260221_135320827.jpg",
     "Updates/2026-02-20.md",
-    "attachments/PXL_20260220_233744220.jpg",
     "Updates/2026-02-19.md",
     "Updates/2026-02-18.md",
-    "Updates/Init.md",
     "Updates/2026-02-17.md",
     "Updates/2026-02-16.md",
     "Updates/2026-02-15.md",
@@ -201,8 +203,6 @@
     "Gear/2025-12-30.md",
     "PrepAndPlanning/TestRuns/LSHT/2026-01-13.md",
     "PrepAndPlanning/TestRuns/LSHT/2026-01-12.md",
-    "PrepAndPlanning/TestRuns/SanMarin/2025-12-29.md",
-    "PrepAndPlanning/TestRuns/SanMarin/2025-12-24.md",
     "paths/shelterPath.json",
     "attachments/shelterPaths.json",
     "attachments/shelterPathParser.py",

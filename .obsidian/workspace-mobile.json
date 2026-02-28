@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Updates/2026-02-26.md",
+                "file": "PrepAndPlanning/To buy.md",
                 "mode": "source",
                 "source": true,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "2026-02-26"
+              "title": "To buy"
             }
           }
         ]
@@ -167,27 +167,27 @@
   },
   "active": "7c3114f9ac5c68c2",
   "lastOpenFiles": [
+    "Updates/2026-02-27.md",
+    "attachments/PXL_20260228_015019783.jpg",
+    "attachments/PXL_20260227_140721858.jpg",
+    "PrepAndPlanning/To buy.md",
+    "Updates/2026-02-26.md",
+    "PrepAndPlanning/To-do.md",
     "attachments/PXL_20260226_214525026.jpg",
     "attachments/PXL_20260226_163801207.jpg",
     "attachments/PXL_20260226_164714976.jpg",
     "attachments/PXL_20260226_155129572.jpg",
     "Updates/2026-02-25.md",
-    "Updates/2026-02-26.md",
     "attachments/PXL_20260225_170011785.jpg",
     "attachments/PXL_20260225_165436208.MP.jpg",
     "attachments/PXL_20260225_145646212.jpg",
     "attachments/PXL_20260225_134854991.jpg",
     "Updates/2026-02-24.md",
     "templates/atTemplate.md",
-    "attachments/PXL_20260224_230325812.jpg",
-    "attachments/PXL_20260224_205134315.jpg",
-    "attachments/PXL_20260224_204618723.jpg",
     "Updates/Init.md",
     "Updates/2026-02-23.md",
     "Updates/People.md",
-    "PrepAndPlanning/To buy.md",
     "Updates/2026-02-22.md",
-    "PrepAndPlanning/To-do.md",
     "Updates/2026-02-21.md",
     "Updates/2026-02-20.md",
     "Updates/2026-02-19.md",
@@ -202,7 +202,6 @@
     "Gear/2026-01-19.md",
     "Misc/SnakeList.md",
     "PrepAndPlanning/TestRuns/LSHT/2026-01-14.md",
-    "Gear/2025-12-30.md",
     "paths/shelterPath.json",
     "attachments/shelterPaths.json",
     "attachments/shelterPathParser.py",

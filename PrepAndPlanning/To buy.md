@@ -1,6 +1,6 @@
 ---
 created: 2025-12-31
-modified: 2026-02-23
+modified: 2026-02-27
 ---
 - [x] Outer jacket
 - [x] Non shit sleeping pad
@@ -10,6 +10,9 @@ modified: 2026-02-23
 - [x] Sleep liner
 - [x] sun hoody
 - [ ] wind screen
-- [x] spam
-- [x] knorr
-- [x] ramen
+- [x] spam (1)
+- [x] knorr (4)
+- [x] ramen (1)
+- [x] shorts
+- [ ] pen
+- [x] pro bars

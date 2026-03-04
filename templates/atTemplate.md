@@ -16,6 +16,10 @@ tags:
     <td><b>Miles Since Last Update</b></td>
     <td>0</td>
   </tr>
+  <tr>
+    <td><b>Day</b></td>
+    <td>0</td>
+  </tr>
 </table>
 
 

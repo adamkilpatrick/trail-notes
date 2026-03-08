@@ -1,6 +1,6 @@
 ---
 created: 2025-12-31
-modified: 2026-02-23
+modified: 2026-03-08
 ---
 - [ ] Black out at whole foods bar
 - [x] automate location flow
@@ -9,6 +9,6 @@ modified: 2026-02-23
 - [x] setup Garmin account
 - [x] book ATL hotel
 - [x] book ATL shuttle 
-- [ ] learn tarp mode
-- [ ] dispose of food trash
+- [x] learn tarp mode
+- [x] dispose of food trash
 - [ ] back flush filter

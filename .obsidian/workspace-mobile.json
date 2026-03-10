@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Updates/2026-03-08.md",
+                "file": "Updates/2026-03-09.md",
                 "mode": "preview",
                 "source": true,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "2026-03-08"
+              "title": "2026-03-09"
             }
           }
         ]
@@ -167,29 +167,30 @@
   },
   "active": "7c3114f9ac5c68c2",
   "lastOpenFiles": [
+    "attachments/PXL_20260309_140958964.jpg",
+    "attachments/PXL_20260309_151204822.jpg",
+    "Updates/2026-03-08.md",
+    "Updates/2026-03-09.md",
+    "attachments/PXL_20260309_180548023.jpg",
+    "attachments/PXL_20260309_175151938.jpg",
+    "attachments/PXL_20260309_150205033.jpg",
+    "attachments/PXL_20260309_172057108.jpg",
+    "attachments/PXL_20260309_170505303.jpg",
+    "attachments/PXL_20260309_144109008.jpg",
+    "attachments/PXL_20260309_143317637.jpg",
+    "Updates/People.md",
     "attachments/PXL_20260308_174337348.jpg",
     "attachments/PXL_20260308_190554872.jpg",
-    "attachments/PXL_20260308_155625093.jpg",
-    "attachments/PXL_20260308_134111776.jpg",
-    "attachments/PXL_20260308_133829148.jpg",
-    "attachments/PXL_20260308_133957646.jpg",
-    "attachments/PXL_20260308_140035430.jpg",
     "Updates/2026-03-07.md",
-    "Updates/2026-03-08.md",
     "PrepAndPlanning/To-do.md",
     "PrepAndPlanning/To buy.md",
-    "attachments/PXL_20260307_203430723 1.jpg",
-    "attachments/PXL_20260307_201017042.jpg",
-    "attachments/PXL_20260307_203430723.jpg",
     "Updates/2026-03-06.md",
-    "attachments/PXL_20260307_170254071.jpg",
     "Updates/2026-03-05.md",
     "Updates/2026-03-04.md",
     "Updates/2026-03-03.md",
     "templates/atTemplate.md",
     "Updates/2026-03-02.md",
     "Updates/2026-03-01.md",
-    "Updates/People.md",
     "Updates/2026-02-28.md",
     "Updates/2026-02-27.md",
     "Updates/2026-02-26.md",
@@ -202,7 +203,6 @@
     "Updates/2026-02-20.md",
     "Updates/2026-02-19.md",
     "Updates/2026-02-18.md",
-    "Updates/2026-02-17.md",
     "paths/shelterPath.json",
     "attachments/shelterPaths.json",
     "attachments/shelterPathParser.py",

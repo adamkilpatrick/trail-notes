@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Updates/2026-03-13.md",
+                "file": "Updates/2026-03-14.md",
                 "mode": "source",
                 "source": true,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "2026-03-13"
+              "title": "2026-03-14"
             }
           }
         ]
@@ -167,19 +167,21 @@
   },
   "active": "7c3114f9ac5c68c2",
   "lastOpenFiles": [
+    "attachments/PXL_20260314_181318305.jpg",
+    "attachments/PXL_20260314_175341643.jpg",
+    "attachments/PXL_20260314_143620912.MP.jpg",
+    "attachments/PXL_20260314_132228618.MP.jpg",
+    "Updates/2026-03-13.md",
+    "Updates/2026-03-14.md",
     "attachments/PXL_20260313_191925953.LS.mp4",
     "attachments/PXL_20260313_191923570.MP.jpg",
     "attachments/PXL_20260313_145620643.jpg",
     "attachments/PXL_20260313_121932778.jpg",
     "Updates/2026-03-12.md",
-    "Updates/2026-03-13.md",
     "attachments/PXL_20260313_000608820.jpg",
     "attachments/PXL_20260312_225011575.jpg",
     "attachments/PXL_20260312_210946949.jpg",
     "attachments/PXL_20260312_210344639.jpg",
-    "attachments/PXL_20260312_202612148.MP.jpg",
-    "attachments/PXL_20260312_163233364.jpg",
-    "attachments/PXL_20260312_163101490.jpg",
     "Updates/2026-03-11.md",
     "Updates/2026-03-10.md",
     "Updates/2026-03-09.md",
@@ -202,7 +204,6 @@
     "Updates/2026-02-24.md",
     "Updates/Init.md",
     "Updates/2026-02-23.md",
-    "Updates/2026-02-22.md",
     "paths/shelterPath.json",
     "attachments/shelterPaths.json",
     "attachments/shelterPathParser.py",

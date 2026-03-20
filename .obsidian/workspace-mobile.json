@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Updates/2026-03/2026-03-19.md",
+                "file": "Updates/2026-03/2026-03-20.md",
                 "mode": "source",
                 "source": true,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "2026-03-19"
+              "title": "2026-03-20"
             }
           }
         ]
@@ -167,17 +167,21 @@
   },
   "active": "7c3114f9ac5c68c2",
   "lastOpenFiles": [
+    "attachments/PXL_20260320_161319692.jpg",
+    "attachments/PXL_20260320_194813839.jpg",
+    "attachments/PXL_20260320_194505933.jpg",
+    "attachments/PXL_20260320_194608107.MP.jpg",
+    "attachments/PXL_20260320_194601989.MP.jpg",
+    "attachments/PXL_20260320_184518676.jpg",
+    "Updates/2026-03/2026-03-19.md",
+    "Updates/2026-03/2026-03-20.md",
     "attachments/PXL_20260319_214149999.jpg",
     "attachments/PXL_20260319_144715268.jpg",
     "Updates/2026-03/2026-03-18.md",
-    "Updates/2026-03/2026-03-19.md",
     "Updates/2026-03/2026-03-17.md",
     "attachments/PXL_20260318_203621356.jpg",
     "attachments/PXL_20260318_161139443.jpg",
     "attachments/PXL_20260317_195804040.jpg",
-    "attachments/PXL_20260317_195737010.jpg",
-    "attachments/PXL_20260317_195535232.jpg",
-    "attachments/PXL_20260317_162727485.jpg",
     "Updates/2026-03/2026-03-16.md",
     "Updates/2026-03/2026-03-15.md",
     "Updates/2026-03/2026-03-14.md",
@@ -197,16 +201,12 @@
     "Updates/2026-02",
     "Updates/2026-03",
     "Updates/2026-04",
-    "attachments/PXL_20260315_171154449.jpg",
-    "attachments/PXL_20260315_171158558.jpg",
-    "attachments/PXL_20260315_154831087.jpg",
     "attachments/PXL_20260313_191925953.LS.mp4",
     "Updates/People.md",
     "PrepAndPlanning/To-do.md",
     "PrepAndPlanning/To buy.md",
     "templates/atTemplate.md",
     "Updates/2026-02/2026-02-28.md",
-    "Updates/2026-02/2026-02-27.md",
     "paths/shelterPath.json",
     "attachments/shelterPaths.json",
     "attachments/shelterPathParser.py",

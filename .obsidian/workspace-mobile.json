@@ -13,8 +13,8 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Updates/2026-03/2026-03-20.md",
-                "mode": "source",
+                "file": "Updates/2026-03/2026-03-21.md",
+                "mode": "preview",
                 "source": true,
                 "backlinks": true,
                 "backlinkOpts": {
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "2026-03-20"
+              "title": "2026-03-21"
             }
           }
         ]
@@ -167,21 +167,22 @@
   },
   "active": "7c3114f9ac5c68c2",
   "lastOpenFiles": [
+    "attachments/PXL_20260321_212610835.jpg",
+    "Updates/2026-03/2026-03-19.md",
+    "Updates/2026-03/2026-03-18.md",
+    "Updates/2026-03/2026-03-21.md",
+    "attachments/PXL_20260321_173400442.jpg",
+    "attachments/PXL_20260321_184034796.jpg",
+    "attachments/PXL_20260321_163103836.jpg",
+    "Updates/2026-03/2026-03-20.md",
     "attachments/PXL_20260320_161319692.jpg",
     "attachments/PXL_20260320_194813839.jpg",
     "attachments/PXL_20260320_194505933.jpg",
     "attachments/PXL_20260320_194608107.MP.jpg",
     "attachments/PXL_20260320_194601989.MP.jpg",
     "attachments/PXL_20260320_184518676.jpg",
-    "Updates/2026-03/2026-03-19.md",
-    "Updates/2026-03/2026-03-20.md",
     "attachments/PXL_20260319_214149999.jpg",
-    "attachments/PXL_20260319_144715268.jpg",
-    "Updates/2026-03/2026-03-18.md",
     "Updates/2026-03/2026-03-17.md",
-    "attachments/PXL_20260318_203621356.jpg",
-    "attachments/PXL_20260318_161139443.jpg",
-    "attachments/PXL_20260317_195804040.jpg",
     "Updates/2026-03/2026-03-16.md",
     "Updates/2026-03/2026-03-15.md",
     "Updates/2026-03/2026-03-14.md",
@@ -206,7 +207,6 @@
     "PrepAndPlanning/To-do.md",
     "PrepAndPlanning/To buy.md",
     "templates/atTemplate.md",
-    "Updates/2026-02/2026-02-28.md",
     "paths/shelterPath.json",
     "attachments/shelterPaths.json",
     "attachments/shelterPathParser.py",

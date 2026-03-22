@@ -10,12 +10,20 @@ modified: 2026-03-08
 - [x] Sleep liner
 - [x] sun hoody
 - [ ] wind screen
-- [ ] spam (6)
-- [ ] knorr (5)
-- [ ] ramen (3)
+- [x] spam (6)
+- [x] knorr (5)
+- [x] ramen (3)
 - [x] shorts
-- [ ] pen
-- [ ] pro bars
-- [ ] lighter puffy
+- [x] pen
+- [x] pro bars
+- [x] lighter puffy
 - [ ] dcf tarp
 - [ ] under quilt???
+- [x] electrolytes 
+- [x] ziplocs
+- [x] toothpaste 
+- [ ] sunglasses 
+- [ ] new shoes to Damascus 
+- [ ] lighter sleep clothes? to Damascus 
+- [ ] lighter leggings? to Damascus 
+- [ ] lighter sleep pad? to Damascus

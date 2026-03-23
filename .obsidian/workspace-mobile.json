@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Updates/2026-03/2026-04-22.md",
+                "file": "Updates/2026-03/2026-03-23.md",
                 "mode": "source",
                 "source": true,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "2026-04-22"
+              "title": "2026-03-23"
             }
           }
         ]
@@ -167,8 +167,12 @@
   },
   "active": "7c3114f9ac5c68c2",
   "lastOpenFiles": [
+    "attachments/PXL_20260323_220456434.jpg",
+    "attachments/PXL_20260323_202725668.jpg",
+    "Updates/2026-03/2026-03-22.md",
+    "Updates/2026-03/2026-03-23.md",
     "Updates/2026-03/2026-03-21.md",
-    "Updates/2026-03/2026-04-22.md",
+    "Untitled.md",
     "attachments/PXL_20260322_152938625.jpg",
     "PrepAndPlanning/To buy.md",
     "attachments/PXL_20260321_212610835.jpg",
@@ -182,7 +186,6 @@
     "attachments/PXL_20260320_194813839.jpg",
     "attachments/PXL_20260320_194505933.jpg",
     "attachments/PXL_20260320_194608107.MP.jpg",
-    "attachments/PXL_20260320_194601989.MP.jpg",
     "Updates/2026-03/2026-03-17.md",
     "Updates/2026-03/2026-03-16.md",
     "Updates/2026-03/2026-03-15.md",
@@ -204,8 +207,6 @@
     "Updates/2026-03",
     "Updates/2026-04",
     "attachments/PXL_20260313_191925953.LS.mp4",
-    "Updates/People.md",
-    "PrepAndPlanning/To-do.md",
     "paths/shelterPath.json",
     "attachments/shelterPaths.json",
     "attachments/shelterPathParser.py",

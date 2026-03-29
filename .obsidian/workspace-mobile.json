@@ -13,8 +13,8 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Updates/2026-03/2026-03-27.md",
-                "mode": "source",
+                "file": "Updates/2026-03/2026-03-28.md",
+                "mode": "preview",
                 "source": true,
                 "backlinks": true,
                 "backlinkOpts": {
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "2026-03-27"
+              "title": "2026-03-28"
             }
           }
         ]
@@ -167,9 +167,13 @@
   },
   "active": "7c3114f9ac5c68c2",
   "lastOpenFiles": [
+    "attachments/PXL_20260328_143440728 1.jpg",
+    "attachments/PXL_20260328_150825954.MP.jpg",
+    "attachments/PXL_20260328_143440728.jpg",
+    "Updates/2026-03/2026-03-27.md",
+    "Updates/2026-03/2026-03-28.md",
     "attachments/PXL_20260327_161150128.jpg",
     "Updates/2026-03/2026-03-26.md",
-    "Updates/2026-03/2026-03-27.md",
     "attachments/PXL_20260326_142929765.jpg",
     "attachments/PXL_20260326_140710607.jpg",
     "attachments/PXL_20260326_131958265.jpg",
@@ -178,10 +182,7 @@
     "Updates/2026-03/2026-03-25.md",
     "attachments/PXL_20260325_183802827.jpg",
     "attachments/PXL_20260325_130647499.jpg",
-    "attachments/PXL_20260326_000317093.jpg",
     "Updates/2026-03/2026-03-24.md",
-    "attachments/PXL_20260324_161039907.jpg",
-    "attachments/PXL_20260324_174113200.jpg",
     "Updates/2026-03/2026-03-23.md",
     "Updates/2026-03/2026-03-22.md",
     "Updates/2026-03/2026-03-21.md",
@@ -202,7 +203,6 @@
     "Updates/2026-03/2026-03-08.md",
     "Updates/2026-03/2026-03-07.md",
     "Updates/2026-03/2026-03-06.md",
-    "Updates/2026-03/2026-03-05.md",
     "Updates/2026-02",
     "Updates/2026-03",
     "Updates/2026-04",

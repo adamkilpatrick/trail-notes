@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Updates/2026-04/2026-04-01.md",
+                "file": "Updates/2026-04/2026-04-02.md",
                 "mode": "source",
                 "source": true,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "2026-04-01"
+              "title": "2026-04-02"
             }
           }
         ]
@@ -59,7 +59,7 @@
         "state": {
           "type": "search",
           "state": {
-            "query": "",
+            "query": "tag:#zero",
             "matchingCase": false,
             "explainSearch": false,
             "collapseAll": false,
@@ -167,8 +167,14 @@
   },
   "active": "7c3114f9ac5c68c2",
   "lastOpenFiles": [
-    "Updates/2026-03/2026-03-31.md",
+    "attachments/PXL_20260402_234612619 1.jpg",
+    "attachments/PXL_20260402_204756165.jpg",
+    "attachments/PXL_20260402_153126131.jpg",
+    "attachments/PXL_20260402_234612619.jpg",
     "Updates/2026-04/2026-04-01.md",
+    "Updates/2026-04/2026-04-02.md",
+    "Updates/2026-03/2026-03-22.md",
+    "Updates/2026-03/2026-03-31.md",
     "templates/atTemplate.md",
     "attachments/PXL_20260331_183638135.MP.jpg",
     "attachments/PXL_20260331_234750521.jpg",
@@ -179,16 +185,12 @@
     "Updates/2026-03/2026-03-30.md",
     "attachments/PXL_20260330_130602686.jpg",
     "Updates/2026-03/2026-03-29.md",
-    "attachments/PXL_20260329_160816210.jpg",
-    "attachments/PXL_20260329_131828612.jpg",
     "Updates/2026-03/2026-03-28.md",
-    "attachments/PXL_20260328_143440728 1.jpg",
     "Updates/2026-03/2026-03-27.md",
     "Updates/2026-03/2026-03-26.md",
     "Updates/2026-03/2026-03-25.md",
     "Updates/2026-03/2026-03-24.md",
     "Updates/2026-03/2026-03-23.md",
-    "Updates/2026-03/2026-03-22.md",
     "Updates/2026-03/2026-03-21.md",
     "Untitled.md",
     "PrepAndPlanning/To buy.md",
@@ -201,8 +203,6 @@
     "Updates/2026-03/2026-03-14.md",
     "Updates/2026-03/2026-03-13.md",
     "Updates/2026-03/2026-03-12.md",
-    "Updates/2026-03/2026-03-11.md",
-    "Updates/2026-03/2026-03-10.md",
     "Updates/2026-02",
     "Updates/2026-03",
     "Updates/2026-04",

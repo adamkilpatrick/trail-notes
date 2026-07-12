@@ -4,7 +4,7 @@ modified: <% tp.date.now("YYYY-MM-DD") %>
 mile: 0
 milesSinceLastUpdate: 0
 tags:
-  - pennsylvania
+  - maine
 ---
 
 <table>

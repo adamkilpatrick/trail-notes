@@ -9,7 +9,7 @@ modified: 2026-03-08
 - [x] Lighter tarp
 - [x] Sleep liner
 - [x] sun hoody
-- [ ] wind screen
+- [x] wind screen
 - [x] spam (6)
 - [x] knorr (5)
 - [x] ramen (3)
@@ -17,13 +17,9 @@ modified: 2026-03-08
 - [x] pen
 - [x] pro bars
 - [x] lighter puffy
-- [ ] dcf tarp
-- [ ] under quilt???
 - [x] electrolytes 
 - [x] ziplocs
 - [x] toothpaste 
-- [ ] sunglasses 
-- [ ] new shoes to Damascus 
-- [ ] lighter sleep clothes? to Damascus 
-- [ ] lighter leggings? to Damascus 
-- [ ] lighter sleep pad? to Damascus
+- [x] poles
+- [x] socks
+- [x] permethrin

@@ -15,5 +15,13 @@ modified: 2026-01-10
 
 # Things to write in logbooks
 - [ ] the part in "song for the dead" by queens of the stoneage where it sounds like it stops and then the guy goes "hyap" and it starts again easily lets me cream out 10 more miles
-- [ ] she z on my pack until I finish last at katahdin
-- [ ] 
+- [x] she z on my pack until I finish last at katahdin
+- [x] clams is rocks with food inside
+- [ ] I've become the Leonardo DaVinci of hiking, if Leonardo DaVinci fucking sucked at everything he ever did in life
+- [x] trail ohana means Tramily, and Tramily means everyone is climbing Ballcrusher Mountain today 
+- [ ] look at you hiker, pathetic creature of meat and bone. How can you challenge a perfect immortal logbook?
+- [x] donated 3 bands to the ATC for them to make an Instagram post of an AI video of Vin Diesel saying "tramilia"
+- [x] took 4 lmnt tabs and now I bleed piss
+- [x] ATC has announced Ryan gosling as privy inspector in the AT live action movie 
+- [ ] maine isn't going anywhere, except up my ass
+- [ ] what does the AT mean to me?
